@@ -1,0 +1,170 @@
+.packages {
+	background: {
+		color: map_get( $setup, 'packages-color-bg' );
+		image: url(images/packages-bg.gif);
+	};
+	border-bottom: 1px solid map_get( $setup, 'packages-color-border' );
+	border-top: 1px solid map_get( $setup, 'packages-color-border' );
+	padding: ms(8) ms(0);
+
+	h2 {
+		color: map_get( $setup, 'packages-color-heading' );
+		text-align: center;
+	}
+
+	.package-heading {
+		color: map_get( $setup, 'packages-color-heading-text' );
+		text-align: center;
+	}
+
+	.package {
+		background: map_get( $setup, 'packages-color-package-bg' );
+		border: 1px solid map_get( $setup, 'packages-color-package-border' );
+		border-radius: 5px;
+		display: flex;
+		flex-direction: column;
+		margin: ms(4) auto;
+		max-width: map_get( $setup, 'max-width' );
+		@include bp(m) {
+			flex-direction: row;
+		}
+		.package-info,
+		.package-price {
+			box-sizing: border-box;
+			padding: ms(2) ms(0);
+		}
+		.package-info,
+		.package-price {
+			background: map_get( $setup, 'packages-color-info-bg' );
+			flex: 0 1 25%;
+		}
+		.package-destinations {
+			display: flex;
+			flex: 0 1 50%;
+			flex-direction: column;
+			@include bp(s) {
+				flex-direction: row;
+			}
+			.package-destination {
+				box-sizing: border-box;
+				color: map_get( $setup, 'packages-color-destination-text' );
+				flex: 1;
+				font-size: ms(-1);
+				text-align: center;
+				padding: ms(2) ms(2);
+				@include bp(s) {
+					padding: ms(2) ms(0);
+				}
+				h4 {
+					color: map_get( $setup, 'packages-color-destination-title' );
+					font-size: ms(0);
+					margin-bottom: ms(0);
+				}
+			}
+			.package-destination-details {
+				font-family: $font-heading;
+				font-size: ms(-1);
+				margin: 0 auto;
+				max-width: ms(9);
+				text-align: left;
+				@include bp(m) {
+					margin: 0;
+				}
+				@include bp(l) {
+					margin: 0 0 0 ms(3);
+				}
+				div {
+					i {
+						margin-right: ms(-5);
+						min-width: ms(-1);
+						@include bp(l) {
+							margin-right: ms(-3);
+						}
+					}
+				}
+				.time {
+					margin-bottom: ms(-1);
+				}
+			}
+		}
+
+		.package-info {
+			align-items: center;
+			border-radius: 5px 5px 0 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			text-align: center;
+			@include bp(m) {
+				border-radius: 5px 0 0 5px;
+			}
+			h3 {
+				color: map_get( $setup, 'packages-color-info-heading-text' );
+				font-size: $h4;
+				margin: ms(0) 0;
+			}
+			p {
+				color: map_get( $setup, 'packages-color-info-text' );
+				font-size: ms(-1);
+				margin-bottom: 0;
+			}
+		}
+
+		.package-price {
+			align-items: center;
+			border-radius: 0 0 5px 5px;
+			color: map_get( $setup, 'packages-color-price-text' );
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: ms(2);
+			text-align: center;
+			@include bp(m) {
+				border-radius: 0 5px 5px 0;
+			}
+			.or {
+				font-family: $font-heading;
+				font-size: ms(0);
+				margin: ms(-4) 0;
+			}
+			.link {
+				font-family: $font-heading;
+				font-size: ms(0);
+				a {
+					color: map_get( $setup, 'packages-color-price-link' );
+					transition: color 300ms;
+					@include haf() {
+						color: map_get( $setup, 'packages-color-price-link-hover' );
+					}
+				}
+			}
+		}
+	}
+}
+
+
+.fail .packages {
+	h2 {
+		color: map_get( $setup, 'packages-color-heading-fail' );
+	}
+	.package {
+		.package-info {
+			h3 {
+				color: map_get( $setup, 'packages-color-info-heading-text-fail' );
+				text-transform: uppercase;
+			}
+		}
+	}
+	.package-price {
+		.link a {
+			color: map_get( $setup, 'packages-color-price-link-fail' );
+			text-decoration: none;;
+			@include haf() {
+				outline: 0 none;
+			}
+		}
+	}
+	h4 {
+		text-transform: uppercase;
+	}
+}

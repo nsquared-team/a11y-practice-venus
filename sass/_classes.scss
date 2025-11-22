@@ -1,0 +1,56 @@
+.button {
+	background: map_get( $setup, 'button-color-bg' );
+	border: 0 none;
+	border-radius: 3px;
+	color: map_get( $setup, 'button-color-text' );
+	font-family: $font-heading;
+	font-size: ms(-1);
+	display: inline-block;
+	padding: ms(0) ms(2);
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: background 300ms ease-in-out;
+
+	@include haf() {
+		background: map_get( $setup, 'button-color-bg-hover' );
+	}
+
+	.fail & {
+		@include haf() {
+			outline: 0 none;
+		}
+	}
+
+	&.outline-button {
+		background: transparent;
+		border: 2px solid white;
+		border-radius: 0;
+		padding-left: ms(4);
+		padding-right: ms(4);
+		transition: all 300ms ease-in-out;
+		@include haf() {
+			background: rgba(white, 0.9);
+			color: $color-brand;
+		}
+	}
+
+	.site-navigation & {
+		color: map_get( $setup, 'button-color-text' );
+		margin-left: ms(-2);
+		padding: ms(0) ms(2);
+		transition: background 300ms ease-in-out;
+		@include haf() {
+			color: map_get( $setup, 'button-color-text-hover' );
+		}
+	}
+}
+
+
+.divider {
+	@extend %row;
+}
+
+.divider-wrap {
+	@include col(12);
+	text-align: center;
+}

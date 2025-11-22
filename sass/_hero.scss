@@ -1,0 +1,83 @@
+.hero {
+	background: {
+		image: url(images/iman-gozal-EPxVDc_xeWA-unsplash.jpg);
+		position: 69% 35%;
+		repeat: no-repeat;
+		size: cover;
+	};
+	color: map_get( $setup, 'hero-color-text' );
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 80vh;
+	position: relative;
+	@include col(12);
+}
+
+.hero-content {
+	@extend %row;
+	padding-bottom: ms(5);
+
+	h2 {
+		font-size: $h1;
+		font-weight: 400;
+		margin-bottom: 1em;
+		span {
+			display: block;
+		}
+		span.offer {
+			font-size: ms(1);
+			font-weight: 400;
+			margin-bottom: ms(1);
+		}
+		span.discount {
+			color: map_get( $setup, 'hero-discount-color-text' );
+			font-size: ms(7);
+			font-weight: 700;
+			margin-bottom: ms(1);
+		}
+	}
+	p {
+		line-height: 1.5;
+		margin-bottom: ms(2);
+	}
+}
+
+.fail .hero-content {
+	h2 {
+		text-transform: uppercase;
+	}
+}
+
+.hero-content-wrap {
+	@include col(12);
+	@include bp(m) {
+		@include col(7);
+	}
+}
+
+.scroll {
+	bottom: ms(0);
+	color: map_get( $setup, 'hero-color-text' );
+	display: block;
+	font-family: $font-heading;
+	left: 0;
+	position: absolute;
+	margin: auto;
+	right: 0;
+	text-align: center;
+	text-decoration: none;
+	transition: color 300ms;
+	width: ms(12);
+	@include haf() {
+		color: map_get( $setup, 'hero-color-text-hover' );
+	}
+	.fail & {
+		@include haf() {
+			outline: 0 none;
+		}
+	}
+	span {
+		display: block;
+	}
+}

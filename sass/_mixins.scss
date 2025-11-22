@@ -1,0 +1,84 @@
+/**
+ * Breakpoints
+ */
+@mixin bp($point) {
+  @if $point == xs {
+    @media screen and (max-width: 575px) { @content; }
+  }
+  @else if $point == s {
+    @media screen and (min-width: 576px) { @content; }
+  }
+  @else if $point == m {
+    @media screen and (min-width: 769px) { @content; }
+  }
+  @else if $point == l {
+    @media screen and (min-width: 960px) { @content; }
+  }
+  @else if $point == xl {
+    @media screen and (min-width: 1200px) { @content; }
+  }
+  @else {
+    @media screen and (min-width: $point) { @content; }
+  }
+}
+
+/**
+ * Grid system
+ */
+
+$columns: 12;
+$page-gutter: 1rem;
+$column: 100%/($columns);
+$gutter: 1.875rem;
+
+%row {
+	align-items: center;
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: $page-gutter;
+	padding-right: $page-gutter;
+	width: 100%;
+	@include bp(xl) {
+		max-width: map_get( $setup, 'max-width' );
+	}
+}
+
+@mixin col($span: 12) {
+	box-sizing: border-box;
+	padding: ms(0) $gutter/2;
+	width: $column * $span;
+}
+
+/**
+ * Hover, active, and focus statues
+ * :link and & are optional
+ */
+@mixin haf( $states: ( 'h', 'a', 'f' ) ) {
+
+	$selectors: ();
+
+	@each $state in $states {
+		@if 'f' == $state {
+			$selectors: append( $selectors, '&:focus', comma );
+		} @else if 'a' == $state {
+			$selectors: append( $selectors, '&:active', comma );
+		} @else if 'l' == $state {
+			$selectors: append( $selectors, '&:link', comma );
+		} @else if 'v' == $state {
+			$selectors: append( $selectors, '&:visited', comma );
+		} @else if '&' == $state {
+			$selectors: append( $selectors, '&', comma );
+		} @else {
+			$selectors: append( $selectors, '&:hover', comma );
+		}
+	}
+
+	#{ $selectors } {
+		@content;
+	}
+
+} // /haf
+

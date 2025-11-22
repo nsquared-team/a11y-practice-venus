@@ -1,0 +1,134 @@
+.site-header {
+	@extend %row;
+	overflow: hidden;
+	padding-bottom: ms(1);
+	padding-top: ms(1);
+}
+
+.site-branding {
+	@include col(9);
+	@include bp(l) {
+		@include col(4);
+	}
+}
+
+.site-logo {
+	a:focus {
+		outline: 1px dashed map_get( $setup, 'nav-color-text' );
+		outline-offset: 2px;
+	}
+	.fail & {
+		a:focus {
+			outline-width: 0;
+		}
+	}
+}
+
+.site-navigation {
+	@include col(3);
+	text-align: right;
+	@include bp(l) {
+		@include col(8);
+	}
+	.nav-toggle {
+		background: transparent;
+		border: 0 none;
+		display: block;
+		margin: 0 0 0 auto;
+
+		@include haf() {
+			color: map_get( $setup, 'nav-toggle-focus-color' );
+			outline: 1px dashed map_get( $setup, 'nav-toggle-focus-color' );
+		}
+
+		@include bp(l) {
+			display: none;
+		}
+	}
+	.nav-container {
+		background: map_get( $setup, 'nav-mobile-color-bg' );
+		bottom: 0;
+		display: none;
+		padding: 1em;
+		position: fixed;
+		right: -100%;
+		text-align: left;
+		top: 0;
+		transition: right 300ms;
+		visibility: hidden;
+		z-index: 1;
+		&.open {
+			display: block;
+			right: 0;
+			visibility: visible;
+		}
+		@include bp(l) {
+			background: transparent;
+			bottom: auto;
+			display: block;
+			padding: 0;
+			position: static;
+			right: auto;
+			text-align: right;
+			top: auto;
+			visibility: visible;
+		}
+
+		.nav-toggle {
+			color: map_get( $setup, 'nav-color-text' );
+			text-align: right;
+		}
+	}
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		li {
+			@include bp(l) {
+				display: inline-block;
+			}
+
+			&.nav-button {
+				margin-top: 1em;
+				@include bp(l) {
+					margin-top: 0;
+				}
+			}
+		}
+	}
+
+	a {
+		color: map_get( $setup, 'nav-color-text' );
+		display: block;
+		font-family: $font-heading;
+		font-size: ms(0);
+		padding: ms(0) ms(-2);
+		text-decoration: none;
+		transition: color 300ms ease-in-out;
+
+		@include haf() {
+			color: map_get( $setup, 'nav-color-text-hover' );
+		}
+	}
+}
+
+.fail .site-navigation {
+	.nav-container {
+		.nav-toggle {
+			color: map_get( $setup, 'nav-color-text-f' );
+
+			@include haf() {
+				outline: 0 none;
+			}
+		}
+	}
+	a {
+		color: map_get( $setup, 'nav-color-text-f' );
+		font-size: ms(-1);
+		text-transform: uppercase;
+
+		@include haf() {
+			outline: 0 none;
+		}
+	}
+}

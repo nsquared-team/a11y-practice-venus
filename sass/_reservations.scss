@@ -1,0 +1,70 @@
+.reservation {
+	background: map_get( $setup, 'res-color-bg' );
+	color: map_get( $setup, 'res-color-text' );
+	padding-bottom: ms(4);
+	padding-top: ms(4);
+	h2 {
+		font-size: $h5;
+		margin-bottom: ms(0);
+		text-align: center;
+	}
+	.fail & {
+		color: map_get( $setup, 'res-color-text-fail' );
+		h2 {
+			text-transform: uppercase;
+		}
+	}
+}
+
+.form-fields {
+	@extend %row;
+	align-items: flex-end;
+	.field {
+		@include col(12);
+		@include bp(m) {
+			@include col(2);
+		}
+		position: relative;
+		&.destination,
+		&.submit {
+			@include bp(m) {
+				@include col(3);
+			}
+		}
+		&.date-from,
+		&.date-to {
+			@include col(6);
+			@include bp(m) {
+				@include col(2);
+			}
+		}
+		i.far,
+		i.fas {
+			bottom: 2em;
+			position: absolute;
+			right: 1.5em;
+		}
+	}
+	input[type=text] {
+		background: map_get( $setup, 'res-color-input-bg' );
+		border: 1px solid transparent;
+		box-sizing: border-box;
+		font-family: inherit;
+		font-size: ms(-1);
+		padding: ms(-1) 2em ms(-1) ms(-1);
+		transition: all 500ms;
+		width: 100%;
+		@include haf(f) {
+			background: map_get( $setup, 'res-color-input-focus-bg' );
+			border-color: map_get( $setup, 'res-color-text' );
+			outline: 0 none;
+		}
+	}
+	label {
+		display: block;
+		font-family: $font-heading;
+		font-size: ms(-1);
+		font-style: italic;
+		padding: 0 0 ms(-1) 0;
+	}
+}

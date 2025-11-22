@@ -1,0 +1,78 @@
+.newsletter {
+	color: map_get( $setup, 'news-color-text' );
+	margin: ms(9) ms(0);
+	text-align: center;
+
+	h2 {
+		color: map_get( $setup, 'news-color-heading-text' );
+		font-size: $h3;
+		font-weight: normal;
+		letter-spacing: normal;
+		text-transform: none;
+	}
+
+	form {
+		align-items: flex-end;
+		justify-content: center;
+		display: flex;
+		margin-top: ms(6);
+		position: relative;
+	}
+
+	input {
+		border: 2px solid map_get( $setup, 'news-color-input-border' );
+		font-family: inherit;
+		font-size: ms(-1);
+		padding: ms(0) ms(1);
+	}
+
+	label {
+		display: block;
+		padding: 0 0 ms(-5) 0;
+		text-align: left;
+	}
+
+	input[type=email] {
+		background: map_get( $setup, 'news-color-input-bg' );
+		border-right: 0 none;
+		border-radius: 3px 0 0 3px;
+		min-width: 12em;
+
+		@include bp(xs) {
+			min-width: 10em;
+		}
+
+		@include bp(s) {
+			min-width: 15em;
+		}
+
+		@include haf() {
+			background: map_get( $setup, 'news-color-input-hover-bg' );
+			outline: 0 none;
+		}
+
+		&::placeholder {
+			color: map_get( $setup, 'news-color-input-placeholder' );
+			font-style: italic;
+		}
+	}
+
+	input[type=submit] {
+		background: map_get( $setup, 'button-color-bg' );
+		border-left: 0 none;
+		border-radius: 0 3px 3px 0;
+		color: white;
+		padding-left: 1em;
+		padding-right: 1em;
+		text-transform: uppercase;
+
+		@include bp(s) {
+			padding-left: 3em;
+			padding-right: 3em;
+		}
+
+		@include haf() {
+			background: map_get( $setup, 'button-color-bg-hover' );
+		}
+	}
+}

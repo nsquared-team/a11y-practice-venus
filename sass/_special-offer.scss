@@ -1,0 +1,55 @@
+.special-offer {
+	background: {
+		image: url(images/vincentiu-solomon-ln5drpv_ImI-unsplash.jpg);
+		position: 50% 100%;
+		repeat: no-repeat;
+		size: cover;
+	};
+}
+
+.special-offer-wrap {
+	background: map_get( $setup, 'offer-color-bg' );
+	color: map_get( $setup, 'offer-color-text' );
+	margin-left: 25%;
+	text-align: center;
+
+	@include bp(s) {
+		margin-left: 33%;
+	}
+
+	@include bp(m) {
+		margin-left: 50%;
+	}
+}
+
+.special-offer-content {
+	box-sizing: border-box;
+	max-width: (map_get( $setup, 'max-width' )/2);
+	padding: ms(10) ms(3);
+	& > *:first-child {
+		margin-top: 0;
+	}
+
+	& > *:last-child {
+		margin-bottom: 0;
+	}
+
+	h2 {
+		color: map_get( $setup, 'offer-color-heading-text' );
+		font-size: $h2;
+		margin-bottom: ms(8);
+	}
+
+	.disclaimer {
+		color: map_get( $setup, 'offer-color-dislaimer-text' );
+		font-size: ms(-1);
+		margin-bottom: ms(4);
+	}
+
+	.fail & {
+		h2 {
+			font-size: $h3;
+		}
+	}
+}
+

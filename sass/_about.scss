@@ -1,0 +1,53 @@
+.about-us {
+	@extend %row;
+	justify-content: center;
+	margin-bottom: ms(8);
+	margin-top: ms(8);
+}
+
+.about-media {
+	@include col(12);
+	text-align: center;
+	@include bp(m) {
+		@include col(5);
+	}
+	@include bp(l) {
+		@include col(4);
+	}
+
+	img {
+		border: 1px solid map_get( $setup, 'about-color-border' );
+		box-sizing: border-box;
+		padding: 0.625em;
+	}
+}
+
+.about-content {
+	@include col(12);
+	@include bp(m) {
+		@include col(5);
+	}
+	@include bp(l) {
+		@include col(6);
+	}
+
+	h2 {
+		color: map_get( $setup, 'about-color-heading' );
+	}
+
+	p {
+		color: map_get( $setup, 'about-color-text' );
+	}
+
+	p:last-child {
+		text-align: right;
+	}
+}
+
+.fail .about-content {
+	h2 {
+		color: map_get( $setup, 'about-color-heading-fail' );
+		text-transform: uppercase;
+	}
+}
+
