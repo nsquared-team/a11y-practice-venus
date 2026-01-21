@@ -50,9 +50,9 @@ This document tracks the development progress of the Discover Venus accessibilit
 - [x] Establish shared header/footer patterns
 
 #### Additional Foundation Tasks (Added Jan 2026)
-- [ ] Create credits.html page
-- [ ] Move credits content from footer to credits page
-- [ ] Update footer to link to credits page
+- [x] Create credits.html page
+- [x] Move credits content from index.html to credits page
+- [x] Update footer to link to credits page
 
 ---
 
