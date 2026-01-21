@@ -1,12 +1,22 @@
 {
-  "name": "codekit-project",
+  "name": "discover-venus",
   "version": "1.0.0",
-  "description": "CodeKit created this starter package.json file. You should customize it appropriately.",
-  "scripts": {},
-  "author": "",
-  "license": "UNLICENSED",
-  "repository": {},
+  "description": "Discover Venus - An accessibility testing website for Venus travel booking",
+  "scripts": {
+    "sass:build": "sass sass/style.scss css/styles.css --style=compressed --source-map",
+    "sass:watch": "sass sass/style.scss css/styles.css --watch --source-map",
+    "build": "npm run sass:build"
+  },
+  "author": "Digitally",
+  "license": "CC-BY-SA-4.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nsquared-team/a11y-practice-venus.git"
+  },
   "dependencies": {
     "modularscale-sass": "^3.0.10"
+  },
+  "devDependencies": {
+    "sass": "^1.69.0"
   }
 }

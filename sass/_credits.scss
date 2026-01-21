@@ -1,7 +1,7 @@
 .credits {
 	background: {
 		color: map_get( $setup, 'credits-color-bg' );
-		image: url(images/packages-bg.gif);
+		image: url(../images/packages-bg.gif);
 	};
 	border-bottom: 1px solid map_get( $setup, 'credits-color-border' );
 	border-top: 1px solid map_get( $setup, 'credits-color-border' );
