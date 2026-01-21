@@ -1,5 +1,6 @@
 .special-offer {
 	background: {
+		color: map_get( $setup, 'offer-fallback-color-bg' );
 		image: url(../images/vincentiu-solomon-ln5drpv_ImI-unsplash.jpg);
 		position: 50% 100%;
 		repeat: no-repeat;

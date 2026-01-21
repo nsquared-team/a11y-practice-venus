@@ -1,5 +1,6 @@
 .hero {
 	background: {
+		color: map_get( $setup, 'hero-color-bg' );
 		image: url(../images/iman-gozal-EPxVDc_xeWA-unsplash.jpg);
 		position: 69% 35%;
 		repeat: no-repeat;

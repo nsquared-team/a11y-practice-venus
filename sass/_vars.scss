@@ -49,6 +49,7 @@ $setup: (
 	'nav-toggle-focus-color': $color-brand,
 
 	// Hero
+	'hero-color-bg': #2d2d2d,
 	'hero-color-text': white,
 	'hero-color-text-hover': $color-brand,
 	'hero-discount-color-text': $color-brand,
@@ -94,6 +95,7 @@ $setup: (
 	'packages-color-destination-text': #6b6b6b,
 
 	// Special Offer
+	'offer-fallback-color-bg': #3d3d3d,
 	'offer-color-bg': rgba(white, 0.8),
 	'offer-color-text': #777777,
 	'offer-color-heading-text': $color-brand,

@@ -63,10 +63,10 @@ This document tracks the development progress of the Discover Venus accessibilit
 - [ ] Implement Packages comparison page
 - [ ] Create About page with all sections
 - [ ] Create Contact page with form and FAQ
-- [ ] Complete Credits page with all attribution sections
+- [x] Complete Credits page with all attribution sections
 
 #### CSS Accessibility Improvements
-- [ ] Add fallback background colors for image-dependent sections (hero, special-offer, packages, credits)
+- [x] Add fallback background colors for image-dependent sections (hero, special-offer, packages, credits)
 
 ---
 
