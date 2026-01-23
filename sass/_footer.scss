@@ -1,19 +1,21 @@
+@use 'sass:map';
+
 footer {
-	background: map_get( $setup, 'footer-color-bg' );
-	color: map_get( $setup, 'footer-color-text' );
+	background: map.get( $setup, 'footer-color-bg' );
+	color: map.get( $setup, 'footer-color-text' );
 	padding: ms(4) 0;
 
 	a {
-		color: map_get( $setup, 'footer-color-link' );
+		color: map.get( $setup, 'footer-color-link' );
 		transition: color 300ms;
 		@include haf() {
-			color: map_get( $setup, 'footer-color-link-hover' );
+			color: map.get( $setup, 'footer-color-link-hover' );
 		}
 	}
 	.fail & {
-		color: map_get( $setup, 'footer-color-text-fail' );
+		color: map.get( $setup, 'footer-color-text-fail' );
 		a {
-			color: map_get( $setup, 'footer-color-link-fail' );
+			color: map.get( $setup, 'footer-color-link-fail' );
 		}
 	}
 }
@@ -59,7 +61,7 @@ footer {
 			display: inline-block;
 		}
 		.fa-stack-1x {
-			color: map_get( $setup, 'footer-color-bg' );
+			color: map.get( $setup, 'footer-color-bg' );
 		}
 	}
 

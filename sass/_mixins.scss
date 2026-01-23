@@ -1,3 +1,6 @@
+@use 'sass:math';
+@use 'sass:map';
+
 /**
  * Breakpoints
  */
@@ -28,7 +31,7 @@
 
 $columns: 12;
 $page-gutter: 1rem;
-$column: 100%/($columns);
+$column: math.div(100%, $columns);
 $gutter: 1.875rem;
 
 %row {
@@ -42,13 +45,13 @@ $gutter: 1.875rem;
 	padding-right: $page-gutter;
 	width: 100%;
 	@include bp(xl) {
-		max-width: map_get( $setup, 'max-width' );
+		max-width: map.get( $setup, 'max-width' );
 	}
 }
 
 @mixin col($span: 12) {
 	box-sizing: border-box;
-	padding: ms(0) $gutter/2;
+	padding: ms(0) math.div($gutter, 2);
 	width: $column * $span;
 }
 
@@ -81,4 +84,3 @@ $gutter: 1.875rem;
 	}
 
 } // /haf
-

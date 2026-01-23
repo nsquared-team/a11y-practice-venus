@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 .destinations {
 	@extend %row;
 	margin-top: ms(8);
@@ -8,7 +10,7 @@
 		margin: 1em;
 		text-align: center;
 		a {
-			color: map_get( $setup, 'dest-color-link' );
+			color: map.get( $setup, 'dest-color-link' );
 			text-decoration: none;
 			@include haf() {
 				text-decoration: underline;
@@ -27,17 +29,17 @@
 	text-align: center;
 
 	h2 {
-		color: map_get( $setup, 'dest-color-heading' );
+		color: map.get( $setup, 'dest-color-heading' );
 	}
 
 	p {
-		color: map_get( $setup, 'dest-color-text' );
+		color: map.get( $setup, 'dest-color-text' );
 	}
 }
 
 .fail .destinations-intro {
 	h2 {
-		color: map_get( $setup, 'dest-color-heading-fail' );
+		color: map.get( $setup, 'dest-color-heading-fail' );
 	}
 }
 
@@ -61,7 +63,7 @@
 		display: block;
 		position: relative;
 		&:before {
-			background-color: map_get( $setup, 'dest-hover-bg' );
+			background-color: map.get( $setup, 'dest-hover-bg' );
 			bottom: 0.625em;
 			content: '';
 			display: block;
@@ -98,7 +100,7 @@
 		}
 	}
 	img {
-		border: 1px solid map_get( $setup, 'dest-color-border' );
+		border: 1px solid map.get( $setup, 'dest-color-border' );
 		box-sizing: border-box;
 		display: block;
 		padding: 0.625em;

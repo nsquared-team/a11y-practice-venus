@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $modularscale: (
   base: 1rem 0.875rem,
   ratio: 1.5
@@ -32,6 +34,18 @@ $color-brand-dark: #036caf;
 $setup: (
 	// Layout
 	'max-width': 1140px,
+
+	// General Colors
+	'text-color': #333333,
+	'text-muted': #757575,
+	'heading-color': #C98703,
+	'link-color': #1289d5,
+	'primary-color': #1289d5,
+	'accent-color': #C98703,
+	'bg-light': #f6f6f6,
+	'border-color': #e0e0e0,
+	'success-color': #28a745,
+	'danger-color': #dc3545,
 
 	// Buttons
 	'button-color-text': white,
@@ -91,7 +105,7 @@ $setup: (
 	'packages-color-price-link': #A06C03,
 	'packages-color-price-link-fail': #f0b662,
 	'packages-color-price-link-hover': $color-brand,
-	'packages-color-destination-title': darken($color-brand,5%),
+	'packages-color-destination-title': color.adjust($color-brand, $lightness: -5%),
 	'packages-color-destination-text': #6b6b6b,
 
 	// Special Offer
@@ -117,13 +131,13 @@ $setup: (
 	'credits-color-subheading': #7d7d7d,
 	'credits-color-text': #6d6d6d,
 	'credits-color-link': #067C84,
-	'credits-color-link-hover': mix(black, #067C84, 20%),
+	'credits-color-link-hover': color.mix(black, #067C84, 20%),
 
 	// Footer
 	'footer-color-bg': #292828,
 	'footer-color-text': #a1a0a0,
 	'footer-color-text-fail': #555454,
-	'footer-color-link': mix(white, #a1a0a0, 50%),
-	'footer-color-link-fail': mix(white, #3f3e3e, 25%),
+	'footer-color-link': color.mix(white, #a1a0a0, 50%),
+	'footer-color-link-fail': color.mix(white, #3f3e3e, 25%),
 	'footer-color-link-hover': white,
 );

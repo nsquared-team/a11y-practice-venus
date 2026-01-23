@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Destination Details - Discover Venus</title>
+	<title>Maxwell Montes - Discover Venus</title>
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:400,400i,700,700i&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/all.css">
 	<link rel="stylesheet" href="css/styles.css">
@@ -45,46 +45,613 @@
 			</nav>
 	</header>
 	<main role="main">
-		<!-- Page Header -->
-		<div class="page-header">
-			<h2>Destination Name</h2>
-			<p>Region Tag • Difficulty Level</p>
+		<!-- Breadcrumb Navigation -->
+		<nav class="breadcrumb" aria-label="Breadcrumb">
+			<ol>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="destinations.html">Destinations</a></li>
+				<li><span aria-current="page">Maxwell Montes</span></li>
+			</ol>
+		</nav>
+
+		<!-- Hero Gallery Section -->
+		<section class="detail-hero" aria-labelledby="destination-title">
+			<div class="detail-hero-gallery">
+				<!-- Main Image -->
+				<div class="gallery-main">
+					<div class="image-placeholder gallery-main-image" aria-label="Maxwell Montes main view - towering peaks against Venusian sky">
+						<i class="fas fa-mountain fa-4x" aria-hidden="true"></i>
+						<span>Main Gallery Image</span>
+					</div>
+				</div>
+				<!-- Thumbnail Strip -->
+				<div class="gallery-thumbnails" role="group" aria-label="Gallery thumbnails">
+					<button class="thumbnail active" aria-pressed="true" aria-label="View image 1 - Mountain summit">
+						<div class="image-placeholder thumbnail-image">
+							<i class="fas fa-mountain" aria-hidden="true"></i>
+						</div>
+					</button>
+					<button class="thumbnail" aria-pressed="false" aria-label="View image 2 - Base camp">
+						<div class="image-placeholder thumbnail-image">
+							<i class="fas fa-campground" aria-hidden="true"></i>
+						</div>
+					</button>
+					<button class="thumbnail" aria-pressed="false" aria-label="View image 3 - Volcanic terrain">
+						<div class="image-placeholder thumbnail-image">
+							<i class="fas fa-fire" aria-hidden="true"></i>
+						</div>
+					</button>
+					<button class="thumbnail" aria-pressed="false" aria-label="View image 4 - Panoramic vista">
+						<div class="image-placeholder thumbnail-image">
+							<i class="fas fa-panorama" aria-hidden="true"></i>
+						</div>
+					</button>
+				</div>
+			</div>
+
+			<!-- Title Block -->
+			<div class="detail-hero-content">
+				<h2 id="destination-title">Maxwell Montes</h2>
+				<div class="destination-meta">
+					<span class="meta-tag region"><i class="fas fa-globe" aria-hidden="true"></i> Ishtar Terra</span>
+					<span class="meta-tag difficulty"><i class="fas fa-hiking" aria-hidden="true"></i> Challenging</span>
+					<span class="meta-tag duration"><i class="fas fa-clock" aria-hidden="true"></i> 5-7 Days</span>
+				</div>
+				<div class="destination-stats">
+					<div class="stat">
+						<span class="stat-value">11 km</span>
+						<span class="stat-label">Peak Elevation</span>
+					</div>
+					<div class="stat">
+						<span class="stat-value">4.8</span>
+						<span class="stat-label">Rating <span class="screen-reader-text">out of 5</span></span>
+					</div>
+					<div class="stat">
+						<span class="stat-value">142</span>
+						<span class="stat-label">Reviews</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Main Content Area -->
+		<div class="detail-content-wrap">
+			<!-- Primary Content -->
+			<div class="detail-main">
+				<!-- Description Section -->
+				<section class="detail-section" aria-labelledby="about-heading">
+					<h3 id="about-heading">About This Destination</h3>
+					<div class="detail-description">
+						<p>Maxwell Montes stands as the highest mountain on Venus, rising approximately 11 kilometers above the mean planetary radius. Located in the northern hemisphere within Ishtar Terra, this magnificent peak offers adventurers an unparalleled experience of Venus's most dramatic terrain.</p>
+						<p>The mountain is part of a larger highland region and features steep slopes covered in a metallic "snow" composed of heavy metal compounds that have condensed from the atmosphere at higher elevations. This creates a striking visual contrast between the dark lowlands and the bright, reflective peaks.</p>
+						<div class="read-more-content" id="description-extended" hidden>
+							<p>Named after physicist James Clerk Maxwell, this destination has become one of the most sought-after experiences for serious Venus explorers. The journey to the summit requires careful acclimatization to the extreme conditions, but rewards travelers with views that stretch across the Lakshmi Planum plateau.</p>
+							<p>Our expeditions include state-of-the-art environmental suits and pressurized rest stations strategically placed along the ascent route. Each expedition is led by experienced guides who have completed the summit journey multiple times.</p>
+						</div>
+						<button class="read-more-toggle" aria-expanded="false" aria-controls="description-extended">
+							<span class="more-text">Read More</span>
+							<span class="less-text" hidden>Read Less</span>
+							<i class="fas fa-chevron-down" aria-hidden="true"></i>
+						</button>
+					</div>
+				</section>
+
+				<!-- Highlights Section -->
+				<section class="detail-section" aria-labelledby="highlights-heading">
+					<h3 id="highlights-heading">Destination Highlights</h3>
+					<ul class="highlights-grid">
+						<li class="highlight-item">
+							<div class="highlight-icon" aria-hidden="true">
+								<i class="fas fa-mountain"></i>
+							</div>
+							<div class="highlight-content">
+								<h4>Summit Experience</h4>
+								<p>Reach the highest point on Venus with breathtaking panoramic views</p>
+							</div>
+						</li>
+						<li class="highlight-item">
+							<div class="highlight-icon" aria-hidden="true">
+								<i class="fas fa-snowflake"></i>
+							</div>
+							<div class="highlight-content">
+								<h4>Metallic Snow</h4>
+								<p>Witness the unique heavy metal "frost" that covers the upper slopes</p>
+							</div>
+						</li>
+						<li class="highlight-item">
+							<div class="highlight-icon" aria-hidden="true">
+								<i class="fas fa-camera"></i>
+							</div>
+							<div class="highlight-content">
+								<h4>Photography Paradise</h4>
+								<p>Capture stunning images of Venus's most dramatic landscape</p>
+							</div>
+						</li>
+						<li class="highlight-item">
+							<div class="highlight-icon" aria-hidden="true">
+								<i class="fas fa-gem"></i>
+							</div>
+							<div class="highlight-content">
+								<h4>Geological Wonders</h4>
+								<p>Explore unique mineral formations found nowhere else</p>
+							</div>
+						</li>
+						<li class="highlight-item">
+							<div class="highlight-icon" aria-hidden="true">
+								<i class="fas fa-users"></i>
+							</div>
+							<div class="highlight-content">
+								<h4>Expert Guides</h4>
+								<p>Trek with certified guides who know every trail intimately</p>
+							</div>
+						</li>
+						<li class="highlight-item">
+							<div class="highlight-icon" aria-hidden="true">
+								<i class="fas fa-shield-alt"></i>
+							</div>
+							<div class="highlight-content">
+								<h4>Safety First</h4>
+								<p>Advanced life support and emergency protocols throughout</p>
+							</div>
+						</li>
+					</ul>
+				</section>
+
+				<!-- What's Included Section -->
+				<section class="detail-section" aria-labelledby="included-heading">
+					<h3 id="included-heading">What's Included</h3>
+					<div class="included-lists">
+						<div class="included-column">
+							<h4><i class="fas fa-check-circle" aria-hidden="true"></i> Included</h4>
+							<ul>
+								<li>Professional guide services</li>
+								<li>Environmental suit rental</li>
+								<li>Pressurized base camp accommodation</li>
+								<li>All meals during expedition</li>
+								<li>Emergency medical support</li>
+								<li>Transportation from Venus Gateway</li>
+								<li>Summit certificate upon completion</li>
+							</ul>
+						</div>
+						<div class="included-column not-included">
+							<h4><i class="fas fa-times-circle" aria-hidden="true"></i> Not Included</h4>
+							<ul>
+								<li>Travel insurance (required)</li>
+								<li>Personal photography equipment</li>
+								<li>Gratuities for guides</li>
+								<li>Pre/post expedition accommodation</li>
+								<li>Personal items and souvenirs</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<!-- Available Tours Section -->
+				<section class="detail-section" aria-labelledby="tours-heading">
+					<h3 id="tours-heading">Available Tours</h3>
+					<div class="tours-list">
+						<!-- Tour 1 -->
+						<article class="tour-card">
+							<div class="tour-header">
+								<h4>Summit Express</h4>
+								<span class="tour-badge">Most Popular</span>
+							</div>
+							<div class="tour-details">
+								<div class="tour-info">
+									<span><i class="fas fa-calendar" aria-hidden="true"></i> 5 Days</span>
+									<span><i class="fas fa-users" aria-hidden="true"></i> Max 8 travelers</span>
+									<span><i class="fas fa-signal" aria-hidden="true"></i> Challenging</span>
+								</div>
+								<p>Our signature expedition for experienced adventurers. Fast-paced ascent with two summit attempts included.</p>
+								<div class="tour-dates">
+									<strong>Upcoming Departures:</strong>
+									<ul>
+										<li>March 15, 2026 <span class="availability high">8 spots left</span></li>
+										<li>April 2, 2026 <span class="availability medium">3 spots left</span></li>
+										<li>April 20, 2026 <span class="availability high">6 spots left</span></li>
+									</ul>
+								</div>
+							</div>
+							<div class="tour-footer">
+								<div class="tour-price">
+									<span class="price-label">From</span>
+									<span class="price-value">$24,500</span>
+									<span class="price-unit">per person</span>
+								</div>
+								<a href="booking.html?tour=summit-express" class="button">Book This Tour</a>
+							</div>
+						</article>
+
+						<!-- Tour 2 -->
+						<article class="tour-card">
+							<div class="tour-header">
+								<h4>Extended Exploration</h4>
+							</div>
+							<div class="tour-details">
+								<div class="tour-info">
+									<span><i class="fas fa-calendar" aria-hidden="true"></i> 7 Days</span>
+									<span><i class="fas fa-users" aria-hidden="true"></i> Max 6 travelers</span>
+									<span><i class="fas fa-signal" aria-hidden="true"></i> Challenging</span>
+								</div>
+								<p>Take your time with extra acclimatization days and side excursions to nearby geological sites.</p>
+								<div class="tour-dates">
+									<strong>Upcoming Departures:</strong>
+									<ul>
+										<li>March 22, 2026 <span class="availability high">5 spots left</span></li>
+										<li>April 15, 2026 <span class="availability low">1 spot left</span></li>
+										<li>May 5, 2026 <span class="availability high">6 spots left</span></li>
+									</ul>
+								</div>
+							</div>
+							<div class="tour-footer">
+								<div class="tour-price">
+									<span class="price-label">From</span>
+									<span class="price-value">$32,000</span>
+									<span class="price-unit">per person</span>
+								</div>
+								<a href="booking.html?tour=extended-exploration" class="button">Book This Tour</a>
+							</div>
+						</article>
+
+						<!-- Tour 3 -->
+						<article class="tour-card">
+							<div class="tour-header">
+								<h4>Private Charter</h4>
+								<span class="tour-badge premium">Premium</span>
+							</div>
+							<div class="tour-details">
+								<div class="tour-info">
+									<span><i class="fas fa-calendar" aria-hidden="true"></i> 5-10 Days</span>
+									<span><i class="fas fa-users" aria-hidden="true"></i> Your group only</span>
+									<span><i class="fas fa-signal" aria-hidden="true"></i> Customizable</span>
+								</div>
+								<p>Exclusive expedition for your private group with fully customizable itinerary and premium amenities.</p>
+								<div class="tour-dates">
+									<strong>Availability:</strong>
+									<p>Custom dates available upon request. Minimum 4 travelers required.</p>
+								</div>
+							</div>
+							<div class="tour-footer">
+								<div class="tour-price">
+									<span class="price-label">From</span>
+									<span class="price-value">$45,000</span>
+									<span class="price-unit">per person</span>
+								</div>
+								<a href="contact.html?inquiry=private-charter" class="button button-secondary">Inquire Now</a>
+							</div>
+						</article>
+					</div>
+				</section>
+
+				<!-- Reviews Section -->
+				<section class="detail-section" aria-labelledby="reviews-heading">
+					<h3 id="reviews-heading">Traveler Reviews</h3>
+					<div class="reviews-summary">
+						<div class="rating-overview">
+							<span class="rating-large">4.8</span>
+							<div class="rating-details">
+								<div class="stars" aria-label="4.8 out of 5 stars">
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="fas fa-star-half-alt" aria-hidden="true"></i>
+								</div>
+								<span class="review-count">Based on 142 reviews</span>
+							</div>
+						</div>
+						<div class="rating-breakdown">
+							<div class="rating-bar">
+								<span class="rating-label">5 stars</span>
+								<div class="bar-container">
+									<div class="bar-fill" style="width: 78%"></div>
+								</div>
+								<span class="rating-percent">78%</span>
+							</div>
+							<div class="rating-bar">
+								<span class="rating-label">4 stars</span>
+								<div class="bar-container">
+									<div class="bar-fill" style="width: 15%"></div>
+								</div>
+								<span class="rating-percent">15%</span>
+							</div>
+							<div class="rating-bar">
+								<span class="rating-label">3 stars</span>
+								<div class="bar-container">
+									<div class="bar-fill" style="width: 5%"></div>
+								</div>
+								<span class="rating-percent">5%</span>
+							</div>
+							<div class="rating-bar">
+								<span class="rating-label">2 stars</span>
+								<div class="bar-container">
+									<div class="bar-fill" style="width: 2%"></div>
+								</div>
+								<span class="rating-percent">2%</span>
+							</div>
+							<div class="rating-bar">
+								<span class="rating-label">1 star</span>
+								<div class="bar-container">
+									<div class="bar-fill" style="width: 0%"></div>
+								</div>
+								<span class="rating-percent">0%</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="reviews-list">
+						<!-- Review 1 -->
+						<article class="review-card">
+							<header class="review-header">
+								<div class="reviewer-avatar">
+									<div class="avatar-placeholder" aria-hidden="true">
+										<i class="fas fa-user"></i>
+									</div>
+								</div>
+								<div class="reviewer-info">
+									<h4>Sarah Chen</h4>
+									<span class="review-date">Traveled March 2025</span>
+								</div>
+								<div class="review-rating" aria-label="5 out of 5 stars">
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="fas fa-star" aria-hidden="true"></i>
+								</div>
+							</header>
+							<div class="review-content">
+								<h5>Life-changing experience!</h5>
+								<p>Standing at the summit of Maxwell Montes was the most incredible moment of my life. The guides were exceptional, the equipment top-notch, and the views... indescribable. Worth every credit.</p>
+							</div>
+							<footer class="review-footer">
+								<span class="helpful-count"><i class="fas fa-thumbs-up" aria-hidden="true"></i> 24 found this helpful</span>
+							</footer>
+						</article>
+
+						<!-- Review 2 -->
+						<article class="review-card">
+							<header class="review-header">
+								<div class="reviewer-avatar">
+									<div class="avatar-placeholder" aria-hidden="true">
+										<i class="fas fa-user"></i>
+									</div>
+								</div>
+								<div class="reviewer-info">
+									<h4>Marcus Thompson</h4>
+									<span class="review-date">Traveled February 2025</span>
+								</div>
+								<div class="review-rating" aria-label="5 out of 5 stars">
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="fas fa-star" aria-hidden="true"></i>
+								</div>
+							</header>
+							<div class="review-content">
+								<h5>Exceeded all expectations</h5>
+								<p>I've done expeditions on Earth and Mars, but this was something else entirely. The metallic snow at higher elevations creates an almost otherworldly atmosphere. The extended tour gave us plenty of time to enjoy everything.</p>
+							</div>
+							<footer class="review-footer">
+								<span class="helpful-count"><i class="fas fa-thumbs-up" aria-hidden="true"></i> 18 found this helpful</span>
+							</footer>
+						</article>
+
+						<!-- Review 3 -->
+						<article class="review-card">
+							<header class="review-header">
+								<div class="reviewer-avatar">
+									<div class="avatar-placeholder" aria-hidden="true">
+										<i class="fas fa-user"></i>
+									</div>
+								</div>
+								<div class="reviewer-info">
+									<h4>Dr. Yuki Tanaka</h4>
+									<span class="review-date">Traveled January 2025</span>
+								</div>
+								<div class="review-rating" aria-label="4 out of 5 stars">
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="fas fa-star" aria-hidden="true"></i>
+									<i class="far fa-star" aria-hidden="true"></i>
+								</div>
+							</header>
+							<div class="review-content">
+								<h5>Great expedition with minor issues</h5>
+								<p>As a geologist, this was a dream come true. The rock formations are fascinating. Only giving 4 stars because one of our rest stations had equipment issues, causing a slight delay. The team handled it professionally though.</p>
+							</div>
+							<footer class="review-footer">
+								<span class="helpful-count"><i class="fas fa-thumbs-up" aria-hidden="true"></i> 12 found this helpful</span>
+							</footer>
+						</article>
+					</div>
+
+					<nav class="reviews-pagination" aria-label="Reviews pagination">
+						<button class="pagination-btn" disabled aria-label="Previous reviews page">
+							<i class="fas fa-chevron-left" aria-hidden="true"></i>
+						</button>
+						<span class="pagination-info">Page 1 of 15</span>
+						<button class="pagination-btn" aria-label="Next reviews page">
+							<i class="fas fa-chevron-right" aria-hidden="true"></i>
+						</button>
+					</nav>
+				</section>
+			</div>
+
+			<!-- Sidebar -->
+			<aside class="detail-sidebar">
+				<!-- Booking Widget -->
+				<div class="booking-widget">
+					<h3>Book Your Adventure</h3>
+					<div class="price-display">
+						<span class="price-from">From</span>
+						<span class="price-amount">$24,500</span>
+						<span class="price-per">per person</span>
+					</div>
+					<form class="quick-book-form" action="booking.html" method="get">
+						<input type="hidden" name="destination" value="maxwell-montes">
+						<div class="form-group">
+							<label for="tour-select">Select Tour</label>
+							<select id="tour-select" name="tour" required>
+								<option value="">Choose a tour...</option>
+								<option value="summit-express">Summit Express (5 days) - $24,500</option>
+								<option value="extended">Extended Exploration (7 days) - $32,000</option>
+								<option value="private">Private Charter - from $45,000</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="date-select">Preferred Date</label>
+							<select id="date-select" name="date" required>
+								<option value="">Choose a date...</option>
+								<option value="2026-03-15">March 15, 2026</option>
+								<option value="2026-03-22">March 22, 2026</option>
+								<option value="2026-04-02">April 2, 2026</option>
+								<option value="2026-04-15">April 15, 2026</option>
+								<option value="2026-04-20">April 20, 2026</option>
+								<option value="2026-05-05">May 5, 2026</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="travelers">Number of Travelers</label>
+							<select id="travelers" name="travelers" required>
+								<option value="1">1 Traveler</option>
+								<option value="2">2 Travelers</option>
+								<option value="3">3 Travelers</option>
+								<option value="4">4 Travelers</option>
+								<option value="5">5 Travelers</option>
+								<option value="6">6+ Travelers</option>
+							</select>
+						</div>
+						<button type="submit" class="button button-full">Check Availability</button>
+					</form>
+					<p class="booking-note"><i class="fas fa-shield-alt" aria-hidden="true"></i> Free cancellation up to 30 days before departure</p>
+				</div>
+
+				<!-- Quick Info -->
+				<div class="quick-info-widget">
+					<h4>Quick Info</h4>
+					<dl class="info-list">
+						<dt><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Location</dt>
+						<dd>Ishtar Terra, Northern Hemisphere</dd>
+						<dt><i class="fas fa-ruler-vertical" aria-hidden="true"></i> Elevation</dt>
+						<dd>11 km above mean radius</dd>
+						<dt><i class="fas fa-thermometer-half" aria-hidden="true"></i> Temperature</dt>
+						<dd>380°C at base (cooler at summit)</dd>
+						<dt><i class="fas fa-wind" aria-hidden="true"></i> Atmosphere</dt>
+						<dd>92 bar pressure (suits required)</dd>
+						<dt><i class="fas fa-calendar-check" aria-hidden="true"></i> Best Time</dt>
+						<dd>Year-round (Venus has no seasons)</dd>
+						<dt><i class="fas fa-user-check" aria-hidden="true"></i> Fitness Level</dt>
+						<dd>High - prior expedition experience required</dd>
+					</dl>
+				</div>
+
+				<!-- Need Help -->
+				<div class="help-widget">
+					<h4>Need Help?</h4>
+					<p>Our travel experts are here to help you plan your perfect Venus adventure.</p>
+					<a href="contact.html" class="button button-secondary button-full">
+						<i class="fas fa-envelope" aria-hidden="true"></i> Contact Us
+					</a>
+					<p class="phone-contact">
+						<i class="fas fa-phone" aria-hidden="true"></i>
+						<a href="tel:+18005551234">1-800-555-1234</a>
+					</p>
+				</div>
+			</aside>
 		</div>
 
-		<!-- Hero Gallery (Phase 2) -->
-		<section class="content-section">
-			<h2>Gallery</h2>
-			<p>Content coming in Phase 2: Large featured image with thumbnail carousel below.</p>
+		<!-- Related Destinations -->
+		<section class="related-destinations" aria-labelledby="related-heading">
+			<h3 id="related-heading">You Might Also Like</h3>
+			<div class="related-grid">
+				<!-- Related 1 -->
+				<article class="related-card">
+					<a href="destination-detail.html?dest=lakshmi-planum" class="related-link">
+						<div class="related-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-mountain fa-2x"></i>
+							</div>
+						</div>
+						<div class="related-content">
+							<h4>Lakshmi Planum</h4>
+							<p class="related-meta">
+								<span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Ishtar Terra</span>
+								<span><i class="fas fa-signal" aria-hidden="true"></i> Moderate</span>
+							</p>
+							<p class="related-price">From <strong>$18,500</strong></p>
+						</div>
+					</a>
+				</article>
+
+				<!-- Related 2 -->
+				<article class="related-card">
+					<a href="destination-detail.html?dest=maat-mons" class="related-link">
+						<div class="related-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-fire fa-2x"></i>
+							</div>
+						</div>
+						<div class="related-content">
+							<h4>Maat Mons</h4>
+							<p class="related-meta">
+								<span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Atla Regio</span>
+								<span><i class="fas fa-signal" aria-hidden="true"></i> Challenging</span>
+							</p>
+							<p class="related-price">From <strong>$28,000</strong></p>
+						</div>
+					</a>
+				</article>
+
+				<!-- Related 3 -->
+				<article class="related-card">
+					<a href="destination-detail.html?dest=sapas-mons" class="related-link">
+						<div class="related-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-volcano fa-2x"></i>
+							</div>
+						</div>
+						<div class="related-content">
+							<h4>Sapas Mons</h4>
+							<p class="related-meta">
+								<span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Atla Regio</span>
+								<span><i class="fas fa-signal" aria-hidden="true"></i> Moderate</span>
+							</p>
+							<p class="related-price">From <strong>$22,000</strong></p>
+						</div>
+					</a>
+				</article>
+
+				<!-- Related 4 -->
+				<article class="related-card">
+					<a href="destination-detail.html?dest=sacajawea-patera" class="related-link">
+						<div class="related-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-circle-notch fa-2x"></i>
+							</div>
+						</div>
+						<div class="related-content">
+							<h4>Sacajawea Patera</h4>
+							<p class="related-meta">
+								<span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Ishtar Terra</span>
+								<span><i class="fas fa-signal" aria-hidden="true"></i> Moderate</span>
+							</p>
+							<p class="related-price">From <strong>$19,500</strong></p>
+						</div>
+					</a>
+				</article>
+			</div>
 		</section>
 
-		<!-- Description Section (Phase 2) -->
-		<section class="content-section">
-			<h2>About This Destination</h2>
-			<p>Content coming in Phase 2: Rich text description with expandable "Read More".</p>
-		</section>
-
-		<!-- Highlights Section (Phase 2) -->
-		<section class="content-section">
-			<h2>Highlights</h2>
-			<p>Content coming in Phase 2: Icon-based feature list (what's included, what to expect).</p>
-		</section>
-
-		<!-- Available Tours (Phase 2) -->
-		<section class="content-section">
-			<h2>Available Tours</h2>
-			<p>Content coming in Phase 2: List of tour options for this destination with dates and pricing.</p>
-		</section>
-
-		<!-- Reviews Section (Phase 2) -->
-		<section class="content-section">
-			<h2>Traveler Reviews</h2>
-			<p>Content coming in Phase 2: User testimonials with star ratings and pagination.</p>
-		</section>
-
-		<!-- Related Destinations (Phase 2) -->
-		<section class="content-section">
-			<h2>Related Destinations</h2>
-			<p>Content coming in Phase 2: Card row of similar or nearby destinations.</p>
+		<!-- CTA Section -->
+		<section class="detail-cta">
+			<div class="cta-content">
+				<h3>Ready for the Ultimate Venus Adventure?</h3>
+				<p>Join our next expedition to Maxwell Montes and stand atop the highest peak on Venus.</p>
+				<a href="booking.html?destination=maxwell-montes" class="button button-large">Start Planning Your Trip</a>
+			</div>
 		</section>
 	</main>
 
@@ -141,6 +708,7 @@
 </div>
 
 <script src="js/main.js"></script>
+<script src="js/destination-detail.js"></script>
 
 </body>
 </html>

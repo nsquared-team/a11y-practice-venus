@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 .site-header {
 	@extend %row;
 	overflow: hidden;
@@ -14,7 +16,7 @@
 
 .site-logo {
 	a:focus {
-		outline: 1px dashed map_get( $setup, 'nav-color-text' );
+		outline: 1px dashed map.get( $setup, 'nav-color-text' );
 		outline-offset: 2px;
 	}
 	.fail & {
@@ -37,8 +39,8 @@
 		margin: 0 0 0 auto;
 
 		@include haf() {
-			color: map_get( $setup, 'nav-toggle-focus-color' );
-			outline: 1px dashed map_get( $setup, 'nav-toggle-focus-color' );
+			color: map.get( $setup, 'nav-toggle-focus-color' );
+			outline: 1px dashed map.get( $setup, 'nav-toggle-focus-color' );
 		}
 
 		@include bp(l) {
@@ -46,7 +48,7 @@
 		}
 	}
 	.nav-container {
-		background: map_get( $setup, 'nav-mobile-color-bg' );
+		background: map.get( $setup, 'nav-mobile-color-bg' );
 		bottom: 0;
 		display: none;
 		padding: 1em;
@@ -75,7 +77,7 @@
 		}
 
 		.nav-toggle {
-			color: map_get( $setup, 'nav-color-text' );
+			color: map.get( $setup, 'nav-color-text' );
 			text-align: right;
 		}
 	}
@@ -98,7 +100,7 @@
 	}
 
 	a {
-		color: map_get( $setup, 'nav-color-text' );
+		color: map.get( $setup, 'nav-color-text' );
 		display: block;
 		font-family: $font-heading;
 		font-size: ms(0);
@@ -107,7 +109,7 @@
 		transition: color 300ms ease-in-out;
 
 		@include haf() {
-			color: map_get( $setup, 'nav-color-text-hover' );
+			color: map.get( $setup, 'nav-color-text-hover' );
 		}
 	}
 }
@@ -115,7 +117,7 @@
 .fail .site-navigation {
 	.nav-container {
 		.nav-toggle {
-			color: map_get( $setup, 'nav-color-text-f' );
+			color: map.get( $setup, 'nav-color-text-f' );
 
 			@include haf() {
 				outline: 0 none;
@@ -123,7 +125,7 @@
 		}
 	}
 	a {
-		color: map_get( $setup, 'nav-color-text-f' );
+		color: map.get( $setup, 'nav-color-text-f' );
 		font-size: ms(-1);
 		text-transform: uppercase;
 

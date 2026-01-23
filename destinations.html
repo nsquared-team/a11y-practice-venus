@@ -51,45 +51,555 @@
 			<p>Discover the wonders of Earth's sister planet</p>
 		</div>
 
-		<!-- Filter Bar (Phase 2) -->
-		<section class="content-section">
-			<h2>Filter Destinations</h2>
-			<p>Content coming in Phase 2: Region dropdown, experience type checkboxes, difficulty slider, price range.</p>
+		<!-- Filter and Sort Controls -->
+		<section class="destinations-controls">
+			<div class="destinations-controls-wrap">
+				<div class="filter-controls">
+					<h2 class="screen-reader-text">Filter Destinations</h2>
+
+					<!-- Region Filter -->
+					<div class="filter-group">
+						<label for="filter-region">Region</label>
+						<select id="filter-region">
+							<option value="">All Regions</option>
+							<option value="ishtar-terra">Ishtar Terra</option>
+							<option value="aphrodite-terra">Aphrodite Terra</option>
+							<option value="beta-regio">Beta Regio</option>
+							<option value="atla-regio">Atla Regio</option>
+							<option value="northern">Northern Hemisphere</option>
+							<option value="southern">Southern Hemisphere</option>
+							<option value="equatorial">Equatorial</option>
+						</select>
+					</div>
+
+					<!-- Type Filter -->
+					<div class="filter-group">
+						<label for="filter-type">Type</label>
+						<select id="filter-type">
+							<option value="">All Types</option>
+							<option value="highland">Highland/Terra</option>
+							<option value="volcano">Volcano</option>
+							<option value="tessera">Tessera</option>
+							<option value="plain">Plain/Plateau</option>
+							<option value="corona">Corona</option>
+							<option value="chasma">Chasma/Rift</option>
+							<option value="other">Other Features</option>
+						</select>
+					</div>
+
+					<!-- Difficulty Filter -->
+					<div class="filter-group">
+						<label for="filter-difficulty">Difficulty</label>
+						<select id="filter-difficulty">
+							<option value="">All Difficulties</option>
+							<option value="easy">Easy</option>
+							<option value="moderate">Moderate</option>
+							<option value="challenging">Challenging</option>
+							<option value="extreme">Extreme</option>
+						</select>
+					</div>
+
+					<!-- Price Range Filter -->
+					<div class="filter-group">
+						<label for="filter-price">Price Range</label>
+						<select id="filter-price">
+							<option value="">All Prices</option>
+							<option value="budget">Under $20,000</option>
+							<option value="mid">$20,000 - $40,000</option>
+							<option value="premium">$40,000+</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="sort-controls">
+					<label for="sort-by">Sort by</label>
+					<select id="sort-by">
+						<option value="name-asc">Name (A-Z)</option>
+						<option value="name-desc">Name (Z-A)</option>
+						<option value="price-asc">Price (Low to High)</option>
+						<option value="price-desc">Price (High to Low)</option>
+						<option value="difficulty-asc">Difficulty (Easiest First)</option>
+						<option value="difficulty-desc">Difficulty (Hardest First)</option>
+					</select>
+				</div>
+			</div>
 		</section>
 
-		<!-- Sort Controls (Phase 2) -->
-		<section class="content-section">
-			<h2>Sort Options</h2>
-			<p>Content coming in Phase 2: Sort by popularity, price, duration, or alphabetical.</p>
+		<!-- Results Count and Active Filters -->
+		<section class="destinations-results">
+			<div class="destinations-results-wrap">
+				<p class="results-count">Showing <span id="visible-count">22</span> of <span id="total-count">22</span> destinations</p>
+				<div class="active-filters" id="active-filters" hidden>
+					<span class="active-filters-label">Active filters:</span>
+					<div class="filter-tags" id="filter-tags"></div>
+					<button type="button" class="clear-filters" id="clear-filters">Clear all</button>
+				</div>
+			</div>
 		</section>
 
-		<!-- Destination Grid (Phase 2) -->
-		<section class="content-section">
-			<h2>All Destinations</h2>
-			<p>Content coming in Phase 2: Cards with image, name, region tag, brief description, starting price, "View Details" button.</p>
+		<!-- Destination Grid -->
+		<section class="destinations-grid-section">
+			<div class="destinations-grid-wrap">
+				<div class="destinations-grid" id="destinations-grid">
 
-			<!-- Placeholder showing destination categories from requirements -->
-			<h3>Highland Regions (Terrae)</h3>
-			<p>Ishtar Terra, Aphrodite Terra, Alpha Regio, Beta Regio, Phoebe Regio</p>
+					<!-- Highland Regions (Terrae) -->
 
-			<h3>Major Volcanoes</h3>
-			<p>Maat Mons, Sapas Mons, Theia Mons, Maxwell Montes</p>
+					<!-- Ishtar Terra -->
+					<article class="destination-card" data-region="ishtar-terra northern" data-type="highland" data-difficulty="moderate" data-price="mid" data-name="Ishtar Terra" data-price-value="25000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-mountain fa-3x"></i>
+							</div>
+							<span class="destination-tag">Highland</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=ishtar-terra">Ishtar Terra</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Northern Hemisphere</p>
+							<p class="destination-description">Australia-sized highland featuring the highest mountains on Venus; home to Lakshmi Planum and Maxwell Montes.</p>
+							<div class="destination-meta">
+								<span class="difficulty moderate"><i class="fas fa-hiking" aria-hidden="true"></i> Moderate</span>
+								<span class="price">From <strong>$25,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=ishtar-terra" class="button">View Details</a>
+						</div>
+					</article>
 
-			<h3>Tessera Terrain</h3>
-			<p>Fortuna Tessera, Tellus Regio</p>
+					<!-- Aphrodite Terra -->
+					<article class="destination-card" data-region="aphrodite-terra equatorial" data-type="highland" data-difficulty="challenging" data-price="mid" data-name="Aphrodite Terra" data-price-value="35000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-mountain fa-3x"></i>
+							</div>
+							<span class="destination-tag">Highland</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=aphrodite-terra">Aphrodite Terra</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Equatorial</p>
+							<p class="destination-description">South America-sized highland stretching along the equator; complex terrain with mountain ranges and deep troughs.</p>
+							<div class="destination-meta">
+								<span class="difficulty challenging"><i class="fas fa-hiking" aria-hidden="true"></i> Challenging</span>
+								<span class="price">From <strong>$35,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=aphrodite-terra" class="button">View Details</a>
+						</div>
+					</article>
 
-			<h3>Plateaus & Plains</h3>
-			<p>Lakshmi Planum, Lavinia Planitia, Atalanta Planitia</p>
+					<!-- Alpha Regio -->
+					<article class="destination-card" data-region="southern" data-type="highland" data-difficulty="moderate" data-price="mid" data-name="Alpha Regio" data-price-value="28000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-mountain fa-3x"></i>
+							</div>
+							<span class="destination-tag">Highland</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=alpha-regio">Alpha Regio</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Southern Highlands</p>
+							<p class="destination-description">One of the first features identified on Venus; characterized by intersecting ridges and troughs.</p>
+							<div class="destination-meta">
+								<span class="difficulty moderate"><i class="fas fa-hiking" aria-hidden="true"></i> Moderate</span>
+								<span class="price">From <strong>$28,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=alpha-regio" class="button">View Details</a>
+						</div>
+					</article>
 
-			<h3>Coronae</h3>
-			<p>Artemis Corona, Atne Corona</p>
+					<!-- Beta Regio -->
+					<article class="destination-card" data-region="beta-regio northern" data-type="highland" data-difficulty="challenging" data-price="mid" data-name="Beta Regio" data-price-value="32000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-fire fa-3x"></i>
+							</div>
+							<span class="destination-tag">Volcanic Rise</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=beta-regio">Beta Regio</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Northern Midlatitudes</p>
+							<p class="destination-description">3,000 km dome created by volcanic activity; hosts major shield volcanoes Theia and Rhea Mons.</p>
+							<div class="destination-meta">
+								<span class="difficulty challenging"><i class="fas fa-hiking" aria-hidden="true"></i> Challenging</span>
+								<span class="price">From <strong>$32,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=beta-regio" class="button">View Details</a>
+						</div>
+					</article>
 
-			<h3>Chasmata (Rift Canyons)</h3>
-			<p>Diana Chasma, Devana Chasma, Dali Chasma</p>
+					<!-- Phoebe Regio -->
+					<article class="destination-card" data-region="southern" data-type="highland" data-difficulty="moderate" data-price="mid" data-name="Phoebe Regio" data-price-value="30000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-mountain fa-3x"></i>
+							</div>
+							<span class="destination-tag">Highland</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=phoebe-regio">Phoebe Regio</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Southern Highlands</p>
+							<p class="destination-description">Exclusive highland named for the daughter of Uranus and Gaia; connected to major rift systems.</p>
+							<div class="destination-meta">
+								<span class="difficulty moderate"><i class="fas fa-hiking" aria-hidden="true"></i> Moderate</span>
+								<span class="price">From <strong>$30,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=phoebe-regio" class="button">View Details</a>
+						</div>
+					</article>
 
-			<h3>Other Notable Features</h3>
-			<p>Baltis Vallis, Vesta Rupes</p>
+					<!-- Major Volcanoes -->
+
+					<!-- Maat Mons -->
+					<article class="destination-card" data-region="atla-regio" data-type="volcano" data-difficulty="extreme" data-price="premium" data-name="Maat Mons" data-price-value="45000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-fire fa-3x"></i>
+							</div>
+							<span class="destination-tag">Active Volcano</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=maat-mons">Maat Mons</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Atla Regio</p>
+							<p class="destination-description">Venus's highest volcano at ~9 km relief; shows evidence of geologically recent volcanic activity confirmed in 2023.</p>
+							<div class="destination-meta">
+								<span class="difficulty extreme"><i class="fas fa-hiking" aria-hidden="true"></i> Extreme</span>
+								<span class="price">From <strong>$45,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=maat-mons" class="button">View Details</a>
+						</div>
+					</article>
+
+					<!-- Sapas Mons -->
+					<article class="destination-card" data-region="atla-regio" data-type="volcano" data-difficulty="challenging" data-price="mid" data-name="Sapas Mons" data-price-value="38000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-fire fa-3x"></i>
+							</div>
+							<span class="destination-tag">Shield Volcano</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=sapas-mons">Sapas Mons</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Atla Regio</p>
+							<p class="destination-description">400 km across with distinctive double flat-topped summit; flanks covered in overlapping lava flows.</p>
+							<div class="destination-meta">
+								<span class="difficulty challenging"><i class="fas fa-hiking" aria-hidden="true"></i> Challenging</span>
+								<span class="price">From <strong>$38,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=sapas-mons" class="button">View Details</a>
+						</div>
+					</article>
+
+					<!-- Theia Mons -->
+					<article class="destination-card" data-region="beta-regio" data-type="volcano" data-difficulty="challenging" data-price="mid" data-name="Theia Mons" data-price-value="36000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-fire fa-3x"></i>
+							</div>
+							<span class="destination-tag">Shield Volcano</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=theia-mons">Theia Mons</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Beta Regio</p>
+							<p class="destination-description">Largest volcano on Venus by area; over 4 km high with lava flows covering 800+ km; sits at junction of three major rifts.</p>
+							<div class="destination-meta">
+								<span class="difficulty challenging"><i class="fas fa-hiking" aria-hidden="true"></i> Challenging</span>
+								<span class="price">From <strong>$36,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=theia-mons" class="button">View Details</a>
+						</div>
+					</article>
+
+					<!-- Maxwell Montes -->
+					<article class="destination-card" data-region="ishtar-terra northern" data-type="volcano" data-difficulty="extreme" data-price="premium" data-name="Maxwell Montes" data-price-value="42000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-mountain fa-3x"></i>
+							</div>
+							<span class="destination-tag">Mountain Range</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=maxwell-montes">Maxwell Montes</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Ishtar Terra</p>
+							<p class="destination-description">Highest point on Venus at 11 km above mean radius; parallel ridges resembling the Appalachians but far higher.</p>
+							<div class="destination-meta">
+								<span class="difficulty extreme"><i class="fas fa-hiking" aria-hidden="true"></i> Extreme</span>
+								<span class="price">From <strong>$42,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=maxwell-montes" class="button">View Details</a>
+						</div>
+					</article>
+
+					<!-- Tessera Terrain -->
+
+					<!-- Fortuna Tessera -->
+					<article class="destination-card" data-region="ishtar-terra northern" data-type="tessera" data-difficulty="challenging" data-price="mid" data-name="Fortuna Tessera" data-price-value="33000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-th fa-3x"></i>
+							</div>
+							<span class="destination-tag">Tessera</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=fortuna-tessera">Fortuna Tessera</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Ishtar Terra</p>
+							<p class="destination-description">Rugged "mosaic tile" terrain; among the oldest geological features on Venus at ~4.5 billion years.</p>
+							<div class="destination-meta">
+								<span class="difficulty challenging"><i class="fas fa-hiking" aria-hidden="true"></i> Challenging</span>
+								<span class="price">From <strong>$33,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=fortuna-tessera" class="button">View Details</a>
+						</div>
+					</article>
+
+					<!-- Tellus Regio -->
+					<article class="destination-card" data-region="northern" data-type="tessera" data-difficulty="moderate" data-price="mid" data-name="Tellus Regio" data-price-value="29000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-th fa-3x"></i>
+							</div>
+							<span class="destination-tag">Tessera Region</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=tellus-regio">Tellus Regio</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Northern Highlands</p>
+							<p class="destination-description">Ancient deformed terrain showing complex patterns of intersecting ridges and grooves.</p>
+							<div class="destination-meta">
+								<span class="difficulty moderate"><i class="fas fa-hiking" aria-hidden="true"></i> Moderate</span>
+								<span class="price">From <strong>$29,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=tellus-regio" class="button">View Details</a>
+						</div>
+					</article>
+
+					<!-- Plateaus & Plains -->
+
+					<!-- Lakshmi Planum -->
+					<article class="destination-card" data-region="ishtar-terra northern" data-type="plain" data-difficulty="easy" data-price="budget" data-name="Lakshmi Planum" data-price-value="18000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-layer-group fa-3x"></i>
+							</div>
+							<span class="destination-tag">High Plateau</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=lakshmi-planum">Lakshmi Planum</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Ishtar Terra</p>
+							<p class="destination-description">Tibet-like plateau bounded by mountains on most sides; relatively smooth interior.</p>
+							<div class="destination-meta">
+								<span class="difficulty easy"><i class="fas fa-hiking" aria-hidden="true"></i> Easy</span>
+								<span class="price">From <strong>$18,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=lakshmi-planum" class="button">View Details</a>
+						</div>
+					</article>
+
+					<!-- Lavinia Planitia -->
+					<article class="destination-card" data-region="southern" data-type="plain" data-difficulty="easy" data-price="budget" data-name="Lavinia Planitia" data-price-value="16000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-wind fa-3x"></i>
+							</div>
+							<span class="destination-tag">Lowland Plains</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=lavinia-planitia">Lavinia Planitia</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Southern Lowlands</p>
+							<p class="destination-description">Vast lowland region near the southern pole; features extensive ridge belts.</p>
+							<div class="destination-meta">
+								<span class="difficulty easy"><i class="fas fa-hiking" aria-hidden="true"></i> Easy</span>
+								<span class="price">From <strong>$16,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=lavinia-planitia" class="button">View Details</a>
+						</div>
+					</article>
+
+					<!-- Atalanta Planitia -->
+					<article class="destination-card" data-region="northern" data-type="plain" data-difficulty="easy" data-price="budget" data-name="Atalanta Planitia" data-price-value="17000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-wind fa-3x"></i>
+							</div>
+							<span class="destination-tag">Lowland Plains</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=atalanta-planitia">Atalanta Planitia</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Northern Lowlands</p>
+							<p class="destination-description">Major lowland plain adjacent to ridge belt concentrations near the northern pole.</p>
+							<div class="destination-meta">
+								<span class="difficulty easy"><i class="fas fa-hiking" aria-hidden="true"></i> Easy</span>
+								<span class="price">From <strong>$17,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=atalanta-planitia" class="button">View Details</a>
+						</div>
+					</article>
+
+					<!-- Coronae (Volcanic-Tectonic Features) -->
+
+					<!-- Artemis Corona -->
+					<article class="destination-card" data-region="aphrodite-terra equatorial" data-type="corona" data-difficulty="challenging" data-price="mid" data-name="Artemis Corona" data-price-value="35000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-circle-notch fa-3x"></i>
+							</div>
+							<span class="destination-tag">Corona</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=artemis-corona">Artemis Corona</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Aphrodite Terra</p>
+							<p class="destination-description">Largest corona on Venus at 2,600 km diameter; site of regional plate tectonics with 7.5 km elevation differences.</p>
+							<div class="destination-meta">
+								<span class="difficulty challenging"><i class="fas fa-hiking" aria-hidden="true"></i> Challenging</span>
+								<span class="price">From <strong>$35,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=artemis-corona" class="button">View Details</a>
+						</div>
+					</article>
+
+					<!-- Atne Corona -->
+					<article class="destination-card" data-region="aphrodite-terra equatorial" data-type="corona" data-difficulty="moderate" data-price="mid" data-name="Atne Corona" data-price-value="28000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-circle-notch fa-3x"></i>
+							</div>
+							<span class="destination-tag">Corona</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=atne-corona">Atne Corona</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Aphrodite Terra</p>
+							<p class="destination-description">Circular volcanic feature with concentric fracture rings formed by mantle upwelling.</p>
+							<div class="destination-meta">
+								<span class="difficulty moderate"><i class="fas fa-hiking" aria-hidden="true"></i> Moderate</span>
+								<span class="price">From <strong>$28,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=atne-corona" class="button">View Details</a>
+						</div>
+					</article>
+
+					<!-- Chasmata (Rift Canyons) -->
+
+					<!-- Diana Chasma -->
+					<article class="destination-card" data-region="aphrodite-terra equatorial" data-type="chasma" data-difficulty="extreme" data-price="premium" data-name="Diana Chasma" data-price-value="48000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-water fa-3x"></i>
+							</div>
+							<span class="destination-tag">Rift Canyon</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=diana-chasma">Diana Chasma</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Aphrodite Terra</p>
+							<p class="destination-description">Part of the 7,400 km Dali-Diana system; features slopes exceeding 30°—the steepest on Venus.</p>
+							<div class="destination-meta">
+								<span class="difficulty extreme"><i class="fas fa-hiking" aria-hidden="true"></i> Extreme</span>
+								<span class="price">From <strong>$48,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=diana-chasma" class="button">View Details</a>
+						</div>
+					</article>
+
+					<!-- Devana Chasma -->
+					<article class="destination-card" data-region="beta-regio southern" data-type="chasma" data-difficulty="extreme" data-price="premium" data-name="Devana Chasma" data-price-value="46000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-water fa-3x"></i>
+							</div>
+							<span class="destination-tag">Rift Zone</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=devana-chasma">Devana Chasma</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Beta-Phoebe Regio</p>
+							<p class="destination-description">4,000 km long extensional rift reaching 5 km depth; comparable only to Earth's East African Rift.</p>
+							<div class="destination-meta">
+								<span class="difficulty extreme"><i class="fas fa-hiking" aria-hidden="true"></i> Extreme</span>
+								<span class="price">From <strong>$46,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=devana-chasma" class="button">View Details</a>
+						</div>
+					</article>
+
+					<!-- Dali Chasma -->
+					<article class="destination-card" data-region="aphrodite-terra equatorial" data-type="chasma" data-difficulty="challenging" data-price="mid" data-name="Dali Chasma" data-price-value="40000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-water fa-3x"></i>
+							</div>
+							<span class="destination-tag">Rift Canyon</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=dali-chasma">Dali Chasma</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Aphrodite Terra</p>
+							<p class="destination-description">Deep trough system nicknamed the "Scorpion Tail" of Aphrodite Terra; connects major highland regions.</p>
+							<div class="destination-meta">
+								<span class="difficulty challenging"><i class="fas fa-hiking" aria-hidden="true"></i> Challenging</span>
+								<span class="price">From <strong>$40,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=dali-chasma" class="button">View Details</a>
+						</div>
+					</article>
+
+					<!-- Other Notable Features -->
+
+					<!-- Baltis Vallis -->
+					<article class="destination-card" data-region="equatorial" data-type="other" data-difficulty="moderate" data-price="mid" data-name="Baltis Vallis" data-price-value="32000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-stream fa-3x"></i>
+							</div>
+							<span class="destination-tag">Lava Channel</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=baltis-vallis">Baltis Vallis</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Lowlands</p>
+							<p class="destination-description">Longest channel on Venus at 6,800+ km—longer than the Nile; carved by ancient fluid lava flows.</p>
+							<div class="destination-meta">
+								<span class="difficulty moderate"><i class="fas fa-hiking" aria-hidden="true"></i> Moderate</span>
+								<span class="price">From <strong>$32,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=baltis-vallis" class="button">View Details</a>
+						</div>
+					</article>
+
+					<!-- Vesta Rupes -->
+					<article class="destination-card" data-region="northern" data-type="other" data-difficulty="moderate" data-price="mid" data-name="Vesta Rupes" data-price-value="27000">
+						<div class="destination-image">
+							<div class="image-placeholder" aria-hidden="true">
+								<i class="fas fa-grip-lines fa-3x"></i>
+							</div>
+							<span class="destination-tag">Scarp/Cliff</span>
+						</div>
+						<div class="destination-content">
+							<h3><a href="destination-detail.html?dest=vesta-rupes">Vesta Rupes</a></h3>
+							<p class="destination-region"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Highlands</p>
+							<p class="destination-description">Dramatic cliff formations named after the Roman goddess of the hearth.</p>
+							<div class="destination-meta">
+								<span class="difficulty moderate"><i class="fas fa-hiking" aria-hidden="true"></i> Moderate</span>
+								<span class="price">From <strong>$27,000</strong></span>
+							</div>
+							<a href="destination-detail.html?dest=vesta-rupes" class="button">View Details</a>
+						</div>
+					</article>
+
+				</div>
+
+				<!-- No Results Message -->
+				<div class="no-results" id="no-results" hidden>
+					<i class="fas fa-search fa-3x" aria-hidden="true"></i>
+					<h3>No destinations found</h3>
+					<p>Try adjusting your filters to see more results.</p>
+					<button type="button" class="button" id="reset-filters">Reset Filters</button>
+				</div>
+			</div>
 		</section>
+
+		<!-- CTA Section -->
+		<section class="destinations-cta">
+			<div class="destinations-cta-wrap">
+				<h2>Can't Decide?</h2>
+				<p>Our travel consultants can help you choose the perfect Venus destinations for your adventure.</p>
+				<div class="cta-buttons">
+					<a href="packages.html" class="button">View Packages</a>
+					<a href="contact.html" class="button outline-button">Contact Us</a>
+				</div>
+			</div>
+		</section>
+
 	</main>
 
 	<footer>
@@ -145,6 +655,7 @@
 </div>
 
 <script src="js/main.js"></script>
+<script src="js/destinations.js"></script>
 
 </body>
 </html>

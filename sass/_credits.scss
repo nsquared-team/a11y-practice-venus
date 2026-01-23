@@ -1,15 +1,17 @@
+@use 'sass:map';
+
 .credits {
 	background: {
-		color: map_get( $setup, 'credits-color-bg' );
+		color: map.get( $setup, 'credits-color-bg' );
 		image: url(../images/packages-bg.gif);
 	};
-	border-bottom: 1px solid map_get( $setup, 'credits-color-border' );
-	border-top: 1px solid map_get( $setup, 'credits-color-border' );
+	border-bottom: 1px solid map.get( $setup, 'credits-color-border' );
+	border-top: 1px solid map.get( $setup, 'credits-color-border' );
 	margin-top: ms(4);
 	padding: ms(8) ms(0);
 
 	h2 {
-		color: map_get( $setup, 'credits-color-heading' );
+		color: map.get( $setup, 'credits-color-heading' );
 		text-align: center;
 	}
 
@@ -26,28 +28,28 @@
 	}
 
 	h3 {
-		color: map_get( $setup, 'credits-color-subheading' );
+		color: map.get( $setup, 'credits-color-subheading' );
 		font-size: $h6;
 		margin-bottom: ms(1);
 	}
 
 	p, ul {
-		color: map_get( $setup, 'credits-color-text' );
+		color: map.get( $setup, 'credits-color-text' );
 	}
 
 	a {
-		color: map_get( $setup, 'credits-color-link' );
+		color: map.get( $setup, 'credits-color-link' );
 		transition: color 300ms;
 
 		@include haf(){
-			color: map_get( $setup, 'credits-color-link-hover' );
+			color: map.get( $setup, 'credits-color-link-hover' );
 		}
 
 	}
 
 	.fail & {
 		h2 {
-			color: map_get( $setup, 'credits-color-heading-fail' );
+			color: map.get( $setup, 'credits-color-heading-fail' );
 		}
 		h3 {
 			text-transform: uppercase;

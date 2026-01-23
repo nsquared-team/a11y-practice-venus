@@ -1,6 +1,8 @@
+@use 'sass:map';
+
 .reservation {
-	background: map_get( $setup, 'res-color-bg' );
-	color: map_get( $setup, 'res-color-text' );
+	background: map.get( $setup, 'res-color-bg' );
+	color: map.get( $setup, 'res-color-text' );
 	padding-bottom: ms(4);
 	padding-top: ms(4);
 	h2 {
@@ -9,7 +11,7 @@
 		text-align: center;
 	}
 	.fail & {
-		color: map_get( $setup, 'res-color-text-fail' );
+		color: map.get( $setup, 'res-color-text-fail' );
 		h2 {
 			text-transform: uppercase;
 		}
@@ -46,7 +48,7 @@
 		}
 	}
 	input[type=text] {
-		background: map_get( $setup, 'res-color-input-bg' );
+		background: map.get( $setup, 'res-color-input-bg' );
 		border: 1px solid transparent;
 		box-sizing: border-box;
 		font-family: inherit;
@@ -55,8 +57,8 @@
 		transition: all 500ms;
 		width: 100%;
 		@include haf(f) {
-			background: map_get( $setup, 'res-color-input-focus-bg' );
-			border-color: map_get( $setup, 'res-color-text' );
+			background: map.get( $setup, 'res-color-input-focus-bg' );
+			border-color: map.get( $setup, 'res-color-text' );
 			outline: 0 none;
 		}
 	}

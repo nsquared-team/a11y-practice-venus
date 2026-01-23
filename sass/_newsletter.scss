@@ -1,10 +1,12 @@
+@use 'sass:map';
+
 .newsletter {
-	color: map_get( $setup, 'news-color-text' );
+	color: map.get( $setup, 'news-color-text' );
 	margin: ms(9) ms(0);
 	text-align: center;
 
 	h2 {
-		color: map_get( $setup, 'news-color-heading-text' );
+		color: map.get( $setup, 'news-color-heading-text' );
 		font-size: $h3;
 		font-weight: normal;
 		letter-spacing: normal;
@@ -20,7 +22,7 @@
 	}
 
 	input {
-		border: 2px solid map_get( $setup, 'news-color-input-border' );
+		border: 2px solid map.get( $setup, 'news-color-input-border' );
 		font-family: inherit;
 		font-size: ms(-1);
 		padding: ms(0) ms(1);
@@ -33,7 +35,7 @@
 	}
 
 	input[type=email] {
-		background: map_get( $setup, 'news-color-input-bg' );
+		background: map.get( $setup, 'news-color-input-bg' );
 		border-right: 0 none;
 		border-radius: 3px 0 0 3px;
 		min-width: 12em;
@@ -47,18 +49,18 @@
 		}
 
 		@include haf() {
-			background: map_get( $setup, 'news-color-input-hover-bg' );
+			background: map.get( $setup, 'news-color-input-hover-bg' );
 			outline: 0 none;
 		}
 
 		&::placeholder {
-			color: map_get( $setup, 'news-color-input-placeholder' );
+			color: map.get( $setup, 'news-color-input-placeholder' );
 			font-style: italic;
 		}
 	}
 
 	input[type=submit] {
-		background: map_get( $setup, 'button-color-bg' );
+		background: map.get( $setup, 'button-color-bg' );
 		border-left: 0 none;
 		border-radius: 0 3px 3px 0;
 		color: white;
@@ -72,7 +74,7 @@
 		}
 
 		@include haf() {
-			background: map_get( $setup, 'button-color-bg-hover' );
+			background: map.get( $setup, 'button-color-bg-hover' );
 		}
 	}
 }

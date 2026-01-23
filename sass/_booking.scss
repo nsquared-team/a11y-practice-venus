@@ -1,0 +1,755 @@
+/**
+ * Booking Page Styles
+ * Multi-step booking form for Venus tours
+ */
+
+@use 'sass:map';
+@use 'sass:color';
+
+// Local color variables for booking page
+$booking-bg-light: map.get($setup, 'bg-light');
+$booking-text: map.get($setup, 'text-color');
+$booking-text-muted: map.get($setup, 'text-muted');
+$booking-border: map.get($setup, 'border-color');
+$booking-primary: map.get($setup, 'primary-color');
+$booking-accent: map.get($setup, 'accent-color');
+$booking-success: map.get($setup, 'success-color');
+$booking-danger: map.get($setup, 'danger-color');
+
+// Booking page layout
+.booking-page {
+	main {
+		padding-bottom: ms(6);
+	}
+}
+
+// Progress Indicator
+.booking-progress {
+	background: $booking-bg-light;
+	padding: ms(2) 0;
+	margin-bottom: ms(4);
+
+	&-wrap {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 0 ms(1);
+	}
+}
+
+.progress-steps {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+
+	// Connecting line
+	&::before {
+		content: '';
+		position: absolute;
+		top: 20px;
+		left: 40px;
+		right: 40px;
+		height: 3px;
+		background: $booking-text-muted;
+		z-index: 1;
+	}
+}
+
+.progress-step {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	z-index: 2;
+	flex: 1;
+	max-width: 120px;
+
+	&-number {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background: $booking-text-muted;
+		color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: bold;
+		font-size: ms(0);
+		margin-bottom: ms(-1);
+		transition: background-color 0.3s ease;
+	}
+
+	&-label {
+		font-size: ms(-1);
+		color: $booking-text-muted;
+		text-align: center;
+		transition: color 0.3s ease;
+	}
+
+	// Active step
+	&.active {
+		.progress-step-number {
+			background: $booking-accent;
+		}
+		.progress-step-label {
+			color: $booking-accent;
+			font-weight: bold;
+		}
+	}
+
+	// Completed step
+	&.completed {
+		.progress-step-number {
+			background: $booking-success;
+		}
+		.progress-step-label {
+			color: $booking-success;
+		}
+	}
+
+	// Clickable completed steps
+	&.completed .progress-step-number {
+		cursor: pointer;
+
+		&:hover {
+			background: color.adjust($booking-success, $lightness: -10%);
+		}
+	}
+}
+
+// Booking Form Container
+.booking-form-container {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 0 ms(1);
+}
+
+// Form Steps
+.booking-step {
+	display: none;
+	animation: fadeIn 0.3s ease;
+
+	&.active {
+		display: block;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+// Step Header
+.step-header {
+	margin-bottom: ms(3);
+	padding-bottom: ms(1);
+	border-bottom: 2px solid $booking-bg-light;
+
+	h2 {
+		color: $booking-primary;
+		margin-bottom: ms(-2);
+	}
+
+	p {
+		color: $booking-text-muted;
+		margin: 0;
+	}
+}
+
+// Form Sections
+.form-section {
+	background: white;
+	border: 1px solid $booking-bg-light;
+	border-radius: 8px;
+	padding: ms(2);
+	margin-bottom: ms(2);
+
+	h3 {
+		color: $booking-primary;
+		font-size: ms(1);
+		margin-bottom: ms(1);
+		padding-bottom: ms(-1);
+		border-bottom: 1px solid $booking-bg-light;
+	}
+}
+
+// Form Groups
+.form-group {
+	margin-bottom: ms(1);
+
+	label {
+		display: block;
+		font-weight: bold;
+		margin-bottom: ms(-2);
+		color: $booking-text;
+	}
+
+	// Intentional a11y issue: some labels will be visually hidden but not associated
+	.field-hint {
+		font-size: ms(-1);
+		color: $booking-text-muted;
+		margin-top: ms(-3);
+	}
+}
+
+.form-row {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: ms(1);
+}
+
+// Form Inputs
+.form-input,
+.form-select,
+.form-textarea {
+	width: 100%;
+	padding: ms(0);
+	font-size: ms(0);
+	border: 2px solid $booking-bg-light;
+	border-radius: 4px;
+	font-family: inherit;
+	transition: border-color 0.2s ease;
+
+	&:focus {
+		outline: none;
+		border-color: $booking-accent;
+	}
+
+	// Error state - intentional a11y issue: color-only indicator
+	&.error {
+		border-color: $booking-danger;
+	}
+}
+
+.form-select {
+	appearance: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 12px center;
+	padding-right: 36px;
+}
+
+.form-textarea {
+	min-height: 100px;
+	resize: vertical;
+}
+
+// Error Messages - intentional a11y issue: not associated with inputs via aria-describedby
+.error-message {
+	color: $booking-danger;
+	font-size: ms(-1);
+	margin-top: ms(-3);
+	display: none;
+
+	&.visible {
+		display: block;
+	}
+}
+
+// Package Selection Cards
+.package-options {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: ms(1);
+}
+
+.package-option {
+	border: 2px solid $booking-bg-light;
+	border-radius: 8px;
+	padding: ms(1);
+	cursor: pointer;
+	transition: all 0.2s ease;
+	position: relative;
+
+	&:hover {
+		border-color: $booking-accent;
+	}
+
+	&.selected {
+		border-color: $booking-accent;
+		background: rgba(201, 135, 3, 0.05);
+	}
+
+	// Hidden radio input
+	input[type="radio"] {
+		position: absolute;
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		cursor: pointer;
+		margin: 0;
+	}
+
+	.package-icon {
+		font-size: ms(3);
+		color: $booking-primary;
+		margin-bottom: ms(0);
+	}
+
+	.package-name {
+		font-size: ms(1);
+		font-weight: bold;
+		color: $booking-primary;
+		margin-bottom: ms(-2);
+	}
+
+	.package-tier {
+		font-size: ms(-1);
+		color: $booking-text-muted;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		margin-bottom: ms(0);
+	}
+
+	.package-price {
+		font-size: ms(1);
+		color: $booking-accent;
+		font-weight: bold;
+	}
+
+	.package-duration {
+		font-size: ms(-1);
+		color: $booking-text-muted;
+	}
+}
+
+// Traveler Cards
+.travelers-container {
+	margin-bottom: ms(2);
+}
+
+.traveler-card {
+	background: $booking-bg-light;
+	border-radius: 8px;
+	padding: ms(2);
+	margin-bottom: ms(1);
+	position: relative;
+
+	.traveler-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: ms(1);
+
+		h4 {
+			margin: 0;
+			color: $booking-primary;
+		}
+	}
+
+	.remove-traveler {
+		background: none;
+		border: none;
+		color: $booking-danger;
+		cursor: pointer;
+		font-size: ms(0);
+		padding: ms(-1);
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.add-traveler-btn {
+	display: flex;
+	align-items: center;
+	gap: ms(-1);
+	background: white;
+	border: 2px dashed $booking-text-muted;
+	border-radius: 8px;
+	padding: ms(1);
+	width: 100%;
+	cursor: pointer;
+	font-size: ms(0);
+	color: $booking-text-muted;
+	transition: all 0.2s ease;
+
+	&:hover {
+		border-color: $booking-accent;
+		color: $booking-accent;
+	}
+
+	i {
+		font-size: ms(1);
+	}
+}
+
+// Add-ons Grid
+.addons-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: ms(1);
+}
+
+.addon-option {
+	border: 2px solid $booking-bg-light;
+	border-radius: 8px;
+	padding: ms(1);
+	cursor: pointer;
+	transition: all 0.2s ease;
+	display: flex;
+	gap: ms(1);
+	align-items: flex-start;
+
+	&:hover {
+		border-color: $booking-accent;
+	}
+
+	&.selected {
+		border-color: $booking-success;
+		background: rgba(40, 167, 69, 0.05);
+	}
+
+	input[type="checkbox"] {
+		margin-top: 4px;
+		width: 20px;
+		height: 20px;
+		flex-shrink: 0;
+	}
+
+	.addon-content {
+		flex: 1;
+	}
+
+	.addon-icon {
+		color: $booking-primary;
+		font-size: ms(2);
+	}
+
+	.addon-name {
+		font-weight: bold;
+		color: $booking-primary;
+		margin-bottom: ms(-2);
+	}
+
+	.addon-description {
+		font-size: ms(-1);
+		color: $booking-text-muted;
+		margin-bottom: ms(-1);
+	}
+
+	.addon-price {
+		color: $booking-accent;
+		font-weight: bold;
+	}
+}
+
+// Price Summary (sidebar/floating)
+.price-summary {
+	background: $booking-primary;
+	color: white;
+	border-radius: 8px;
+	padding: ms(2);
+	margin-bottom: ms(2);
+
+	h3 {
+		color: white;
+		margin-bottom: ms(1);
+		padding-bottom: ms(-1);
+		border-bottom: 1px solid rgba(white, 0.2);
+	}
+
+	.price-line {
+		display: flex;
+		justify-content: space-between;
+		padding: ms(-1) 0;
+		font-size: ms(0);
+
+		&.subtotal {
+			border-top: 1px solid rgba(white, 0.2);
+			margin-top: ms(0);
+			padding-top: ms(0);
+		}
+
+		&.total {
+			font-size: ms(1);
+			font-weight: bold;
+			border-top: 2px solid rgba(white, 0.3);
+			margin-top: ms(0);
+			padding-top: ms(0);
+		}
+	}
+}
+
+// Review Step
+.review-section {
+	background: white;
+	border: 1px solid $booking-bg-light;
+	border-radius: 8px;
+	margin-bottom: ms(2);
+	overflow: hidden;
+
+	.review-header {
+		background: $booking-bg-light;
+		padding: ms(1) ms(2);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		h3 {
+			margin: 0;
+			color: $booking-primary;
+			font-size: ms(1);
+		}
+
+		// Intentional a11y issue: vague link text
+		.edit-link {
+			color: $booking-accent;
+			text-decoration: none;
+			font-size: ms(-1);
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.review-content {
+		padding: ms(2);
+	}
+
+	.review-row {
+		display: flex;
+		padding: ms(-1) 0;
+		border-bottom: 1px solid $booking-bg-light;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		.review-label {
+			font-weight: bold;
+			width: 40%;
+			color: $booking-text-muted;
+		}
+
+		.review-value {
+			flex: 1;
+		}
+	}
+}
+
+// Terms Checkbox
+.terms-checkbox {
+	display: flex;
+	align-items: flex-start;
+	gap: ms(0);
+	margin: ms(2) 0;
+	padding: ms(1);
+	background: $booking-bg-light;
+	border-radius: 8px;
+
+	input[type="checkbox"] {
+		margin-top: 4px;
+		width: 20px;
+		height: 20px;
+		flex-shrink: 0;
+	}
+
+	label {
+		font-size: ms(0);
+		line-height: 1.5;
+	}
+
+	a {
+		color: $booking-accent;
+	}
+}
+
+// Checkbox group styling
+.checkbox-group {
+	display: flex;
+	flex-wrap: wrap;
+	gap: ms(0);
+
+	label {
+		display: flex;
+		align-items: center;
+		gap: ms(-2);
+		font-weight: normal;
+		cursor: pointer;
+	}
+}
+
+// Navigation Buttons
+.step-navigation {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: ms(2);
+	border-top: 1px solid $booking-bg-light;
+	margin-top: ms(2);
+
+	.btn-prev {
+		background: $booking-bg-light;
+		color: $booking-text;
+		border: none;
+		padding: ms(0) ms(2);
+		font-size: ms(0);
+		border-radius: 4px;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		gap: ms(-1);
+
+		&:hover {
+			background: color.adjust($booking-bg-light, $lightness: -5%);
+		}
+
+		&:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+	}
+
+	.btn-next,
+	.btn-submit {
+		background: $booking-accent;
+		color: white;
+		border: none;
+		padding: ms(0) ms(2);
+		font-size: ms(0);
+		border-radius: 4px;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		gap: ms(-1);
+
+		&:hover {
+			background: color.adjust($booking-accent, $lightness: -10%);
+		}
+
+		&:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+	}
+}
+
+// Confirmation Step
+.confirmation-container {
+	text-align: center;
+	padding: ms(4) ms(2);
+
+	.confirmation-icon {
+		font-size: ms(6);
+		color: $booking-success;
+		margin-bottom: ms(2);
+	}
+
+	h2 {
+		color: $booking-primary;
+		margin-bottom: ms(1);
+	}
+
+	.booking-reference {
+		background: $booking-bg-light;
+		display: inline-block;
+		padding: ms(1) ms(2);
+		border-radius: 8px;
+		margin: ms(2) 0;
+
+		.reference-label {
+			font-size: ms(-1);
+			color: $booking-text-muted;
+			display: block;
+		}
+
+		.reference-number {
+			font-size: ms(2);
+			font-weight: bold;
+			color: $booking-primary;
+			font-family: monospace;
+		}
+	}
+}
+
+.confirmation-details {
+	max-width: 600px;
+	margin: ms(3) auto;
+	text-align: left;
+}
+
+.next-steps {
+	background: $booking-bg-light;
+	border-radius: 8px;
+	padding: ms(2);
+	margin-top: ms(3);
+	text-align: left;
+
+	h3 {
+		color: $booking-primary;
+		margin-bottom: ms(1);
+	}
+
+	ol {
+		margin: 0;
+		padding-left: ms(2);
+
+		li {
+			margin-bottom: ms(0);
+		}
+	}
+}
+
+.confirmation-actions {
+	margin-top: ms(3);
+	display: flex;
+	justify-content: center;
+	gap: ms(1);
+	flex-wrap: wrap;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+	.progress-steps {
+		&::before {
+			left: 20px;
+			right: 20px;
+		}
+	}
+
+	.progress-step {
+		&-number {
+			width: 32px;
+			height: 32px;
+			font-size: ms(-1);
+		}
+
+		&-label {
+			font-size: ms(-2);
+		}
+	}
+
+	.form-row {
+		grid-template-columns: 1fr;
+	}
+
+	.package-options {
+		grid-template-columns: 1fr;
+	}
+
+	.step-navigation {
+		flex-direction: column;
+		gap: ms(1);
+
+		.btn-prev,
+		.btn-next,
+		.btn-submit {
+			width: 100%;
+			justify-content: center;
+		}
+	}
+}

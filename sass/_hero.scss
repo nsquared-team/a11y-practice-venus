@@ -1,12 +1,14 @@
+@use 'sass:map';
+
 .hero {
 	background: {
-		color: map_get( $setup, 'hero-color-bg' );
+		color: map.get( $setup, 'hero-color-bg' );
 		image: url(../images/iman-gozal-EPxVDc_xeWA-unsplash.jpg);
 		position: 69% 35%;
 		repeat: no-repeat;
 		size: cover;
 	};
-	color: map_get( $setup, 'hero-color-text' );
+	color: map.get( $setup, 'hero-color-text' );
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -32,7 +34,7 @@
 			margin-bottom: ms(1);
 		}
 		span.discount {
-			color: map_get( $setup, 'hero-discount-color-text' );
+			color: map.get( $setup, 'hero-discount-color-text' );
 			font-size: ms(7);
 			font-weight: 700;
 			margin-bottom: ms(1);
@@ -59,7 +61,7 @@
 
 .scroll {
 	bottom: ms(0);
-	color: map_get( $setup, 'hero-color-text' );
+	color: map.get( $setup, 'hero-color-text' );
 	display: block;
 	font-family: $font-heading;
 	left: 0;
@@ -71,7 +73,7 @@
 	transition: color 300ms;
 	width: ms(12);
 	@include haf() {
-		color: map_get( $setup, 'hero-color-text-hover' );
+		color: map.get( $setup, 'hero-color-text-hover' );
 	}
 	.fail & {
 		@include haf() {

@@ -1,8 +1,10 @@
+@use 'sass:map';
+
 .button {
-	background: map_get( $setup, 'button-color-bg' );
+	background: map.get( $setup, 'button-color-bg' );
 	border: 0 none;
 	border-radius: 3px;
-	color: map_get( $setup, 'button-color-text' );
+	color: map.get( $setup, 'button-color-text' );
 	font-family: $font-heading;
 	font-size: ms(-1);
 	display: inline-block;
@@ -12,7 +14,7 @@
 	transition: background 300ms ease-in-out;
 
 	@include haf() {
-		background: map_get( $setup, 'button-color-bg-hover' );
+		background: map.get( $setup, 'button-color-bg-hover' );
 	}
 
 	.fail & {
@@ -35,12 +37,12 @@
 	}
 
 	.site-navigation & {
-		color: map_get( $setup, 'button-color-text' );
+		color: map.get( $setup, 'button-color-text' );
 		margin-left: ms(-2);
 		padding: ms(0) ms(2);
 		transition: background 300ms ease-in-out;
 		@include haf() {
-			color: map_get( $setup, 'button-color-text-hover' );
+			color: map.get( $setup, 'button-color-text-hover' );
 		}
 	}
 }
