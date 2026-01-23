@@ -2,7 +2,7 @@
 ## Development Plan & Progress Tracker
 
 **Started:** January 2026
-**Status:** Phase 3 Complete - Ready for Phase 4: Enhancement
+**Status:** Phase 4 In Progress
 
 ---
 
@@ -12,6 +12,7 @@ This document tracks the development progress of the Discover Venus accessibilit
 
 **Related Documents:**
 - [PROJECT-REQUIREMENTS.md](./PROJECT-REQUIREMENTS.md) - Full project specifications
+- [IMAGE-CHECKLIST.md](./IMAGE-CHECKLIST.md) - Image requirements and tracking
 
 ---
 
@@ -75,6 +76,7 @@ This document tracks the development progress of the Discover Venus accessibilit
 - [x] Add general color variables to _vars.scss
 
 #### Pending Image Updates
+See [IMAGE-CHECKLIST.md](./IMAGE-CHECKLIST.md) for detailed tracking with dimensions.
 - [ ] Destination card images (22 destinations) - using placeholders
 - [ ] Team member photos (About page) - using placeholders
 - [ ] Destination detail gallery images - using placeholders
@@ -149,12 +151,26 @@ This phase addresses the deprecation warnings in the SASS codebase to ensure com
 
 ---
 
-### Phase 4: Enhancement 🔲 Not Started
+### Phase 4: Enhancement � In Progress
 
 - [ ] Add image galleries and carousels
-- [ ] Implement FAQ accordions
+- [x] Implement FAQ accordions
 - [ ] Add modal dialogs
 - [ ] Polish animations and transitions
+
+#### FAQ Accordion Implementation (Jan 2026)
+**Files Created/Updated:**
+- `js/main.js` - Added `initAccordion()` function for FAQ toggle functionality
+- `sass/_contact.scss` - New partial with complete contact page and FAQ accordion styling
+- `sass/style.scss` - Added import for _contact.scss
+
+**Features:**
+- Accessible accordion using `aria-expanded` and `aria-controls` attributes
+- Multiple panels can be open simultaneously (more accessible default)
+- Chevron icon rotates on expand/collapse
+- Keyboard accessible (buttons work with Enter/Space)
+- Smooth hover and focus states
+- Responsive styling for contact page layout
 
 ---
 
@@ -188,6 +204,7 @@ This phase addresses the deprecation warnings in the SASS codebase to ensure com
 | Jan 2026 | Add fallback background colors | Ensure text remains readable if background images fail to load |
 | Jan 2026 | Create separate credits page | Move credits from footer to dedicated page for cleaner footer design |
 | Jan 2026 | Implement 5-step booking flow | Provides comprehensive multi-step form for a11y testing with validation, pricing, and persistence |
+| Jan 2026 | Create IMAGE-CHECKLIST.md | Track required images with dimensions for destination cards, gallery, team photos |
 
 ---
 
@@ -201,4 +218,4 @@ This phase addresses the deprecation warnings in the SASS codebase to ensure com
 
 ---
 
-*Last Updated: January 22, 2026*
+*Last Updated: January 23, 2026*

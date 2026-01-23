@@ -21,6 +21,43 @@
 		navContainer.classList.toggle('open');
 	};
 
+	/**
+	 * FAQ Accordion
+	 * Handles expand/collapse functionality for FAQ items
+	 */
+	var initAccordion = function () {
+		var faqList = document.querySelector('.faq-list');
+
+		if (!faqList) return;
+
+		faqList.addEventListener('click', function (e) {
+			// Find the button that was clicked (or its parent if icon was clicked)
+			var button = e.target.closest('.faq-question button');
+
+			if (!button) return;
+
+			// Get the current expanded state
+			var isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+			// Get the associated answer panel
+			var answerId = button.getAttribute('aria-controls');
+			var answer = document.getElementById(answerId);
+
+			if (!answer) return;
+
+			// Toggle the state
+			button.setAttribute('aria-expanded', !isExpanded);
+
+			if (isExpanded) {
+				// Collapse: add hidden attribute
+				answer.setAttribute('hidden', '');
+			} else {
+				// Expand: remove hidden attribute
+				answer.removeAttribute('hidden');
+			}
+		});
+	};
+
 	//
 	// Inits & Event Listeners
 	//
@@ -39,5 +76,8 @@
 			}
 		});
 	}
+
+	// Initialize accordion
+	initAccordion();
 
 })();
