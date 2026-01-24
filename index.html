@@ -55,7 +55,10 @@
 						<span class="location">Fortuna Tessera Tour</span>
 					</h2>
 					<p>The jewel of eastern Ishtar Terra, Fortuna Tessera is extremely rugged. Explore the ridges and troughs of this stunning area along with the peaks of the Maxwell Montes to the West.</p>
-					<p><a href="#" class="button outline-button">See More</a></p>
+					<p>
+						<a href="#" class="button outline-button">See More</a>
+						<button class="button" data-modal-open="learn-more-modal">Learn More</button>
+					</p>
 				</div>
 			</div>
 
@@ -119,7 +122,75 @@
 			</div>
 		</div>
 
-		<!-- Destinations -->
+		<!-- Featured Destinations Carousel -->
+		<!-- Intentional A11y Issues: auto-play without pause button, hidden slides still focusable -->
+		<div class="destinations-carousel"
+			data-carousel
+			data-carousel-autoplay
+			data-carousel-delay="6000"
+			data-a11y-issue="no-pause focusable-hidden no-live-region"
+			aria-label="Featured destinations"
+			tabindex="0">
+
+			<div class="destinations-intro">
+				<h2>Featured Destinations</h2>
+				<p>Explore our hand-picked Venus adventures</p>
+			</div>
+
+			<div class="carousel-wrapper">
+				<div class="carousel-slides">
+					<!-- Slide 1: Maxwell Montes -->
+					<div class="carousel-slide" data-carousel-slide aria-hidden="true">
+						<div class="slide-image">
+							<img src="images/grant-mciver-pmUEwPKL5IE-unsplash-cropped.jpg" alt="Maxwell Montes mountain peaks">
+						</div>
+						<div class="slide-content">
+							<h3>Maxwell Montes</h3>
+							<p>Stand atop the highest peak on Venus, rising 11 kilometers above the mean planetary radius. Experience the stunning metallic "snow" that covers the summit.</p>
+							<p><a href="destination-detail.html" class="button">Explore Maxwell Montes</a></p>
+						</div>
+					</div>
+
+					<!-- Slide 2: Beta Regio -->
+					<div class="carousel-slide" data-carousel-slide aria-hidden="true">
+						<div class="slide-image">
+							<img src="images/alexis-antonio--2xSlOAySLY-unsplash-cropped.jpg" alt="Beta Regio volcanic landscape">
+						</div>
+						<div class="slide-content">
+							<h3>Beta Regio</h3>
+							<p>Discover the dramatic volcanic highlands of Beta Regio, home to the massive shield volcano Theia Mons. A must-see for adventure seekers.</p>
+							<p><a href="destination-detail.html?dest=beta-regio" class="button">Explore Beta Regio</a></p>
+						</div>
+					</div>
+
+					<!-- Slide 3: Lakshmi Planum -->
+					<div class="carousel-slide" data-carousel-slide aria-hidden="true">
+						<div class="slide-image">
+							<img src="images/vaibhaw-kumar-3guBQuEqvYM-unsplash-cropped.jpg" alt="Lakshmi Planum plateau">
+						</div>
+						<div class="slide-content">
+							<h3>Lakshmi Planum</h3>
+							<p>Explore the vast highland plateau of western Ishtar Terra, bordered by the highest mountains on Venus. Perfect for extended expeditions.</p>
+							<p><a href="destination-detail.html?dest=lakshmi-planum" class="button">Explore Lakshmi Planum</a></p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Carousel Navigation -->
+				<!-- Intentional A11y Issue: Vague button labels -->
+				<button class="carousel-nav carousel-prev" data-carousel-prev aria-label="Previous">
+					<i class="fas fa-chevron-left" aria-hidden="true"></i>
+				</button>
+				<button class="carousel-nav carousel-next" data-carousel-next aria-label="Next">
+					<i class="fas fa-chevron-right" aria-hidden="true"></i>
+				</button>
+			</div>
+
+			<!-- Carousel Dots -->
+			<div class="carousel-dots" data-carousel-dots></div>
+		</div>
+
+		<!-- Destinations Grid -->
 		<div class="destinations" id="destinations">
 			<div class="destinations-intro">
 				<h2>Top Destinations</h2>
@@ -203,7 +274,7 @@
 
 		</div>
 		<div class="all-dest">
-			<a href="#" class="button">See all destinations</a>
+			<a href="destinations.html" class="button">See all destinations</a>
 		</div>
 
 		<!-- Packages -->
@@ -337,7 +408,10 @@
 					<h2>Exclusive tour to Phoebe Regio</h2>
 					<p>Phoebe is a Titaness who was the daughter of Uranus and Gaia. She controlled the Oracle at Delphi. Explore this astonishly beautiful area named in her honor with our exclusive offer.</p>
 					<p class="disclaimer">* Some restrictions apply</p>
-					<p><a href="#" class="button">Book Now</a></p>
+					<p>
+						<a href="#" class="button">Book Now</a>
+						<button class="button outline-button" data-modal-open="special-offer-modal">Get Discount</button>
+					</p>
 				</div>
 			</div>
 		</div>
@@ -411,7 +485,59 @@
 
 
 
+<!-- Modal Demos -->
+<!-- Accessible Modal -->
+<div class="modal" id="learn-more-modal" role="dialog" aria-modal="true" aria-labelledby="learn-more-modal-title" hidden>
+	<div class="modal-overlay" data-modal-close></div>
+	<div class="modal-dialog">
+		<header class="modal-header">
+			<h2 id="learn-more-modal-title">Welcome to Discover Venus</h2>
+			<button class="modal-close" data-modal-close aria-label="Close modal">
+				<i class="fas fa-times"></i>
+			</button>
+		</header>
+		<div class="modal-body">
+			<p>Thank you for your interest in visiting Venus! As the solar system's premier Venus travel agency, we offer unparalleled experiences on Earth's sister planet.</p>
+			<p>Our expert guides will take you to the most breathtaking locations, from the towering Maxwell Montes to the vast Lakshmi Planum. Every trip includes:</p>
+			<ul>
+				<li>Round-trip spacecraft transportation</li>
+				<li>Atmospheric suits with 48-hour life support</li>
+				<li>Guided tours with certified Venus explorers</li>
+				<li>Gourmet space meals prepared by our chefs</li>
+			</ul>
+		</div>
+		<footer class="modal-footer">
+			<a href="packages.html" class="button">View Packages</a>
+			<button class="button outline-button" data-modal-close>Maybe Later</button>
+		</footer>
+	</div>
+</div>
+
+<!-- Intentionally Inaccessible Modal (for testing purposes) -->
+<!-- A11y Issues: Missing aria-labelledby, no escape key, no focus trap -->
+<div class="modal" id="special-offer-modal" role="dialog" aria-modal="true" data-a11y-issue="no-escape no-focus-trap" hidden>
+	<div class="modal-overlay" data-modal-close></div>
+	<div class="modal-dialog modal-dialog--small">
+		<header class="modal-header">
+			<h2>Limited Time Offer!</h2>
+			<!-- Intentional a11y issue: Low contrast close button -->
+			<button class="modal-close modal-close--low-contrast" data-modal-close>
+				<i class="fas fa-times"></i>
+				<!-- Missing aria-label is intentional for testing -->
+			</button>
+		</header>
+		<div class="modal-body">
+			<p>Book your Venus adventure today and receive <strong>25% off</strong> your first trip!</p>
+			<p>Use code: <strong>VENUS25</strong></p>
+		</div>
+		<footer class="modal-footer">
+			<a href="booking.html" class="button">Book Now</a>
+		</footer>
+	</div>
+</div>
+
 <script src="js/main.js"></script>
+<script src="js/components.js"></script>
 
 </body>
 </html>

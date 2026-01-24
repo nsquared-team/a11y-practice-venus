@@ -151,11 +151,11 @@ This phase addresses the deprecation warnings in the SASS codebase to ensure com
 
 ---
 
-### Phase 4: Enhancement � In Progress
+### Phase 4: Enhancement 🔄 In Progress
 
-- [ ] Add image galleries and carousels
+- [x] Add image galleries and carousels
 - [x] Implement FAQ accordions
-- [ ] Add modal dialogs
+- [x] Add modal dialogs
 - [ ] Polish animations and transitions
 
 #### FAQ Accordion Implementation (Jan 2026)
@@ -171,6 +171,72 @@ This phase addresses the deprecation warnings in the SASS codebase to ensure com
 - Keyboard accessible (buttons work with Enter/Space)
 - Smooth hover and focus states
 - Responsive styling for contact page layout
+
+#### Modal Dialog Implementation (Jan 2026)
+**Files Created/Updated:**
+- `js/components.js` - Modal class with open/close, focus trapping, keyboard handling
+- `sass/_modal.scss` - Complete modal styling (overlay, dialog, variants, animations)
+- `sass/style.scss` - Added import for _modal.scss
+- `index.html` - Added demo modals with trigger buttons
+
+**Features:**
+- Open via `data-modal-open="modal-id"` attribute on any element
+- Close via `data-modal-close` attribute, Escape key, or overlay click
+- Focus trapping within modal when open
+- Returns focus to trigger element on close
+- Body scroll locking when modal is open
+- Custom events: `modal:open` and `modal:close`
+- Size variants: default, small (`modal-dialog--small`), large (`modal-dialog--large`)
+- Image/lightbox variant (`modal-image`)
+
+**Intentional Accessibility Issues (for testing):**
+- `data-a11y-issue="no-focus-trap"` - Disables focus trapping
+- `data-a11y-issue="no-escape"` - Disables Escape key closing
+- Missing `aria-labelledby` on some modals
+- Low contrast close button variant (`modal-close--low-contrast`)
+- Missing `aria-label` on close button
+
+#### Image Gallery & Lightbox Implementation (Jan 2026)
+**Files Created/Updated:**
+- `destination-detail.html` - Enhanced gallery with clickable thumbnails and lightbox modal
+- `js/destination-detail.js` - Gallery interaction, lightbox navigation, swipe support
+- `sass/_destination-detail.scss` - Gallery button styles, lightbox styles
+
+**Features:**
+- Thumbnail click to swap main gallery image
+- Main image click opens full-screen lightbox
+- Previous/Next navigation in lightbox
+- Keyboard navigation (arrow keys)
+- Touch/swipe support for mobile
+- Image counter display
+
+**Intentional Accessibility Issues (for testing):**
+- Missing alt text on some gallery images
+- Lightbox counter not in a live region (not announced)
+- Arrow key navigation not discoverable by screen readers
+- Missing `aria-labelledby` on lightbox modal
+- Missing `aria-label` on close button
+
+#### Carousel Implementation (Jan 2026)
+**Files Created/Updated:**
+- `js/components.js` - Carousel class with autoplay, navigation, dot indicators
+- `sass/_carousel.scss` - New partial with carousel styles
+- `sass/style.scss` - Added import for _carousel.scss
+- `index.html` - Featured destinations carousel on homepage
+
+**Features:**
+- Auto-advancing slides with configurable interval
+- Previous/Next arrow buttons
+- Dot indicators for slide position
+- Pause on hover and focus
+- Keyboard navigation (arrow keys)
+- Responsive design
+
+**Intentional Accessibility Issues (for testing):**
+- `data-a11y-issue="no-pause"` - Auto-play without pause button
+- `data-a11y-issue="focusable-hidden"` - Hidden slides remain focusable
+- `data-a11y-issue="no-live-region"` - No announcements for slide changes
+- Vague button labels ("Previous", "Next" without context)
 
 ---
 
@@ -205,6 +271,7 @@ This phase addresses the deprecation warnings in the SASS codebase to ensure com
 | Jan 2026 | Create separate credits page | Move credits from footer to dedicated page for cleaner footer design |
 | Jan 2026 | Implement 5-step booking flow | Provides comprehensive multi-step form for a11y testing with validation, pricing, and persistence |
 | Jan 2026 | Create IMAGE-CHECKLIST.md | Track required images with dimensions for destination cards, gallery, team photos |
+| Jan 2026 | Implement modal dialogs | Reusable modal component with accessibility features and intentional a11y issues for testing |
 
 ---
 

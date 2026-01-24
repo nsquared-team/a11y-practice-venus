@@ -1,0 +1,174 @@
+// Modal Dialog Styles
+@use 'sass:map';
+
+// Modal Overlay
+.modal {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: ms(2);
+
+	&[hidden] {
+		display: none;
+	}
+}
+
+.modal-overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.6);
+	cursor: pointer;
+}
+
+// Modal Dialog
+.modal-dialog {
+	position: relative;
+	width: 100%;
+	max-width: 560px;
+	max-height: 90vh;
+	overflow: auto;
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+	animation: modalSlideIn 300ms ease-out;
+}
+
+@keyframes modalSlideIn {
+	from {
+		opacity: 0;
+		transform: translateY(-20px) scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+// Modal Header
+.modal-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: ms(3);
+	border-bottom: 1px solid map.get($setup, 'border-color');
+
+	h2 {
+		margin: 0;
+		font-size: $h4;
+		color: map.get($setup, 'heading-color');
+	}
+}
+
+// Modal Close Button
+.modal-close {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	padding: 0;
+	border: none;
+	background: transparent;
+	color: map.get($setup, 'text-muted');
+	font-size: ms(2);
+	cursor: pointer;
+	border-radius: 4px;
+	transition: background-color 200ms, color 200ms;
+
+	@include haf() {
+		background: map.get($setup, 'bg-light');
+		color: map.get($setup, 'text-color');
+	}
+
+	&:focus {
+		outline: 2px solid map.get($setup, 'primary-color');
+		outline-offset: 2px;
+	}
+}
+
+// Modal Body
+.modal-body {
+	padding: ms(3);
+
+	p {
+		margin: 0 0 ms(2);
+		line-height: 1.7;
+		color: map.get($setup, 'text-color');
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+// Modal Footer
+.modal-footer {
+	display: flex;
+	gap: ms(2);
+	justify-content: flex-end;
+	padding: ms(3);
+	border-top: 1px solid map.get($setup, 'border-color');
+	background: map.get($setup, 'bg-light');
+	border-radius: 0 0 8px 8px;
+}
+
+// Modal Size Variants
+.modal-dialog--small {
+	max-width: 400px;
+}
+
+.modal-dialog--large {
+	max-width: 800px;
+}
+
+// Modal with Image (for lightbox)
+.modal-image {
+	.modal-dialog {
+		max-width: 90vw;
+		background: transparent;
+		box-shadow: none;
+	}
+
+	.modal-body {
+		padding: 0;
+
+		img {
+			display: block;
+			max-width: 100%;
+			max-height: 80vh;
+			margin: 0 auto;
+			border-radius: 4px;
+		}
+	}
+
+	.modal-close {
+		position: absolute;
+		top: -40px;
+		right: 0;
+		color: white;
+		background: rgba(0, 0, 0, 0.5);
+
+		@include haf() {
+			background: rgba(0, 0, 0, 0.8);
+			color: white;
+		}
+	}
+}
+
+// Intentional Accessibility Issue: Low contrast close button variant
+// This is for testing purposes - the close button text is hard to see
+.modal-close--low-contrast {
+	color: #d0d0d0; // Intentionally low contrast
+
+	@include haf() {
+		color: #c0c0c0; // Still low contrast on hover
+	}
+}
+
+// Body class when modal is open (prevents scrolling)
+body.modal-open {
+	overflow: hidden;
+}

@@ -1,0 +1,301 @@
+// Carousel Component Styles
+@use 'sass:map';
+
+// Carousel Container
+.carousel {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+
+	// Allow focus outline to show on container when using keyboard nav
+	&:focus {
+		outline: 2px solid map.get($setup, 'primary-color');
+		outline-offset: 2px;
+	}
+
+	&:focus:not(:focus-visible) {
+		outline: none;
+	}
+}
+
+// Carousel Track (holds all slides)
+.carousel-track {
+	display: flex;
+	transition: transform 400ms ease-in-out;
+}
+
+// Individual Slides
+.carousel-slide {
+	flex: 0 0 100%;
+	width: 100%;
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: opacity 400ms ease-in-out, visibility 400ms;
+
+	&.active {
+		opacity: 1;
+		visibility: visible;
+		position: relative;
+	}
+}
+
+// Carousel with fade transition (default)
+.carousel--fade {
+	.carousel-slide {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+
+		&.active {
+			position: relative;
+		}
+	}
+}
+
+// Carousel Navigation Arrows
+.carousel-nav {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 44px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.5);
+	border: none;
+	border-radius: 50%;
+	color: white;
+	font-size: ms(2);
+	cursor: pointer;
+	z-index: 10;
+	transition: background-color 300ms, opacity 300ms;
+
+	@include haf() {
+		background: rgba(0, 0, 0, 0.7);
+	}
+
+	&:disabled {
+		opacity: 0.3;
+		cursor: not-allowed;
+	}
+
+	@include bp(m) {
+		width: 56px;
+		height: 56px;
+	}
+}
+
+.carousel-prev {
+	left: ms(2);
+
+	@include bp(m) {
+		left: ms(3);
+	}
+}
+
+.carousel-next {
+	right: ms(2);
+
+	@include bp(m) {
+		right: ms(3);
+	}
+}
+
+// Carousel Dots
+.carousel-dots {
+	display: flex;
+	justify-content: center;
+	gap: ms(1);
+	padding: ms(2) 0;
+}
+
+.carousel-dot {
+	width: 12px;
+	height: 12px;
+	padding: 0;
+	border: 2px solid map.get($setup, 'primary-color');
+	border-radius: 50%;
+	background: transparent;
+	cursor: pointer;
+	transition: background-color 300ms, transform 300ms;
+
+	@include haf() {
+		transform: scale(1.2);
+	}
+
+	&.active {
+		background: map.get($setup, 'primary-color');
+	}
+}
+
+// Featured Destinations Carousel (Homepage)
+.destinations-carousel {
+	position: relative;
+	margin-bottom: ms(4);
+
+	.carousel-wrapper {
+		position: relative;
+		overflow: hidden;
+	}
+
+	// Carousel slides container
+	.carousel-slides {
+		position: relative;
+		min-height: 400px;
+
+		@include bp(m) {
+			min-height: 450px;
+		}
+	}
+
+	// Individual destination slide
+	.carousel-slide {
+		display: flex;
+		flex-direction: column;
+		gap: ms(3);
+
+		@include bp(m) {
+			flex-direction: row;
+			align-items: center;
+		}
+	}
+
+	// Slide image
+	.slide-image {
+		flex: 0 0 auto;
+
+		@include bp(m) {
+			flex: 0 0 50%;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+			aspect-ratio: 16 / 10;
+			object-fit: cover;
+			border-radius: 8px;
+		}
+	}
+
+	// Slide content
+	.slide-content {
+		flex: 1;
+		padding: ms(2);
+
+		@include bp(m) {
+			padding: ms(4);
+		}
+
+		h3 {
+			color: map.get($setup, 'heading-color');
+			margin-bottom: ms(2);
+		}
+
+		p {
+			color: map.get($setup, 'text-muted');
+			margin-bottom: ms(3);
+		}
+	}
+
+	// Navigation positioned within carousel
+	.carousel-nav {
+		display: none;
+
+		@include bp(m) {
+			display: flex;
+		}
+	}
+
+	// Dots below carousel
+	.carousel-dots {
+		margin-top: ms(3);
+	}
+}
+
+// Testimonials Carousel variant
+.testimonials-carousel {
+	background: map.get($setup, 'bg-light');
+	padding: ms(4);
+	border-radius: 8px;
+
+	.carousel-slide {
+		text-align: center;
+		padding: ms(3);
+
+		blockquote {
+			font-size: ms(1);
+			font-style: italic;
+			color: map.get($setup, 'text-color');
+			margin-bottom: ms(3);
+
+			&::before {
+				content: '"';
+				font-size: ms(4);
+				color: map.get($setup, 'primary-color');
+				display: block;
+				margin-bottom: ms(1);
+			}
+		}
+
+		cite {
+			font-style: normal;
+			font-weight: 600;
+			color: map.get($setup, 'heading-color');
+		}
+	}
+
+	.carousel-dots {
+		margin-top: ms(2);
+	}
+}
+
+// Accessibility: Pause button for autoplay
+.carousel-pause {
+	position: absolute;
+	bottom: ms(2);
+	right: ms(2);
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.5);
+	border: none;
+	border-radius: 50%;
+	color: white;
+	cursor: pointer;
+	z-index: 10;
+	transition: background-color 300ms;
+
+	@include haf() {
+		background: rgba(0, 0, 0, 0.7);
+	}
+
+	.pause-icon {
+		display: block;
+	}
+
+	.play-icon {
+		display: none;
+	}
+
+	&[aria-pressed="true"] {
+		.pause-icon {
+			display: none;
+		}
+
+		.play-icon {
+			display: block;
+		}
+	}
+}
+
+// Live region for carousel announcements
+.carousel-live-region {
+	@extend .screen-reader-text;
+}

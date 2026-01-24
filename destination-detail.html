@@ -59,32 +59,48 @@
 			<div class="detail-hero-gallery">
 				<!-- Main Image -->
 				<div class="gallery-main">
-					<div class="image-placeholder gallery-main-image" aria-label="Maxwell Montes main view - towering peaks against Venusian sky">
-						<i class="fas fa-mountain fa-4x" aria-hidden="true"></i>
-						<span>Main Gallery Image</span>
-					</div>
+					<button class="gallery-main-button" data-gallery-open aria-label="View larger image - Maxwell Montes main view">
+						<img
+							src="https://picsum.photos/800/500?random=1"
+							alt="Maxwell Montes main view - towering peaks against Venusian sky"
+							class="gallery-main-image"
+							data-gallery-index="0"
+						>
+						<span class="gallery-zoom-hint">
+							<i class="fas fa-search-plus" aria-hidden="true"></i>
+							<span class="screen-reader-text">Click to enlarge</span>
+						</span>
+					</button>
 				</div>
 				<!-- Thumbnail Strip -->
 				<div class="gallery-thumbnails" role="group" aria-label="Gallery thumbnails">
-					<button class="thumbnail active" aria-pressed="true" aria-label="View image 1 - Mountain summit">
-						<div class="image-placeholder thumbnail-image">
-							<i class="fas fa-mountain" aria-hidden="true"></i>
-						</div>
+					<button class="thumbnail active" aria-pressed="true" data-gallery-thumb="0" aria-label="View image 1 - Mountain summit">
+						<img
+							src="https://picsum.photos/150/150?random=1"
+							alt=""
+							class="thumbnail-image"
+						>
 					</button>
-					<button class="thumbnail" aria-pressed="false" aria-label="View image 2 - Base camp">
-						<div class="image-placeholder thumbnail-image">
-							<i class="fas fa-campground" aria-hidden="true"></i>
-						</div>
+					<button class="thumbnail" aria-pressed="false" data-gallery-thumb="1" aria-label="View image 2 - Base camp">
+						<img
+							src="https://picsum.photos/150/150?random=2"
+							alt=""
+							class="thumbnail-image"
+						>
 					</button>
-					<button class="thumbnail" aria-pressed="false" aria-label="View image 3 - Volcanic terrain">
-						<div class="image-placeholder thumbnail-image">
-							<i class="fas fa-fire" aria-hidden="true"></i>
-						</div>
+					<button class="thumbnail" aria-pressed="false" data-gallery-thumb="2" aria-label="View image 3 - Volcanic terrain">
+						<img
+							src="https://picsum.photos/150/150?random=3"
+							alt=""
+							class="thumbnail-image"
+						>
 					</button>
-					<button class="thumbnail" aria-pressed="false" aria-label="View image 4 - Panoramic vista">
-						<div class="image-placeholder thumbnail-image">
-							<i class="fas fa-panorama" aria-hidden="true"></i>
-						</div>
+					<button class="thumbnail" aria-pressed="false" data-gallery-thumb="3" aria-label="View image 4 - Panoramic vista">
+						<img
+							src="https://picsum.photos/150/150?random=4"
+							alt=""
+							class="thumbnail-image"
+						>
 					</button>
 				</div>
 			</div>
@@ -707,7 +723,41 @@
 	</footer>
 </div>
 
+<!-- Gallery Lightbox Modal -->
+<!-- Intentional A11y Issue: Missing aria-labelledby on this modal for testing -->
+<div class="modal gallery-lightbox" id="gallery-lightbox-modal" role="dialog" aria-modal="true" data-a11y-issue="no-focus-trap" hidden>
+	<div class="modal-overlay" data-modal-close></div>
+	<div class="lightbox-container">
+		<button class="lightbox-close" data-modal-close>
+			<i class="fas fa-times"></i>
+			<!-- Intentional A11y Issue: Missing aria-label -->
+		</button>
+
+		<button class="lightbox-nav lightbox-prev" data-lightbox-prev aria-label="Previous">
+			<i class="fas fa-chevron-left" aria-hidden="true"></i>
+		</button>
+
+		<div class="lightbox-content">
+			<img
+				src=""
+				alt=""
+				class="lightbox-image"
+				id="lightbox-current-image"
+			>
+			<!-- Intentional A11y Issue: Counter not in a live region -->
+			<div class="lightbox-counter">
+				<span class="lightbox-current">1</span> of <span class="lightbox-total">4</span>
+			</div>
+		</div>
+
+		<button class="lightbox-nav lightbox-next" data-lightbox-next aria-label="Next">
+			<i class="fas fa-chevron-right" aria-hidden="true"></i>
+		</button>
+	</div>
+</div>
+
 <script src="js/main.js"></script>
+<script src="js/components.js"></script>
 <script src="js/destination-detail.js"></script>
 
 </body>
