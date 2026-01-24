@@ -10,28 +10,28 @@ Use this checklist to track progress on acquiring and preparing images for the s
 **Usage:** Destination listing page cards (`destinations.html`)
 **Format:** JPG recommended for photographs
 
-- [ ] Ishtar Terra
-- [ ] Aphrodite Terra
-- [ ] Alpha Regio
-- [ ] Beta Regio
-- [ ] Phoebe Regio
-- [ ] Maat Mons
-- [ ] Sapas Mons
-- [ ] Theia Mons
-- [ ] Maxwell Montes
-- [ ] Fortuna Tessera
-- [ ] Tellus Regio
-- [ ] Lakshmi Planum
-- [ ] Lavinia Planitia
-- [ ] Atalanta Planitia
-- [ ] Artemis Corona
-- [ ] Atne Corona
-- [ ] Diana Chasma
-- [ ] Devana Chasma
-- [ ] Dali Chasma
-- [ ] Baltis Vallis
-- [ ] Vesta Rupes
-- [ ] Sacajawea Patera
+- [X] Ishtar Terra
+- [X] Aphrodite Terra
+- [X] Alpha Regio
+- [X] Beta Regio
+- [X] Phoebe Regio
+- [X] Maat Mons
+- [X] Sapas Mons
+- [X] Theia Mons
+- [X] Maxwell Montes
+- [X] Fortuna Tessera
+- [X] Tellus Regio
+- [X] Lakshmi Planum
+- [X] Lavinia Planitia
+- [X] Atalanta Planitia
+- [X] Artemis Corona
+- [X] Atne Corona
+- [X] Diana Chasma
+- [X] Devana Chasma
+- [X] Dali Chasma
+- [X] Baltis Vallis
+- [X] Vesta Rupes
+- [X] Sacajawea Patera
 
 ---
 
@@ -44,17 +44,17 @@ Use this checklist to track progress on acquiring and preparing images for the s
 **Dimensions:** 800×500px (16:10 aspect ratio)
 **Note:** This is the large hero image displayed prominently at the top of the detail page
 
-- [ ] Main gallery hero image
+- [X] Main gallery hero image
 
 ### Gallery Thumbnails (4 images)
 
 **Dimensions:** 150×150px (1:1 square aspect ratio)
 **Note:** These appear as clickable thumbnails below the main gallery image
 
-- [ ] Thumbnail 1
-- [ ] Thumbnail 2
-- [ ] Thumbnail 3
-- [ ] Thumbnail 4
+- [X] Thumbnail 1
+- [X] Thumbnail 2
+- [X] Thumbnail 3
+- [X] Thumbnail 4
 
 ---
 
@@ -64,10 +64,10 @@ Use this checklist to track progress on acquiring and preparing images for the s
 **Usage:** "You May Also Like" section on destination detail page
 **Note:** Currently showing Lakshmi Planum, Maat Mons, Sapas Mons, Sacajawea Patera - can reuse destination card images if available
 
-- [ ] Related destination 1 (Lakshmi Planum)
-- [ ] Related destination 2 (Maat Mons)
-- [ ] Related destination 3 (Sapas Mons)
-- [ ] Related destination 4 (Sacajawea Patera)
+- [X] Related destination 1 (Lakshmi Planum)
+- [X] Related destination 2 (Maat Mons)
+- [X] Related destination 3 (Sapas Mons)
+- [X] Related destination 4 (Sacajawea Patera)
 
 ---
 
@@ -77,10 +77,10 @@ Use this checklist to track progress on acquiring and preparing images for the s
 **Usage:** About page team section (`about.html`)
 **Format:** JPG recommended, professional headshot style
 
-- [ ] Dr. Elena Vasquez (CEO & Founder)
-- [ ] Marcus Chen (Chief Operations Officer)
-- [ ] Dr. Amara Okonkwo (Chief Safety Officer)
-- [ ] James Morrison (Chief Experience Officer)
+- [X] Dr. Elena Vasquez (CEO & Founder)
+- [X] Marcus Chen (Chief Operations Officer)
+- [X] Dr. Amara Okonkwo (Chief Safety Officer)
+- [X] James Morrison (Chief Experience Officer)
 
 ---
 
