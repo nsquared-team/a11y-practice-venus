@@ -65,6 +65,11 @@
 	let currentStep = 1;
 	const totalSteps = 5;
 
+	// Valid promo codes
+	const PROMO_CODES = {
+		'VENUS25': { discount: 0.25, description: '25% off' }
+	};
+
 	// Booking data object
 	let bookingData = {
 		package: '',
@@ -75,10 +80,13 @@
 		addons: [],
 		extraDays: 0,
 		termsAccepted: false,
+		promoCode: null,
+		promoDiscount: 0,
 		totals: {
 			base: 0,
 			travelers: 0,
 			addons: 0,
+			promoDiscount: 0,
 			total: 0
 		}
 	};
@@ -99,6 +107,13 @@
 	const extraDaysSelect = document.getElementById('extra-days');
 	const termsCheckbox = document.getElementById('terms');
 	const editLinks = document.querySelectorAll('.edit-link');
+	const promoCodeInput = document.getElementById('promo-code-input');
+	const applyPromoBtn = document.getElementById('apply-promo-btn');
+	const promoCodeMessage = document.getElementById('promo-code-message');
+	const promoCodeApplied = document.getElementById('promo-code-applied');
+	const appliedCodeText = document.getElementById('applied-code-text');
+	const removePromoBtn = document.getElementById('remove-promo-btn');
+	const promoDiscountLine = document.getElementById('promo-discount-line');
 
 	// ===== INITIALIZATION =====
 
@@ -262,6 +277,24 @@
 				}
 			});
 		});
+
+		// Promo code functionality
+		if (applyPromoBtn) {
+			applyPromoBtn.addEventListener('click', applyPromoCode);
+		}
+
+		if (promoCodeInput) {
+			promoCodeInput.addEventListener('keypress', function(e) {
+				if (e.key === 'Enter') {
+					e.preventDefault();
+					applyPromoCode();
+				}
+			});
+		}
+
+		if (removePromoBtn) {
+			removePromoBtn.addEventListener('click', removePromoCode);
+		}
 	}
 
 	// ===== PACKAGE SELECTION =====
@@ -456,6 +489,79 @@
 		});
 	}
 
+	// ===== PROMO CODE =====
+
+	function applyPromoCode() {
+		const code = promoCodeInput?.value.trim().toUpperCase();
+
+		if (!code) {
+			showPromoMessage('Please enter a promo code', 'error');
+			return;
+		}
+
+		if (PROMO_CODES[code]) {
+			const promo = PROMO_CODES[code];
+			bookingData.promoCode = code;
+			bookingData.promoDiscount = promo.discount;
+
+			// Update UI
+			if (promoCodeInput) promoCodeInput.value = '';
+			if (promoCodeMessage) {
+				promoCodeMessage.textContent = '';
+				promoCodeMessage.className = 'promo-code-message';
+			}
+			if (appliedCodeText) appliedCodeText.textContent = code;
+			if (promoCodeApplied) promoCodeApplied.style.display = 'flex';
+
+			// Hide input group when code is applied
+			const inputGroup = document.querySelector('.promo-code-input-group');
+			if (inputGroup) inputGroup.style.display = 'none';
+
+			showPromoMessage('Promo code applied successfully!', 'success');
+
+			// Recalculate prices
+			calculatePrices();
+			saveToStorage();
+		} else {
+			showPromoMessage('Invalid promo code. Please try again.', 'error');
+		}
+	}
+
+	function removePromoCode() {
+		bookingData.promoCode = null;
+		bookingData.promoDiscount = 0;
+
+		// Update UI
+		if (promoCodeApplied) promoCodeApplied.style.display = 'none';
+		if (promoCodeMessage) {
+			promoCodeMessage.textContent = '';
+			promoCodeMessage.className = 'promo-code-message';
+		}
+
+		// Show input group again
+		const inputGroup = document.querySelector('.promo-code-input-group');
+		if (inputGroup) inputGroup.style.display = 'flex';
+
+		// Recalculate prices
+		calculatePrices();
+		saveToStorage();
+	}
+
+	function showPromoMessage(message, type) {
+		if (promoCodeMessage) {
+			promoCodeMessage.textContent = message;
+			promoCodeMessage.className = 'promo-code-message ' + type;
+
+			// Auto-hide success message after 3 seconds
+			if (type === 'success') {
+				setTimeout(() => {
+					promoCodeMessage.textContent = '';
+					promoCodeMessage.className = 'promo-code-message';
+				}, 3000);
+			}
+		}
+	}
+
 	// ===== PRICE CALCULATION =====
 
 	function calculatePrices() {
@@ -480,8 +586,18 @@
 		});
 		bookingData.totals.addons = addonsTotal;
 
+		// Subtotal before promo
+		const subtotal = bookingData.totals.travelers + bookingData.totals.addons;
+
+		// Apply promo discount
+		if (bookingData.promoCode && bookingData.promoDiscount > 0) {
+			bookingData.totals.promoDiscount = Math.round(subtotal * bookingData.promoDiscount);
+		} else {
+			bookingData.totals.promoDiscount = 0;
+		}
+
 		// Grand total
-		bookingData.totals.total = bookingData.totals.travelers + bookingData.totals.addons;
+		bookingData.totals.total = subtotal - bookingData.totals.promoDiscount;
 
 		// Update all price displays
 		updatePriceDisplays(numTravelers);
@@ -525,6 +641,19 @@
 		if (finalTravelers) finalTravelers.textContent = formatPrice(bookingData.totals.travelers);
 		if (finalAddons) finalAddons.textContent = formatPrice(bookingData.totals.addons);
 		if (finalTotal) finalTotal.textContent = formatPrice(bookingData.totals.total);
+
+		// Promo discount display
+		const finalPromoDiscount = document.getElementById('final-promo-discount');
+		if (promoDiscountLine) {
+			if (bookingData.promoCode && bookingData.totals.promoDiscount > 0) {
+				promoDiscountLine.style.display = 'flex';
+				if (finalPromoDiscount) {
+					finalPromoDiscount.textContent = '-' + formatPrice(bookingData.totals.promoDiscount);
+				}
+			} else {
+				promoDiscountLine.style.display = 'none';
+			}
+		}
 	}
 
 	function formatPrice(amount) {
@@ -876,7 +1005,9 @@
 			travelers,
 			addons: bookingData.addons,
 			extraDays: extraDaysSelect?.value || 1,
-			termsAccepted: termsCheckbox?.checked || false
+			termsAccepted: termsCheckbox?.checked || false,
+			promoCode: bookingData.promoCode,
+			promoDiscount: bookingData.promoDiscount
 		};
 
 		try {
@@ -973,6 +1104,18 @@
 			if (data.termsAccepted && termsCheckbox) {
 				termsCheckbox.checked = true;
 				bookingData.termsAccepted = true;
+			}
+
+			// Restore promo code
+			if (data.promoCode && PROMO_CODES[data.promoCode]) {
+				bookingData.promoCode = data.promoCode;
+				bookingData.promoDiscount = data.promoDiscount;
+
+				// Update UI
+				if (appliedCodeText) appliedCodeText.textContent = data.promoCode;
+				if (promoCodeApplied) promoCodeApplied.style.display = 'flex';
+				const inputGroup = document.querySelector('.promo-code-input-group');
+				if (inputGroup) inputGroup.style.display = 'none';
 			}
 
 			// Go to saved step (but not confirmation)

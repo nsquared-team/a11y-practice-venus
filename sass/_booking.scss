@@ -21,6 +21,24 @@ $booking-danger: map.get($setup, 'danger-color');
 	main {
 		padding-bottom: ms(6);
 	}
+
+	// Page Header
+	.page-header {
+		background-color: $booking-primary;
+		color: white;
+		text-align: center;
+		padding: 4rem 2rem;
+
+		h2 {
+			font-size: ms(4);
+			margin-bottom: 0.5rem;
+		}
+
+		p {
+			font-size: ms(1);
+			opacity: 0.9;
+		}
+	}
 }
 
 // Progress Indicator
@@ -710,6 +728,103 @@ $booking-danger: map.get($setup, 'danger-color');
 	justify-content: center;
 	gap: ms(1);
 	flex-wrap: wrap;
+}
+
+// Promo Code Section
+.promo-code-section {
+	background: white;
+	border: 1px solid $booking-bg-light;
+	border-radius: 8px;
+	margin-bottom: ms(2);
+	overflow: hidden;
+
+	.promo-code-header {
+		background: $booking-bg-light;
+		padding: ms(1) ms(2);
+
+		h3 {
+			margin: 0;
+			color: $booking-primary;
+			font-size: ms(1);
+		}
+	}
+
+	.promo-code-content {
+		padding: ms(2);
+	}
+
+	.promo-code-input-group {
+		display: flex;
+		gap: ms(1);
+		margin-bottom: ms(1);
+
+		input {
+			flex: 1;
+			text-transform: uppercase;
+		}
+
+		.button {
+			white-space: nowrap;
+		}
+	}
+
+	.promo-code-message {
+		font-size: ms(-1);
+		min-height: 1.5em;
+
+		&.success {
+			color: $booking-success;
+		}
+
+		&.error {
+			color: $booking-danger;
+		}
+	}
+
+	.promo-code-applied {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		background: rgba($booking-success, 0.1);
+		padding: ms(0);
+		border-radius: 4px;
+		margin-top: ms(1);
+
+		.promo-tag {
+			display: flex;
+			align-items: center;
+			gap: ms(-1);
+			color: $booking-success;
+			font-weight: bold;
+
+			i {
+				font-size: ms(0);
+			}
+
+			button {
+				background: none;
+				border: none;
+				color: $booking-text-muted;
+				cursor: pointer;
+				padding: ms(-2);
+				margin-left: ms(-1);
+
+				&:hover {
+					color: $booking-danger;
+				}
+			}
+		}
+
+		.promo-discount {
+			color: $booking-success;
+			font-weight: bold;
+		}
+	}
+}
+
+// Promo discount line in price summary
+.price-line.promo-discount-line {
+	color: $booking-success;
 }
 
 // Responsive adjustments

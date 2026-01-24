@@ -47,7 +47,9 @@
 			right: 1.5em;
 		}
 	}
-	input[type=text] {
+	input[type=text],
+	input[type=date],
+	input[type=number] {
 		background: map.get( $setup, 'res-color-input-bg' );
 		border: 1px solid transparent;
 		box-sizing: border-box;

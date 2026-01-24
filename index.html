@@ -55,10 +55,9 @@
 						<span class="location">Fortuna Tessera Tour</span>
 					</h2>
 					<p>The jewel of eastern Ishtar Terra, Fortuna Tessera is extremely rugged. Explore the ridges and troughs of this stunning area along with the peaks of the Maxwell Montes to the West.</p>
-					<p>
-						<a href="#" class="button outline-button">See More</a>
-						<button class="button" data-modal-open="learn-more-modal">Learn More</button>
-					</p>
+				<p>
+					<a href="#" class="button outline-button" data-modal-open="learn-more-modal">See More</a>
+				</p>
 				</div>
 			</div>
 
@@ -69,28 +68,25 @@
 		</div>
 
 		<!-- Make a reservation -->
+		<!-- Intentional A11y Issue: Labels removed and replaced with placeholders only -->
 		<div class="reservation" id="reservation-form">
 			<form action="#">
 				<h2>Make a reservation</h2>
 				<div class="form-fields">
 					<div class="field destination">
-						<label for="destination">Destination</label>
-						<input type="text" name="destination" id="destination">
+						<input type="text" name="destination" id="destination" placeholder="Destination">
 						<i class="fas fa-map-marker-alt"></i>
 					</div>
 					<div class="field date-from">
-						<label for="date-from">From</label>
-						<input type="text" name="date-from" id="date-from">
+						<input type="date" name="date-from" id="date-from" placeholder="From Date">
 						<i class="far fa-calendar"></i>
 					</div>
 					<div class="field date-to">
-						<label for="date-to">To</label>
-						<input type="text" name="date-to" id="date-to">
+						<input type="date" name="date-to" id="date-to" placeholder="To Date">
 						<i class="far fa-calendar"></i>
 					</div>
 					<div class="field">
-						<label for="guests">Guests</label>
-						<input type="text" name="guests" id="guests">
+						<input type="number" name="guests" id="guests" placeholder="Number of Guests" min="1">
 						<i class="fas fa-users"></i>
 					</div>
 					<div class="field submit">
@@ -109,9 +105,9 @@
 				<h2>About Us</h2>
 				<p>We are the solar system's first Venus-exclusive travel agency. We have the expertise and experience to make your trip to Venus a safe and fun adventure. There's no one else with our knowledge, our passion, and our love of Venus.</p>
 				<p>Interplanetary travel is no longer reserved only for astronauts! If you want to be one of the first to explore and discover Venus, we're the only agency who can help you book a rocket, make arrangements for accommodations, and stay safe while you have a once-in-a-lifetime experience on another planet.</p>
-				<p>
-					<a href="#" class="button">Learn more <span class="screen-reader-text">about us</span></a>
-				</p>
+			<p class="about-button">
+				<a href="about.html" class="button">Learn more <span class="screen-reader-text">about us</span></a>
+			</p>
 			</div>
 		</div>
 
@@ -139,37 +135,37 @@
 
 			<div class="carousel-wrapper">
 				<div class="carousel-slides">
-					<!-- Slide 1: Maxwell Montes -->
-					<div class="carousel-slide" data-carousel-slide aria-hidden="true">
-						<div class="slide-image">
-							<img src="images/grant-mciver-pmUEwPKL5IE-unsplash-cropped.jpg" alt="Maxwell Montes mountain peaks">
-						</div>
-						<div class="slide-content">
-							<h3>Maxwell Montes</h3>
+				<!-- Slide 1: Maxwell Montes -->
+				<div class="carousel-slide" data-carousel-slide aria-hidden="true">
+					<div class="slide-image">
+						<img src="images/grant-mciver-pmUEwPKL5IE-unsplash-cropped.jpg" alt="Maxwell Montes mountain peaks">
+					</div>
+					<div class="slide-content has-background">
+						<h3 class="slide-heading-large">Maxwell Montes</h3>
 							<p>Stand atop the highest peak on Venus, rising 11 kilometers above the mean planetary radius. Experience the stunning metallic "snow" that covers the summit.</p>
 							<p><a href="destination-detail.html" class="button">Explore Maxwell Montes</a></p>
 						</div>
 					</div>
 
-					<!-- Slide 2: Beta Regio -->
-					<div class="carousel-slide" data-carousel-slide aria-hidden="true">
-						<div class="slide-image">
-							<img src="images/alexis-antonio--2xSlOAySLY-unsplash-cropped.jpg" alt="Beta Regio volcanic landscape">
-						</div>
-						<div class="slide-content">
-							<h3>Beta Regio</h3>
+				<!-- Slide 2: Beta Regio -->
+				<div class="carousel-slide" data-carousel-slide aria-hidden="true">
+					<div class="slide-image">
+						<img src="images/alexis-antonio--2xSlOAySLY-unsplash-cropped.jpg" alt="Beta Regio volcanic landscape">
+					</div>
+					<div class="slide-content has-background">
+						<h3 class="slide-heading-large">Beta Regio</h3>
 							<p>Discover the dramatic volcanic highlands of Beta Regio, home to the massive shield volcano Theia Mons. A must-see for adventure seekers.</p>
 							<p><a href="destination-detail.html?dest=beta-regio" class="button">Explore Beta Regio</a></p>
 						</div>
 					</div>
 
-					<!-- Slide 3: Lakshmi Planum -->
-					<div class="carousel-slide" data-carousel-slide aria-hidden="true">
-						<div class="slide-image">
-							<img src="images/vaibhaw-kumar-3guBQuEqvYM-unsplash-cropped.jpg" alt="Lakshmi Planum plateau">
-						</div>
-						<div class="slide-content">
-							<h3>Lakshmi Planum</h3>
+				<!-- Slide 3: Lakshmi Planum -->
+				<div class="carousel-slide" data-carousel-slide aria-hidden="true">
+					<div class="slide-image">
+						<img src="images/vaibhaw-kumar-3guBQuEqvYM-unsplash-cropped.jpg" alt="Lakshmi Planum plateau">
+					</div>
+					<div class="slide-content has-background">
+						<h3 class="slide-heading-large">Lakshmi Planum</h3>
 							<p>Explore the vast highland plateau of western Ishtar Terra, bordered by the highest mountains on Venus. Perfect for extended expeditions.</p>
 							<p><a href="destination-detail.html?dest=lakshmi-planum" class="button">Explore Lakshmi Planum</a></p>
 						</div>
@@ -399,6 +395,9 @@
 					</div>
 				</div>
 			</div>
+			<div class="all-packages">
+				<a href="packages.html" class="button">See All Packages</a>
+			</div>
 		</div>
 
 		<!-- Special offer -->
@@ -407,11 +406,10 @@
 				<div class="special-offer-content">
 					<h2>Exclusive tour to Phoebe Regio</h2>
 					<p>Phoebe is a Titaness who was the daughter of Uranus and Gaia. She controlled the Oracle at Delphi. Explore this astonishly beautiful area named in her honor with our exclusive offer.</p>
-					<p class="disclaimer">* Some restrictions apply</p>
-					<p>
-						<a href="#" class="button">Book Now</a>
-						<button class="button outline-button" data-modal-open="special-offer-modal">Get Discount</button>
-					</p>
+				<p class="disclaimer">* Some restrictions apply</p>
+				<p>
+					<a href="booking.html" class="button">Book Now</a>
+				</p>
 				</div>
 			</div>
 		</div>
@@ -509,29 +507,6 @@
 		<footer class="modal-footer">
 			<a href="packages.html" class="button">View Packages</a>
 			<button class="button outline-button" data-modal-close>Maybe Later</button>
-		</footer>
-	</div>
-</div>
-
-<!-- Intentionally Inaccessible Modal (for testing purposes) -->
-<!-- A11y Issues: Missing aria-labelledby, no escape key, no focus trap -->
-<div class="modal" id="special-offer-modal" role="dialog" aria-modal="true" data-a11y-issue="no-escape no-focus-trap" hidden>
-	<div class="modal-overlay" data-modal-close></div>
-	<div class="modal-dialog modal-dialog--small">
-		<header class="modal-header">
-			<h2>Limited Time Offer!</h2>
-			<!-- Intentional a11y issue: Low contrast close button -->
-			<button class="modal-close modal-close--low-contrast" data-modal-close>
-				<i class="fas fa-times"></i>
-				<!-- Missing aria-label is intentional for testing -->
-			</button>
-		</header>
-		<div class="modal-body">
-			<p>Book your Venus adventure today and receive <strong>25% off</strong> your first trip!</p>
-			<p>Use code: <strong>VENUS25</strong></p>
-		</div>
-		<footer class="modal-footer">
-			<a href="booking.html" class="button">Book Now</a>
 		</footer>
 	</div>
 </div>

@@ -505,26 +505,54 @@
 						</div>
 					</div>
 
-					<!-- Final Price Summary -->
-					<div class="price-summary">
-						<h3>Final Price</h3>
-						<div class="price-line">
-							<span>Base Package</span>
-							<span id="final-package">$0</span>
+				<!-- Promo Code Section -->
+				<div class="promo-code-section">
+					<div class="promo-code-header">
+						<h3>Have a Promo Code?</h3>
+					</div>
+					<div class="promo-code-content">
+						<div class="promo-code-input-group">
+							<input type="text" id="promo-code-input" class="form-input" placeholder="Enter promo code">
+							<button type="button" id="apply-promo-btn" class="button">Apply</button>
 						</div>
-						<div class="price-line">
-							<span>Travelers (<span id="final-traveler-count">1</span>)</span>
-							<span id="final-travelers">$0</span>
-						</div>
-						<div class="price-line">
-							<span>Add-Ons</span>
-							<span id="final-addons">$0</span>
-						</div>
-						<div class="price-line total">
-							<span>Grand Total</span>
-							<span id="final-total">$0</span>
+						<div class="promo-code-message" id="promo-code-message"></div>
+						<div class="promo-code-applied" id="promo-code-applied" style="display: none;">
+							<span class="promo-tag">
+								<i class="fas fa-tag" aria-hidden="true"></i>
+								<span id="applied-code-text">VENUS25</span>
+								<button type="button" id="remove-promo-btn" aria-label="Remove promo code">
+									<i class="fas fa-times" aria-hidden="true"></i>
+								</button>
+							</span>
+							<span class="promo-discount">-25% off</span>
 						</div>
 					</div>
+				</div>
+
+				<!-- Final Price Summary -->
+				<div class="price-summary">
+					<h3>Final Price</h3>
+					<div class="price-line">
+						<span>Base Package</span>
+						<span id="final-package">$0</span>
+					</div>
+					<div class="price-line">
+						<span>Travelers (<span id="final-traveler-count">1</span>)</span>
+						<span id="final-travelers">$0</span>
+					</div>
+					<div class="price-line">
+						<span>Add-Ons</span>
+						<span id="final-addons">$0</span>
+					</div>
+					<div class="price-line promo-discount-line" id="promo-discount-line" style="display: none;">
+						<span>Promo Discount (25%)</span>
+						<span id="final-promo-discount">-$0</span>
+					</div>
+					<div class="price-line total">
+						<span>Grand Total</span>
+						<span id="final-total">$0</span>
+					</div>
+				</div>
 
 					<!-- Terms & Conditions -->
 					<div class="terms-checkbox">

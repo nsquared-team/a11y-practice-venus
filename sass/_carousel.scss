@@ -161,7 +161,7 @@
 
 		@include bp(m) {
 			flex-direction: row;
-			align-items: center;
+			align-items: stretch;
 		}
 	}
 
@@ -186,14 +186,30 @@
 	.slide-content {
 		flex: 1;
 		padding: ms(2);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 
 		@include bp(m) {
 			padding: ms(4);
 		}
 
+		&.has-background {
+			background-color: rgba(map.get($setup, 'bg-light'), 0.95);
+			border-radius: 8px;
+		}
+
 		h3 {
 			color: map.get($setup, 'heading-color');
 			margin-bottom: ms(2);
+		}
+
+		h3.slide-heading-large {
+			font-size: ms(3);
+
+			@include bp(m) {
+				font-size: ms(4);
+			}
 		}
 
 		p {

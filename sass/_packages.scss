@@ -1,4 +1,551 @@
 @use 'sass:map';
+@use 'sass:color';
+
+// Packages Page Styles
+// ====================
+
+// Local color variables for packages page
+$packages-bg-light: map.get($setup, 'bg-light');
+$packages-text: map.get($setup, 'text-color');
+$packages-text-muted: map.get($setup, 'text-muted');
+$packages-border: map.get($setup, 'border-color');
+$packages-primary: map.get($setup, 'primary-color');
+$packages-accent: map.get($setup, 'accent-color');
+$packages-heading: map.get($setup, 'heading-color');
+
+// Page Header
+.packages-page {
+	.page-header {
+		background-color: $packages-primary;
+		color: white;
+		text-align: center;
+		padding: 4rem 2rem;
+
+		h2 {
+			font-size: ms(4);
+			margin-bottom: 0.5rem;
+		}
+
+		p {
+			font-size: ms(1);
+			opacity: 0.9;
+			margin-bottom: 0;
+		}
+	}
+}
+
+// Packages Sections - shared styles
+.packages-intro,
+.packages-comparison,
+.packages-details,
+.packages-addons,
+.packages-faq,
+.packages-cta {
+	padding: 4rem 1rem;
+
+	h2 {
+		font-size: ms(3);
+		text-align: center;
+		margin-bottom: 0.5rem;
+		color: $packages-text;
+	}
+
+	.section-intro {
+		text-align: center;
+		color: $packages-text-muted;
+		margin-bottom: 2.5rem;
+		font-size: ms(0);
+	}
+}
+
+// Content wrappers
+.packages-intro-wrap,
+.packages-comparison-wrap,
+.packages-details-wrap,
+.packages-addons-wrap,
+.packages-faq-wrap,
+.packages-cta-wrap {
+	max-width: map.get($setup, 'max-width');
+	margin: 0 auto;
+}
+
+// Alternating section backgrounds
+.packages-intro {
+	background-color: $packages-bg-light;
+
+	.intro-text {
+		font-size: ms(1);
+		text-align: center;
+		color: $packages-text-muted;
+		font-style: italic;
+		margin-bottom: 1.5rem;
+	}
+
+	p {
+		text-align: center;
+		max-width: 800px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.packages-comparison {
+	background-color: white;
+}
+
+.packages-details {
+	background-color: $packages-bg-light;
+}
+
+.packages-addons {
+	background-color: white;
+}
+
+.packages-faq {
+	background-color: $packages-bg-light;
+}
+
+.packages-cta {
+	background-color: $packages-primary;
+	color: white;
+	text-align: center;
+
+	h2 {
+		color: white;
+	}
+
+	p {
+		opacity: 0.95;
+		margin-bottom: 2rem;
+	}
+
+	.cta-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+}
+
+// Comparison Table
+// ================
+
+.comparison-table-container {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.comparison-table {
+	width: 100%;
+	border-collapse: collapse;
+	min-width: 700px;
+	background: white;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	border-radius: 8px;
+	overflow: hidden;
+
+	thead {
+		th {
+			background: $packages-bg-light;
+			padding: 1.5rem 1rem;
+			text-align: center;
+			border-bottom: 2px solid $packages-border;
+			vertical-align: bottom;
+
+			&:first-child {
+				width: 20%;
+			}
+		}
+	}
+
+	tbody {
+		th {
+			text-align: left;
+			padding: 1rem;
+			font-weight: 600;
+			color: $packages-text;
+			background: $packages-bg-light;
+			border-right: 1px solid $packages-border;
+		}
+
+		td {
+			padding: 1rem;
+			text-align: center;
+			border-bottom: 1px solid $packages-border;
+			color: $packages-text-muted;
+
+			strong {
+				color: $packages-text;
+				font-size: ms(0);
+			}
+
+			i.fa-check {
+				color: map.get($setup, 'success-color');
+			}
+
+			i.fa-times {
+				color: map.get($setup, 'danger-color');
+			}
+		}
+
+		tr:hover td {
+			background-color: color.adjust($packages-bg-light, $lightness: 2%);
+		}
+
+		tr.cta-row {
+			td {
+				padding: 1.5rem 1rem;
+				border-bottom: none;
+				background: $packages-bg-light;
+			}
+
+			&:hover td {
+				background: $packages-bg-light;
+			}
+		}
+	}
+}
+
+.package-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	position: relative;
+
+	i {
+		color: $packages-primary;
+	}
+
+	.package-name {
+		font-size: ms(1);
+		font-weight: 700;
+		color: $packages-text;
+	}
+
+	.package-tier {
+		font-size: ms(-1);
+		color: $packages-text-muted;
+		font-weight: 400;
+	}
+
+	&.popular {
+		i {
+			color: #e74c3c;
+		}
+	}
+}
+
+.popular-badge {
+	position: absolute;
+	top: -1.5rem;
+	left: 50%;
+	transform: translateX(-50%);
+	background: #e74c3c;
+	color: white;
+	font-size: 0.6875rem;
+	padding: 0.25rem 0.75rem;
+	border-radius: 20px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	white-space: nowrap;
+}
+
+// Package Cards
+// =============
+
+.package-cards {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+
+	@media (min-width: 768px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.package-card {
+	background: white;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+	}
+
+	&.featured {
+		border: 2px solid $packages-primary;
+
+		@media (min-width: 768px) {
+			transform: scale(1.05);
+			z-index: 1;
+
+			&:hover {
+				transform: scale(1.05) translateY(-4px);
+			}
+		}
+	}
+}
+
+.featured-badge {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: $packages-primary;
+	color: white;
+	font-size: 0.75rem;
+	padding: 0.5rem 1rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	border-bottom-left-radius: 8px;
+}
+
+.package-card-header {
+	padding: 2rem;
+	text-align: center;
+	color: white;
+
+	&.mountains {
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	}
+
+	&.volcanoes {
+		background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+	}
+
+	&.plains {
+		background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+	}
+
+	i {
+		margin-bottom: 1rem;
+	}
+
+	h3 {
+		font-size: ms(2);
+		margin: 0 0 0.25rem;
+	}
+
+	.package-tagline {
+		opacity: 0.9;
+		font-size: ms(-1);
+		margin-bottom: 1rem;
+	}
+
+	.package-price {
+		font-size: ms(0);
+		margin: 0;
+
+		strong {
+			font-size: ms(2);
+		}
+	}
+}
+
+.package-card-body {
+	padding: 2rem;
+	flex-grow: 1;
+
+	.package-description {
+		color: $packages-text-muted;
+		line-height: 1.7;
+		margin-bottom: 1.5rem;
+	}
+
+	h4 {
+		font-size: ms(0);
+		color: $packages-text;
+		margin-bottom: 0.75rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 1px solid $packages-border;
+	}
+}
+
+.destination-list,
+.inclusions-list {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 1.5rem;
+
+	li {
+		padding: 0.375rem 0;
+		color: $packages-text-muted;
+		font-size: 0.9375rem;
+		line-height: 1.5;
+
+		i {
+			color: map.get($setup, 'success-color');
+			margin-right: 0.5rem;
+		}
+	}
+}
+
+.package-card-footer {
+	padding: 1.5rem 2rem 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+
+	.button {
+		text-align: center;
+	}
+
+	.outline-button {
+		border-color: $packages-primary;
+		color: $packages-primary;
+
+		&:hover,
+		&:focus {
+			background: $packages-primary;
+			color: white;
+		}
+	}
+}
+
+// Add-ons Grid
+// ============
+
+.addons-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.5rem;
+
+	@media (min-width: 576px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (min-width: 960px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.addon-card {
+	background: $packages-bg-light;
+	border-radius: 8px;
+	padding: 2rem;
+	text-align: center;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		background: white;
+	}
+
+	h3 {
+		font-size: ms(1);
+		margin-bottom: 0.75rem;
+		color: $packages-text;
+	}
+
+	p {
+		color: $packages-text-muted;
+		font-size: 0.9375rem;
+		line-height: 1.6;
+		margin-bottom: 0;
+	}
+}
+
+.addon-icon {
+	margin-bottom: 1rem;
+
+	i {
+		color: $packages-primary;
+	}
+}
+
+.addon-price {
+	font-family: $font-heading;
+	font-size: ms(1);
+	font-weight: 700;
+	color: $packages-primary;
+	margin-top: 1rem !important;
+}
+
+// FAQ Section
+// ===========
+
+.faq-list {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.faq-item {
+	background: white;
+	border-radius: 8px;
+	margin-bottom: 1rem;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+	overflow: hidden;
+}
+
+.faq-question {
+	margin: 0;
+
+	button {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.25rem 1.5rem;
+		background: none;
+		border: none;
+		cursor: pointer;
+		text-align: left;
+		font-family: $font-heading;
+		font-size: ms(0);
+		font-weight: 600;
+		color: $packages-text;
+		transition: background-color 0.2s ease;
+
+		&:hover {
+			background-color: $packages-bg-light;
+		}
+
+		&:focus {
+			outline: 2px solid $packages-primary;
+			outline-offset: -2px;
+		}
+
+		&[aria-expanded="true"] {
+			i {
+				transform: rotate(180deg);
+			}
+		}
+
+		span {
+			flex: 1;
+			padding-right: 1rem;
+		}
+
+		i {
+			color: $packages-primary;
+			transition: transform 0.3s ease;
+			flex-shrink: 0;
+		}
+	}
+}
+
+.faq-answer {
+	padding: 0 1.5rem 1.5rem;
+	color: $packages-text-muted;
+	line-height: 1.7;
+
+	p {
+		margin: 0;
+	}
+}
+
+// ====================================
+// Legacy Homepage Packages Section
+// ====================================
 
 .packages {
 	background: {
@@ -144,6 +691,12 @@
 	}
 }
 
+
+.all-packages {
+	text-align: center;
+	padding: ms(4) 0;
+	margin-top: ms(2);
+}
 
 .fail .packages {
 	h2 {
