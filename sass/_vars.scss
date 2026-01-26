@@ -38,10 +38,10 @@ $setup: (
 	// General Colors
 	'text-color': #333333,
 	'text-muted': #757575,
-	'heading-color': #fdd687,
+	'heading-color': #f0c97a,
 	'link-color': #1289d5,
 	'primary-color': #1289d5,
-	'accent-color': #fdd687,
+	'accent-color': #f0c97a,
 	'bg-light': #f6f6f6,
 	'border-color': #e0e0e0,
 	'success-color': #28a745,
@@ -76,13 +76,13 @@ $setup: (
 	'res-color-input-focus-bg': #ffffff,
 
 	// About
-	'about-color-heading': #fdd687,
+	'about-color-heading': #f0c97a,
 	'about-color-heading-fail': #fec36f,
 	'about-color-text': #757575,
 	'about-color-border': #b1b0b0,
 
 	// Destinations
-	'dest-color-heading': #fdd687,
+	'dest-color-heading': #f0c97a,
 	'dest-color-heading-fail': #fec36f,
 	'dest-color-text': #757575,
 	'dest-color-border': #b1b0b0,
@@ -92,17 +92,17 @@ $setup: (
 	// Packages
 	'packages-color-bg': #f6f6f6,
 	'packages-color-border': #f1f1f1,
-	'packages-color-heading': #fdd687,
+	'packages-color-heading': #f0c97a,
 	'packages-color-heading-fail': #fec36f,
 	'packages-color-heading-text': #757575,
 	'packages-color-package-bg': #f0f0f0,
 	'packages-color-package-border': #c7c7c7,
 	'packages-color-info-bg': white,
-	'packages-color-info-heading-text': #fdd687,
+	'packages-color-info-heading-text': #f0c97a,
 	'packages-color-info-heading-text-fail': #fec36f,
 	'packages-color-info-text': #757575,
 	'packages-color-price-text': #757575,
-	'packages-color-price-link': #A06C03,
+	'packages-color-price-link': #f0c97a,
 	'packages-color-price-link-fail': #f0b662,
 	'packages-color-price-link-hover': $color-brand,
 	'packages-color-destination-title': color.adjust($color-brand, $lightness: -5%),
@@ -126,7 +126,7 @@ $setup: (
 	// Credits
 	'credits-color-bg': #f6f6f6,
 	'credits-color-border': #f1f1f1,
-	'credits-color-heading': #fdd687,
+	'credits-color-heading': #f0c97a,
 	'credits-color-heading-fail': #fec36f,
 	'credits-color-subheading': #7d7d7d,
 	'credits-color-text': #6d6d6d,

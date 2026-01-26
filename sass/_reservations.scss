@@ -64,6 +64,14 @@
 			outline: 0 none;
 		}
 	}
+	// Style the native date picker icon - position on right side of input
+	input[type=date]::-webkit-calendar-picker-indicator {
+		cursor: pointer;
+		position: absolute;
+		right: 1.5em;
+		top: 50%;
+		transform: translateY(-50%);
+	}
 	label {
 		display: block;
 		font-family: $font-heading;
