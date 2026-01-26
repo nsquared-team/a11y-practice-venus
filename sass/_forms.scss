@@ -1,0 +1,396 @@
+@use 'sass:map';
+@use 'sass:color';
+
+/**
+ * Form Styles
+ * ===========
+ * Consolidated form styling used across contact, booking, and other pages
+ */
+
+// Use shared color variables from _components.scss
+// These are defined there to avoid duplication
+
+// ===========================================
+// Base Form Styles
+// ===========================================
+
+.form-group {
+	margin-bottom: 1rem;
+
+	label {
+		display: block;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+		color: map.get($setup, 'text-color');
+
+		.required {
+			color: map.get($setup, 'danger-color');
+		}
+	}
+
+	&.full-width {
+		grid-column: 1 / -1;
+	}
+}
+
+.form-row {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1rem;
+	margin-bottom: 1rem;
+
+	@include bp(s) {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+// ===========================================
+// Form Inputs
+// ===========================================
+
+.form-input,
+.form-select,
+.form-textarea,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+	@include form-input-base();
+}
+
+// Custom select with arrow
+select,
+.form-select {
+	@include select-arrow();
+}
+
+// Textarea specific styles
+textarea,
+.form-textarea {
+	resize: vertical;
+	min-height: 120px;
+}
+
+// ===========================================
+// Form Field Hints & Errors
+// ===========================================
+
+.field-hint {
+	font-size: 0.875rem;
+	color: map.get($setup, 'text-muted');
+	margin-top: 0.5rem;
+}
+
+.error-message {
+	display: block;
+	color: map.get($setup, 'danger-color');
+	font-size: 0.875rem;
+	margin-top: 0.25rem;
+
+	&:empty {
+		display: none;
+	}
+}
+
+// Error state for inputs
+.form-input,
+.form-select,
+.form-textarea {
+	&.error,
+	&.is-invalid,
+	&[aria-invalid="true"] {
+		border-color: map.get($setup, 'danger-color');
+
+		&:focus {
+			box-shadow: 0 0 0 3px rgba(map.get($setup, 'danger-color'), 0.15);
+		}
+	}
+}
+
+// Success state for inputs
+.form-input,
+.form-select,
+.form-textarea {
+	&.success,
+	&.is-valid {
+		border-color: map.get($setup, 'success-color');
+
+		&:focus {
+			box-shadow: 0 0 0 3px rgba(map.get($setup, 'success-color'), 0.15);
+		}
+	}
+}
+
+// ===========================================
+// Checkbox & Radio Styles
+// ===========================================
+
+.checkbox-group,
+.radio-group {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+
+	label {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-weight: normal;
+		cursor: pointer;
+	}
+
+	input[type="checkbox"],
+	input[type="radio"] {
+		width: 20px;
+		height: 20px;
+		flex-shrink: 0;
+	}
+}
+
+// Stacked checkbox/radio layout
+.checkbox-group--stacked,
+.radio-group--stacked {
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+// ===========================================
+// Form Section
+// ===========================================
+// Card-like container for form sections
+
+.form-section {
+	background: white;
+	border: 1px solid map.get($setup, 'bg-light');
+	border-radius: 8px;
+	padding: ms(2);
+	margin-bottom: ms(2);
+
+	h3 {
+		color: map.get($setup, 'primary-color');
+		font-size: ms(1);
+		margin-bottom: ms(1);
+		padding-bottom: ms(-1);
+		border-bottom: 1px solid map.get($setup, 'bg-light');
+	}
+}
+
+// ===========================================
+// Form Actions
+// ===========================================
+
+.form-actions {
+	margin-top: 1.5rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+
+	&--right {
+		justify-content: flex-end;
+	}
+
+	&--center {
+		justify-content: center;
+	}
+
+	&--between {
+		justify-content: space-between;
+	}
+}
+
+// ===========================================
+// Inline Form
+// ===========================================
+// Form with label and input on same line
+
+.form-inline {
+	display: flex;
+	align-items: flex-end;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+
+	.form-group {
+		margin-bottom: 0;
+	}
+
+	input,
+	select {
+		width: auto;
+	}
+}
+
+// ===========================================
+// Filter Controls
+// ===========================================
+// Styles for filter/sort dropdowns (used on destinations, etc.)
+
+.filter-controls {
+	display: flex;
+	flex-wrap: wrap;
+	gap: ms(2);
+}
+
+.filter-group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	min-width: 150px;
+
+	label {
+		font-family: $font-heading;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: map.get($setup, 'text-color');
+	}
+
+	select {
+		padding: 0.75rem 2rem 0.75rem 0.75rem;
+	}
+}
+
+.sort-controls {
+	display: flex;
+	align-items: flex-end;
+	gap: 0.75rem;
+
+	label {
+		font-family: $font-heading;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: map.get($setup, 'text-color');
+		white-space: nowrap;
+		padding-bottom: 0.75rem;
+	}
+
+	select {
+		padding: 0.75rem 2rem 0.75rem 0.75rem;
+	}
+}
+
+// ===========================================
+// Search Input
+// ===========================================
+
+.search-input {
+	position: relative;
+
+	input {
+		padding-left: 2.5rem;
+	}
+
+	i {
+		position: absolute;
+		left: 1rem;
+		top: 50%;
+		transform: translateY(-50%);
+		color: map.get($setup, 'text-muted');
+	}
+}
+
+// ===========================================
+// Input Groups
+// ===========================================
+// Input with attached button or addon
+
+.input-group {
+	display: flex;
+
+	input {
+		flex: 1;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		border-right: 0;
+	}
+
+	.button,
+	button {
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+}
+
+// Input with icon addon
+.input-addon {
+	display: flex;
+	align-items: center;
+
+	.addon {
+		padding: 0.75rem 1rem;
+		background: map.get($setup, 'bg-light');
+		border: 1px solid #ddd;
+		border-right: 0;
+		border-radius: 4px 0 0 4px;
+		color: map.get($setup, 'text-muted');
+	}
+
+	input {
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+}
+
+// ===========================================
+// Range Input
+// ===========================================
+
+input[type="range"] {
+	width: 100%;
+	height: 8px;
+	border-radius: 4px;
+	background: map.get($setup, 'bg-light');
+	appearance: none;
+
+	&::-webkit-slider-thumb {
+		appearance: none;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background: map.get($setup, 'primary-color');
+		cursor: pointer;
+	}
+
+	&::-moz-range-thumb {
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background: map.get($setup, 'primary-color');
+		cursor: pointer;
+		border: none;
+	}
+}
+
+// ===========================================
+// Terms Checkbox
+// ===========================================
+// Special styling for terms & conditions checkbox
+
+.terms-checkbox {
+	display: flex;
+	align-items: flex-start;
+	gap: ms(0);
+	margin: ms(2) 0;
+	padding: ms(1);
+	background: map.get($setup, 'bg-light');
+	border-radius: 8px;
+
+	input[type="checkbox"] {
+		margin-top: 4px;
+		width: 20px;
+		height: 20px;
+		flex-shrink: 0;
+	}
+
+	label {
+		font-size: ms(0);
+		line-height: 1.5;
+		font-weight: normal;
+	}
+
+	a {
+		color: map.get($setup, 'accent-color');
+	}
+}

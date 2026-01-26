@@ -126,44 +126,22 @@
 // Destinations Page Styles
 // =============================================
 
-// Local variable shortcuts for readability
-$_primary: map.get($setup, 'primary-color');
-$_grey-light: map.get($setup, 'bg-light');
-$_grey: map.get($setup, 'text-muted');
-$_grey-dark: map.get($setup, 'text-color');
-$_border: map.get($setup, 'border-color');
-
-// Page Header
-.destinations-page {
-	.page-header {
-		background-color: $_primary;
-		color: #fff;
-		text-align: center;
-		padding: 4rem 2rem;
-
-		h2 {
-			font-size: $h2;
-			margin-bottom: 0.5rem;
-		}
-
-		p {
-			font-size: $h5;
-			opacity: 0.9;
-			margin-bottom: 0;
-		}
-	}
-}
+// Uses shared components from _components.scss:
+// - .page-header (shared page header)
+// - $c-* color variables (shared colors)
+// - Card mixins and section mixins from _mixins.scss
 
 // Filter and Sort Controls
+// Uses shared form styles from _forms.scss for .filter-controls, .filter-group, .sort-controls
+
 .destinations-controls {
-	background-color: $_grey-light;
+	background-color: $c-bg-light;
 	padding: ms(4) 1rem;
-	border-bottom: 1px solid darken($_grey-light, 5%);
+	border-bottom: 1px solid darken($c-bg-light, 5%);
 }
 
 .destinations-controls-wrap {
-	max-width: 1140px;
-	margin: 0 auto;
+	@include content-wrap();
 	display: flex;
 	flex-direction: column;
 	gap: ms(3);
@@ -175,97 +153,15 @@ $_border: map.get($setup, 'border-color');
 	}
 }
 
-.filter-controls {
-	display: flex;
-	flex-wrap: wrap;
-	gap: ms(2);
-
-	h2 {
-		// Screen reader only heading
-	}
-}
-
-.filter-group {
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-	min-width: 150px;
-
-	label {
-		font-family: $font-heading;
-		font-size: 0.875rem;
-		font-weight: 600;
-		color: $_grey-dark;
-	}
-
-	select {
-		padding: 0.75rem 2rem 0.75rem 0.75rem;
-		font-size: 1rem;
-		font-family: inherit;
-		border: 1px solid darken($_grey-light, 15%);
-		border-radius: 4px;
-		background-color: #fff;
-		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-		background-repeat: no-repeat;
-		background-position: right 10px center;
-		appearance: none;
-		cursor: pointer;
-		transition: border-color 200ms, box-shadow 200ms;
-
-		&:focus {
-			outline: none;
-			border-color: $_primary;
-			box-shadow: 0 0 0 3px rgba($_primary, 0.15);
-		}
-	}
-}
-
-.sort-controls {
-	display: flex;
-	align-items: flex-end;
-	gap: 0.75rem;
-
-	label {
-		font-family: $font-heading;
-		font-size: 0.875rem;
-		font-weight: 600;
-		color: $_grey-dark;
-		white-space: nowrap;
-		padding-bottom: 0.75rem;
-	}
-
-	select {
-		padding: 0.75rem 2rem 0.75rem 0.75rem;
-		font-size: 1rem;
-		font-family: inherit;
-		border: 1px solid darken($_grey-light, 15%);
-		border-radius: 4px;
-		background-color: #fff;
-		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-		background-repeat: no-repeat;
-		background-position: right 10px center;
-		appearance: none;
-		cursor: pointer;
-		transition: border-color 200ms, box-shadow 200ms;
-
-		&:focus {
-			outline: none;
-			border-color: $_primary;
-			box-shadow: 0 0 0 3px rgba($_primary, 0.15);
-		}
-	}
-}
-
 // Results Section
 .destinations-results {
 	padding: ms(2) 1rem;
 	background-color: #fff;
-	border-bottom: 1px solid $_grey-light;
+	border-bottom: 1px solid $c-bg-light;
 }
 
 .destinations-results-wrap {
-	max-width: 1140px;
-	margin: 0 auto;
+	@include content-wrap();
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -275,7 +171,7 @@ $_border: map.get($setup, 'border-color');
 
 .results-count {
 	font-size: 0.875rem;
-	color: $_grey;
+	color: $c-text-muted;
 	margin: 0;
 }
 
@@ -288,7 +184,7 @@ $_border: map.get($setup, 'border-color');
 
 .active-filters-label {
 	font-size: 0.875rem;
-	color: $_grey;
+	color: $c-text-muted;
 }
 
 .filter-tags {
@@ -302,7 +198,7 @@ $_border: map.get($setup, 'border-color');
 	align-items: center;
 	gap: 0.5rem;
 	padding: 0.25rem 0.75rem;
-	background-color: $_primary;
+	background-color: $c-primary;
 	color: #fff;
 	font-size: 0.75rem;
 	border-radius: 20px;
@@ -324,14 +220,14 @@ $_border: map.get($setup, 'border-color');
 .clear-filters {
 	background: none;
 	border: none;
-	color: $_primary;
+	color: $c-primary;
 	font-size: 0.875rem;
 	cursor: pointer;
 	text-decoration: underline;
 	padding: 0;
 
 	@include haf() {
-		color: darken($_primary, 10%);
+		color: darken($c-primary, 10%);
 	}
 }
 
@@ -342,40 +238,17 @@ $_border: map.get($setup, 'border-color');
 }
 
 .destinations-grid-wrap {
-	max-width: 1140px;
-	margin: 0 auto;
+	@include content-wrap();
 }
 
 .destinations-grid {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: ms(4);
-
-	@include bp(s) {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
-	@include bp(m) {
-		grid-template-columns: repeat(3, 1fr);
-	}
-
-	@include bp(l) {
-		grid-template-columns: repeat(4, 1fr);
-	}
+	@include responsive-grid(1, 2, 3, 4, ms(4));
 }
 
 // Destination Card
 .destination-card {
-	background: #fff;
-	border-radius: 8px;
-	overflow: hidden;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-	transition: transform 300ms, box-shadow 300ms;
-
-	&:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-	}
+	@include card-base();
+	@include card-hover();
 
 	&[hidden] {
 		display: none;
@@ -434,18 +307,18 @@ $_border: map.get($setup, 'border-color');
 
 .destination-region {
 	font-size: 0.875rem;
-	color: $_grey;
+	color: $c-text-muted;
 	margin-bottom: 0.75rem;
 
 	i {
-		color: $_primary;
+		color: $c-primary;
 		margin-right: 0.25rem;
 	}
 }
 
 .destination-description {
 	font-size: 0.875rem;
-	color: $_grey-dark;
+	color: $c-text;
 	line-height: 1.6;
 	margin-bottom: 1rem;
 }
@@ -458,32 +331,19 @@ $_border: map.get($setup, 'border-color');
 	padding-top: 1rem;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
-	border-top: 1px solid $_grey-light;
+	border-top: 1px solid $c-bg-light;
 }
 
-// Difficulty badges
+// Difficulty badges - extends .badge from _components.scss
 .difficulty {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.35rem;
-	font-family: $font-heading;
-	font-size: 0.75rem;
-	font-weight: 600;
-	padding: 0.25rem 0.5rem;
-	border-radius: 4px;
-
-	i {
-		font-size: 0.75rem;
-	}
+	@extend .badge;
 
 	&.easy {
-		background-color: rgba(#28a745, 0.1);
-		color: #28a745;
+		@extend .badge--success;
 	}
 
 	&.moderate {
-		background-color: rgba(#ffc107, 0.15);
-		color: #856404;
+		@extend .badge--warning;
 	}
 
 	&.challenging {
@@ -492,20 +352,13 @@ $_border: map.get($setup, 'border-color');
 	}
 
 	&.extreme {
-		background-color: rgba(#dc3545, 0.1);
-		color: #dc3545;
+		@extend .badge--danger;
 	}
 }
 
-// Price
+// Price - uses shared .price from _components.scss
 .destination-card .price {
-	font-size: 0.875rem;
-	color: $_grey;
-
-	strong {
-		color: $_primary;
-		font-size: 1rem;
-	}
+	@extend .price;
 }
 
 // Card button
@@ -520,15 +373,15 @@ $_border: map.get($setup, 'border-color');
 .no-results {
 	text-align: center;
 	padding: ms(8) ms(4);
-	color: $_grey;
+	color: $c-text-muted;
 
 	i {
-		color: $_grey-light;
+		color: $c-bg-light;
 		margin-bottom: ms(3);
 	}
 
 	h3 {
-		color: $_grey-dark;
+		color: $c-text;
 		margin-bottom: 0.5rem;
 	}
 
@@ -537,16 +390,13 @@ $_border: map.get($setup, 'border-color');
 	}
 }
 
-// CTA Section
+// CTA Section - uses shared .cta-section from _components.scss
 .destinations-cta {
-	background: linear-gradient(135deg, $_primary, darken($_primary, 15%));
-	padding: ms(8) 1rem;
-	text-align: center;
+	@extend .cta-section;
 }
 
 .destinations-cta-wrap {
-	max-width: 700px;
-	margin: 0 auto;
+	@include content-wrap(700px);
 
 	h2 {
 		color: #fff;
@@ -560,14 +410,9 @@ $_border: map.get($setup, 'border-color');
 	}
 }
 
-.cta-buttons {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 1rem;
-}
+// .cta-buttons defined in _components.scss
 
-// Outline button variant
+// Outline button variant - keep for backwards compatibility
 .button.outline-button {
 	background: transparent;
 	border: 2px solid #fff;
@@ -578,6 +423,6 @@ $_border: map.get($setup, 'border-color');
 
 	@include haf() {
 		background: rgba(#fff, 0.9);
-		color: $_primary;
+		color: $c-primary;
 	}
 }

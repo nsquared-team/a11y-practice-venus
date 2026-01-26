@@ -1,0 +1,420 @@
+@use 'sass:map';
+@use 'sass:color';
+
+/**
+ * Shared Components
+ * =================
+ * Reusable UI components used across multiple pages
+ */
+
+// ===========================================
+// Shared Color Variables
+// ===========================================
+// Instead of redefining these in every file, use these shared variables
+
+$c-bg-light: map.get($setup, 'bg-light');
+$c-text: map.get($setup, 'text-color');
+$c-text-muted: map.get($setup, 'text-muted');
+$c-border: map.get($setup, 'border-color');
+$c-primary: map.get($setup, 'primary-color');
+$c-accent: map.get($setup, 'accent-color');
+$c-heading: map.get($setup, 'heading-color');
+$c-success: map.get($setup, 'success-color');
+$c-danger: map.get($setup, 'danger-color');
+$c-link: map.get($setup, 'link-color');
+
+// ===========================================
+// Page Header Component
+// ===========================================
+// Shared page header styles for internal pages
+
+.page-header {
+	background-color: $c-primary;
+	color: white;
+	text-align: center;
+	padding: 4rem 2rem;
+
+	h2 {
+		font-size: ms(4);
+		margin-bottom: 0.5rem;
+	}
+
+	p {
+		font-size: ms(1);
+		opacity: 0.9;
+		margin-bottom: 0;
+	}
+}
+
+// ===========================================
+// Section Component
+// ===========================================
+// Common section styling with header pattern
+
+.section {
+	@include section-padding();
+	@include section-header();
+}
+
+// Section backgrounds
+.section--light {
+	background-color: $c-bg-light;
+}
+
+.section--white {
+	background-color: white;
+}
+
+.section--primary {
+	background-color: $c-primary;
+	color: white;
+
+	h2 {
+		color: white;
+	}
+}
+
+// ===========================================
+// Content Wrapper Component
+// ===========================================
+// Centered container with max-width
+
+.content-wrap {
+	@include content-wrap();
+}
+
+.content-wrap--narrow {
+	@include content-wrap(800px);
+}
+
+.content-wrap--wide {
+	@include content-wrap(1200px);
+}
+
+// ===========================================
+// Card Component
+// ===========================================
+// Base card styles with modifiers
+
+.card {
+	@include card-base();
+	@include card-hover();
+}
+
+// Card without hover effect
+.card--static {
+	@include card-base();
+}
+
+// Card with border instead of shadow
+.card--bordered {
+	background: white;
+	border: 1px solid $c-border;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+// Card image container
+.card__image {
+	position: relative;
+	overflow: hidden;
+	aspect-ratio: 4 / 3;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.3s ease;
+	}
+
+	.card:hover & img {
+		transform: scale(1.05);
+	}
+}
+
+// Card content area
+.card__content {
+	padding: ms(3);
+}
+
+// Card title
+.card__title {
+	font-size: $h5;
+	margin: 0 0 0.5rem;
+	color: $c-text;
+
+	a {
+		color: $c-link;
+		text-decoration: none;
+
+		@include haf() {
+			text-decoration: underline;
+		}
+	}
+}
+
+// Card meta info
+.card__meta {
+	font-size: 0.875rem;
+	color: $c-text-muted;
+	margin-bottom: 0.75rem;
+
+	i {
+		color: $c-primary;
+		margin-right: 0.25rem;
+	}
+}
+
+// Card description
+.card__description {
+	font-size: 0.875rem;
+	color: $c-text;
+	line-height: 1.6;
+	margin-bottom: 1rem;
+}
+
+// Card footer
+.card__footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 1rem;
+	margin-top: 1rem;
+	border-top: 1px solid $c-bg-light;
+}
+
+// ===========================================
+// Badge Component
+// ===========================================
+// Small labels/tags
+
+.badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	font-family: $font-heading;
+	font-size: 0.75rem;
+	font-weight: 600;
+	padding: 0.25rem 0.5rem;
+	border-radius: 4px;
+
+	i {
+		font-size: 0.75rem;
+	}
+}
+
+.badge--success {
+	background-color: rgba($c-success, 0.1);
+	color: $c-success;
+}
+
+.badge--warning {
+	background-color: rgba(#ffc107, 0.15);
+	color: #856404;
+}
+
+.badge--danger {
+	background-color: rgba($c-danger, 0.1);
+	color: $c-danger;
+}
+
+.badge--primary {
+	background-color: rgba($c-primary, 0.1);
+	color: $c-primary;
+}
+
+// ===========================================
+// Price Component
+// ===========================================
+
+.price {
+	font-size: 0.875rem;
+	color: $c-text-muted;
+
+	strong {
+		color: $c-primary;
+		font-size: 1rem;
+	}
+}
+
+// ===========================================
+// CTA Section Component
+// ===========================================
+// Call-to-action section with gradient background
+
+.cta-section {
+	background: linear-gradient(135deg, $c-primary, color.adjust($c-primary, $lightness: -15%));
+	padding: ms(8) 1rem;
+	text-align: center;
+
+	h2 {
+		color: white;
+		margin-bottom: 1rem;
+	}
+
+	p {
+		color: rgba(white, 0.9);
+		font-size: 1.125rem;
+		margin-bottom: ms(4);
+	}
+}
+
+.cta-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+}
+
+// ===========================================
+// FAQ/Accordion Component
+// ===========================================
+// Shared FAQ styling used on packages and contact pages
+
+.faq-list {
+	@include content-wrap(800px);
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.faq-item {
+	@include card-base();
+	border: 1px solid $c-border;
+	transition: box-shadow 0.2s ease;
+
+	&:hover {
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	}
+}
+
+.faq-question {
+	margin: 0;
+	font-size: 1rem;
+
+	button {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 1.25rem 1.5rem;
+		background: none;
+		border: none;
+		text-align: left;
+		font-size: inherit;
+		font-family: $font-heading;
+		font-weight: 600;
+		color: $c-text;
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+
+		&:hover {
+			background-color: $c-bg-light;
+		}
+
+		&:focus {
+			outline: none;
+			background-color: color.adjust($c-bg-light, $lightness: -3%);
+			box-shadow: inset 0 0 0 2px $c-primary;
+		}
+
+		span {
+			flex: 1;
+			padding-right: 1rem;
+		}
+
+		i {
+			flex-shrink: 0;
+			color: $c-primary;
+			transition: transform 0.3s ease;
+		}
+
+		&[aria-expanded="true"] i {
+			transform: rotate(180deg);
+		}
+	}
+}
+
+.faq-answer {
+	padding: 0 1.5rem 1.5rem;
+	color: $c-text-muted;
+	line-height: 1.7;
+
+	p {
+		margin: 0;
+	}
+
+	&[hidden] {
+		display: none;
+	}
+}
+
+// ===========================================
+// Grid Layout Utilities
+// ===========================================
+
+.grid-2 {
+	@include responsive-grid(1, 2, 2);
+}
+
+.grid-3 {
+	@include responsive-grid(1, 2, 3);
+}
+
+.grid-4 {
+	@include responsive-grid(1, 2, 4);
+}
+
+.grid-6 {
+	@include responsive-grid(2, 3, 6);
+}
+
+// ===========================================
+// Icon Component
+// ===========================================
+// Consistent icon styling
+
+.icon {
+	color: $c-primary;
+}
+
+.icon--large {
+	font-size: ms(3);
+}
+
+.icon--success {
+	color: $c-success;
+}
+
+.icon--muted {
+	color: $c-text-muted;
+}
+
+// ===========================================
+// Intro Text Component
+// ===========================================
+// Italic intro paragraph used in several sections
+
+.intro-text {
+	text-align: center;
+	font-size: ms(1);
+	color: $c-text-muted;
+	font-style: italic;
+	margin-bottom: 2rem;
+}
+
+// ===========================================
+// Alternating Section Backgrounds
+// ===========================================
+// Zebra stripe pattern for sections
+
+%section-bg-alt {
+	&:nth-child(odd) {
+		background-color: $c-bg-light;
+	}
+
+	&:nth-child(even) {
+		background-color: white;
+	}
+}

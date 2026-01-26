@@ -1,20 +1,16 @@
 /**
  * Booking Page Styles
  * Multi-step booking form for Venus tours
+ *
+ * Uses shared components from _components.scss:
+ * - .page-header (shared page header)
+ * - $c-* color variables (shared colors)
+ * - Card mixins and section mixins from _mixins.scss
+ * - Form styles from _forms.scss
  */
 
 @use 'sass:map';
 @use 'sass:color';
-
-// Local color variables for booking page
-$booking-bg-light: map.get($setup, 'bg-light');
-$booking-text: map.get($setup, 'text-color');
-$booking-text-muted: map.get($setup, 'text-muted');
-$booking-border: map.get($setup, 'border-color');
-$booking-primary: map.get($setup, 'primary-color');
-$booking-accent: map.get($setup, 'accent-color');
-$booking-success: map.get($setup, 'success-color');
-$booking-danger: map.get($setup, 'danger-color');
 
 // Booking page layout
 .booking-page {
@@ -22,34 +18,17 @@ $booking-danger: map.get($setup, 'danger-color');
 		padding-bottom: ms(6);
 	}
 
-	// Page Header
-	.page-header {
-		background-color: $booking-primary;
-		color: white;
-		text-align: center;
-		padding: 4rem 2rem;
-
-		h2 {
-			font-size: ms(4);
-			margin-bottom: 0.5rem;
-		}
-
-		p {
-			font-size: ms(1);
-			opacity: 0.9;
-		}
-	}
+	// Page header uses shared .page-header from _components.scss
 }
 
 // Progress Indicator
 .booking-progress {
-	background: $booking-bg-light;
+	background: $c-bg-light;
 	padding: ms(2) 0;
 	margin-bottom: ms(4);
 
 	&-wrap {
-		max-width: 800px;
-		margin: 0 auto;
+		@include content-wrap(800px);
 		padding: 0 ms(1);
 	}
 }
@@ -71,7 +50,7 @@ $booking-danger: map.get($setup, 'danger-color');
 		left: 40px;
 		right: 40px;
 		height: 3px;
-		background: $booking-text-muted;
+		background: $c-text-muted;
 		z-index: 1;
 	}
 }
@@ -89,11 +68,9 @@ $booking-danger: map.get($setup, 'danger-color');
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;
-		background: $booking-text-muted;
+		background: $c-text-muted;
 		color: white;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		@include flex-center();
 		font-weight: bold;
 		font-size: ms(0);
 		margin-bottom: ms(-1);
@@ -102,7 +79,7 @@ $booking-danger: map.get($setup, 'danger-color');
 
 	&-label {
 		font-size: ms(-1);
-		color: $booking-text-muted;
+		color: $c-text-muted;
 		text-align: center;
 		transition: color 0.3s ease;
 	}
@@ -110,10 +87,10 @@ $booking-danger: map.get($setup, 'danger-color');
 	// Active step
 	&.active {
 		.progress-step-number {
-			background: $booking-accent;
+			background: $c-accent;
 		}
 		.progress-step-label {
-			color: $booking-accent;
+			color: $c-accent;
 			font-weight: bold;
 		}
 	}
@@ -121,10 +98,10 @@ $booking-danger: map.get($setup, 'danger-color');
 	// Completed step
 	&.completed {
 		.progress-step-number {
-			background: $booking-success;
+			background: $c-success;
 		}
 		.progress-step-label {
-			color: $booking-success;
+			color: $c-success;
 		}
 	}
 
@@ -133,15 +110,14 @@ $booking-danger: map.get($setup, 'danger-color');
 		cursor: pointer;
 
 		&:hover {
-			background: color.adjust($booking-success, $lightness: -10%);
+			background: color.adjust($c-success, $lightness: -10%);
 		}
 	}
 }
 
 // Booking Form Container
 .booking-form-container {
-	max-width: 900px;
-	margin: 0 auto;
+	@include content-wrap(900px);
 	padding: 0 ms(1);
 }
 
@@ -170,118 +146,54 @@ $booking-danger: map.get($setup, 'danger-color');
 .step-header {
 	margin-bottom: ms(3);
 	padding-bottom: ms(1);
-	border-bottom: 2px solid $booking-bg-light;
+	border-bottom: 2px solid $c-bg-light;
 
 	h2 {
-		color: $booking-primary;
+		color: $c-primary;
 		margin-bottom: ms(-2);
 	}
 
 	p {
-		color: $booking-text-muted;
+		color: $c-text-muted;
 		margin: 0;
 	}
 }
 
-// Form Sections
-.form-section {
-	background: white;
-	border: 1px solid $booking-bg-light;
-	border-radius: 8px;
-	padding: ms(2);
-	margin-bottom: ms(2);
+// Form Sections - uses shared .form-section from _forms.scss
+// Additional booking-specific form styles
 
-	h3 {
-		color: $booking-primary;
-		font-size: ms(1);
-		margin-bottom: ms(1);
-		padding-bottom: ms(-1);
-		border-bottom: 1px solid $booking-bg-light;
-	}
-}
+// Form Groups, Form Inputs, Error Messages - now defined in _forms.scss
+// Booking-specific overrides:
+.booking-page {
+	.form-input,
+	.form-select,
+	.form-textarea {
+		padding: ms(0);
+		font-size: ms(0);
+		border-width: 2px;
+		border-color: $c-bg-light;
 
-// Form Groups
-.form-group {
-	margin-bottom: ms(1);
-
-	label {
-		display: block;
-		font-weight: bold;
-		margin-bottom: ms(-2);
-		color: $booking-text;
+		&:focus {
+			border-color: $c-accent;
+		}
 	}
 
-	// Intentional a11y issue: some labels will be visually hidden but not associated
-	.field-hint {
-		font-size: ms(-1);
-		color: $booking-text-muted;
-		margin-top: ms(-3);
-	}
-}
+	.error-message {
+		display: none;
 
-.form-row {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-	gap: ms(1);
-}
-
-// Form Inputs
-.form-input,
-.form-select,
-.form-textarea {
-	width: 100%;
-	padding: ms(0);
-	font-size: ms(0);
-	border: 2px solid $booking-bg-light;
-	border-radius: 4px;
-	font-family: inherit;
-	transition: border-color 0.2s ease;
-
-	&:focus {
-		outline: none;
-		border-color: $booking-accent;
-	}
-
-	// Error state - intentional a11y issue: color-only indicator
-	&.error {
-		border-color: $booking-danger;
-	}
-}
-
-.form-select {
-	appearance: none;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-	background-repeat: no-repeat;
-	background-position: right 12px center;
-	padding-right: 36px;
-}
-
-.form-textarea {
-	min-height: 100px;
-	resize: vertical;
-}
-
-// Error Messages - intentional a11y issue: not associated with inputs via aria-describedby
-.error-message {
-	color: $booking-danger;
-	font-size: ms(-1);
-	margin-top: ms(-3);
-	display: none;
-
-	&.visible {
-		display: block;
+		&.visible {
+			display: block;
+		}
 	}
 }
 
 // Package Selection Cards
 .package-options {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	gap: ms(1);
+	@include responsive-grid(1, 2, 3, $gap: ms(1));
 }
 
 .package-option {
-	border: 2px solid $booking-bg-light;
+	border: 2px solid $c-bg-light;
 	border-radius: 8px;
 	padding: ms(1);
 	cursor: pointer;
@@ -289,11 +201,11 @@ $booking-danger: map.get($setup, 'danger-color');
 	position: relative;
 
 	&:hover {
-		border-color: $booking-accent;
+		border-color: $c-accent;
 	}
 
 	&.selected {
-		border-color: $booking-accent;
+		border-color: $c-accent;
 		background: rgba(201, 135, 3, 0.05);
 	}
 
@@ -311,20 +223,20 @@ $booking-danger: map.get($setup, 'danger-color');
 
 	.package-icon {
 		font-size: ms(3);
-		color: $booking-primary;
+		color: $c-primary;
 		margin-bottom: ms(0);
 	}
 
 	.package-name {
 		font-size: ms(1);
 		font-weight: bold;
-		color: $booking-primary;
+		color: $c-primary;
 		margin-bottom: ms(-2);
 	}
 
 	.package-tier {
 		font-size: ms(-1);
-		color: $booking-text-muted;
+		color: $c-text-muted;
 		text-transform: uppercase;
 		letter-spacing: 1px;
 		margin-bottom: ms(0);
@@ -332,13 +244,13 @@ $booking-danger: map.get($setup, 'danger-color');
 
 	.package-price {
 		font-size: ms(1);
-		color: $booking-accent;
+		color: $c-accent;
 		font-weight: bold;
 	}
 
 	.package-duration {
 		font-size: ms(-1);
-		color: $booking-text-muted;
+		color: $c-text-muted;
 	}
 }
 
@@ -348,7 +260,7 @@ $booking-danger: map.get($setup, 'danger-color');
 }
 
 .traveler-card {
-	background: $booking-bg-light;
+	background: $c-bg-light;
 	border-radius: 8px;
 	padding: ms(2);
 	margin-bottom: ms(1);
@@ -362,14 +274,14 @@ $booking-danger: map.get($setup, 'danger-color');
 
 		h4 {
 			margin: 0;
-			color: $booking-primary;
+			color: $c-primary;
 		}
 	}
 
 	.remove-traveler {
 		background: none;
 		border: none;
-		color: $booking-danger;
+		color: $c-danger;
 		cursor: pointer;
 		font-size: ms(0);
 		padding: ms(-1);
@@ -385,18 +297,18 @@ $booking-danger: map.get($setup, 'danger-color');
 	align-items: center;
 	gap: ms(-1);
 	background: white;
-	border: 2px dashed $booking-text-muted;
+	border: 2px dashed $c-text-muted;
 	border-radius: 8px;
 	padding: ms(1);
 	width: 100%;
 	cursor: pointer;
 	font-size: ms(0);
-	color: $booking-text-muted;
+	color: $c-text-muted;
 	transition: all 0.2s ease;
 
 	&:hover {
-		border-color: $booking-accent;
-		color: $booking-accent;
+		border-color: $c-accent;
+		color: $c-accent;
 	}
 
 	i {
@@ -404,15 +316,13 @@ $booking-danger: map.get($setup, 'danger-color');
 	}
 }
 
-// Add-ons Grid
-.addons-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-	gap: ms(1);
+// Add-ons Grid - booking page version
+.booking-page .addons-grid {
+	@include responsive-grid(1, 2, 2, $gap: ms(1));
 }
 
 .addon-option {
-	border: 2px solid $booking-bg-light;
+	border: 2px solid $c-bg-light;
 	border-radius: 8px;
 	padding: ms(1);
 	cursor: pointer;
@@ -422,11 +332,11 @@ $booking-danger: map.get($setup, 'danger-color');
 	align-items: flex-start;
 
 	&:hover {
-		border-color: $booking-accent;
+		border-color: $c-accent;
 	}
 
 	&.selected {
-		border-color: $booking-success;
+		border-color: $c-success;
 		background: rgba(40, 167, 69, 0.05);
 	}
 
@@ -442,31 +352,31 @@ $booking-danger: map.get($setup, 'danger-color');
 	}
 
 	.addon-icon {
-		color: $booking-primary;
+		color: $c-primary;
 		font-size: ms(2);
 	}
 
 	.addon-name {
 		font-weight: bold;
-		color: $booking-primary;
+		color: $c-primary;
 		margin-bottom: ms(-2);
 	}
 
 	.addon-description {
 		font-size: ms(-1);
-		color: $booking-text-muted;
+		color: $c-text-muted;
 		margin-bottom: ms(-1);
 	}
 
 	.addon-price {
-		color: $booking-accent;
+		color: $c-accent;
 		font-weight: bold;
 	}
 }
 
 // Price Summary (sidebar/floating)
 .price-summary {
-	background: $booking-primary;
+	background: $c-primary;
 	color: white;
 	border-radius: 8px;
 	padding: ms(2);
@@ -504,13 +414,13 @@ $booking-danger: map.get($setup, 'danger-color');
 // Review Step
 .review-section {
 	background: white;
-	border: 1px solid $booking-bg-light;
+	border: 1px solid $c-bg-light;
 	border-radius: 8px;
 	margin-bottom: ms(2);
 	overflow: hidden;
 
 	.review-header {
-		background: $booking-bg-light;
+		background: $c-bg-light;
 		padding: ms(1) ms(2);
 		display: flex;
 		justify-content: space-between;
@@ -518,13 +428,13 @@ $booking-danger: map.get($setup, 'danger-color');
 
 		h3 {
 			margin: 0;
-			color: $booking-primary;
+			color: $c-primary;
 			font-size: ms(1);
 		}
 
 		// Intentional a11y issue: vague link text
 		.edit-link {
-			color: $booking-accent;
+			color: $c-accent;
 			text-decoration: none;
 			font-size: ms(-1);
 
@@ -541,7 +451,7 @@ $booking-danger: map.get($setup, 'danger-color');
 	.review-row {
 		display: flex;
 		padding: ms(-1) 0;
-		border-bottom: 1px solid $booking-bg-light;
+		border-bottom: 1px solid $c-bg-light;
 
 		&:last-child {
 			border-bottom: none;
@@ -550,7 +460,7 @@ $booking-danger: map.get($setup, 'danger-color');
 		.review-label {
 			font-weight: bold;
 			width: 40%;
-			color: $booking-text-muted;
+			color: $c-text-muted;
 		}
 
 		.review-value {
@@ -559,47 +469,10 @@ $booking-danger: map.get($setup, 'danger-color');
 	}
 }
 
-// Terms Checkbox
-.terms-checkbox {
-	display: flex;
-	align-items: flex-start;
-	gap: ms(0);
-	margin: ms(2) 0;
-	padding: ms(1);
-	background: $booking-bg-light;
-	border-radius: 8px;
+// Terms Checkbox - uses shared styles from _forms.scss
+// Additional booking-specific overrides if needed
 
-	input[type="checkbox"] {
-		margin-top: 4px;
-		width: 20px;
-		height: 20px;
-		flex-shrink: 0;
-	}
-
-	label {
-		font-size: ms(0);
-		line-height: 1.5;
-	}
-
-	a {
-		color: $booking-accent;
-	}
-}
-
-// Checkbox group styling
-.checkbox-group {
-	display: flex;
-	flex-wrap: wrap;
-	gap: ms(0);
-
-	label {
-		display: flex;
-		align-items: center;
-		gap: ms(-2);
-		font-weight: normal;
-		cursor: pointer;
-	}
-}
+// Checkbox group styling - uses shared styles from _forms.scss
 
 // Navigation Buttons
 .step-navigation {
@@ -607,12 +480,12 @@ $booking-danger: map.get($setup, 'danger-color');
 	justify-content: space-between;
 	align-items: center;
 	padding-top: ms(2);
-	border-top: 1px solid $booking-bg-light;
+	border-top: 1px solid $c-bg-light;
 	margin-top: ms(2);
 
 	.btn-prev {
-		background: $booking-bg-light;
-		color: $booking-text;
+		background: $c-bg-light;
+		color: $c-text;
 		border: none;
 		padding: ms(0) ms(2);
 		font-size: ms(0);
@@ -623,7 +496,7 @@ $booking-danger: map.get($setup, 'danger-color');
 		gap: ms(-1);
 
 		&:hover {
-			background: color.adjust($booking-bg-light, $lightness: -5%);
+			background: color.adjust($c-bg-light, $lightness: -5%);
 		}
 
 		&:disabled {
@@ -634,7 +507,7 @@ $booking-danger: map.get($setup, 'danger-color');
 
 	.btn-next,
 	.btn-submit {
-		background: $booking-accent;
+		background: $c-accent;
 		color: white;
 		border: none;
 		padding: ms(0) ms(2);
@@ -646,7 +519,7 @@ $booking-danger: map.get($setup, 'danger-color');
 		gap: ms(-1);
 
 		&:hover {
-			background: color.adjust($booking-accent, $lightness: -10%);
+			background: color.adjust($c-accent, $lightness: -10%);
 		}
 
 		&:disabled {
@@ -663,17 +536,17 @@ $booking-danger: map.get($setup, 'danger-color');
 
 	.confirmation-icon {
 		font-size: ms(6);
-		color: $booking-success;
+		color: $c-success;
 		margin-bottom: ms(2);
 	}
 
 	h2 {
-		color: $booking-primary;
+		color: $c-primary;
 		margin-bottom: ms(1);
 	}
 
 	.booking-reference {
-		background: $booking-bg-light;
+		background: $c-bg-light;
 		display: inline-block;
 		padding: ms(1) ms(2);
 		border-radius: 8px;
@@ -681,34 +554,34 @@ $booking-danger: map.get($setup, 'danger-color');
 
 		.reference-label {
 			font-size: ms(-1);
-			color: $booking-text-muted;
+			color: $c-text-muted;
 			display: block;
 		}
 
 		.reference-number {
 			font-size: ms(2);
 			font-weight: bold;
-			color: $booking-primary;
+			color: $c-primary;
 			font-family: monospace;
 		}
 	}
 }
 
 .confirmation-details {
-	max-width: 600px;
-	margin: ms(3) auto;
+	@include content-wrap(600px);
+	margin-top: ms(3);
 	text-align: left;
 }
 
 .next-steps {
-	background: $booking-bg-light;
+	background: $c-bg-light;
 	border-radius: 8px;
 	padding: ms(2);
 	margin-top: ms(3);
 	text-align: left;
 
 	h3 {
-		color: $booking-primary;
+		color: $c-primary;
 		margin-bottom: ms(1);
 	}
 
@@ -733,18 +606,18 @@ $booking-danger: map.get($setup, 'danger-color');
 // Promo Code Section
 .promo-code-section {
 	background: white;
-	border: 1px solid $booking-bg-light;
+	border: 1px solid $c-bg-light;
 	border-radius: 8px;
 	margin-bottom: ms(2);
 	overflow: hidden;
 
 	.promo-code-header {
-		background: $booking-bg-light;
+		background: $c-bg-light;
 		padding: ms(1) ms(2);
 
 		h3 {
 			margin: 0;
-			color: $booking-primary;
+			color: $c-primary;
 			font-size: ms(1);
 		}
 	}
@@ -773,11 +646,11 @@ $booking-danger: map.get($setup, 'danger-color');
 		min-height: 1.5em;
 
 		&.success {
-			color: $booking-success;
+			color: $c-success;
 		}
 
 		&.error {
-			color: $booking-danger;
+			color: $c-danger;
 		}
 	}
 
@@ -785,7 +658,7 @@ $booking-danger: map.get($setup, 'danger-color');
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		background: rgba($booking-success, 0.1);
+		background: rgba($c-success, 0.1);
 		padding: ms(0);
 		border-radius: 4px;
 		margin-top: ms(1);
@@ -794,7 +667,7 @@ $booking-danger: map.get($setup, 'danger-color');
 			display: flex;
 			align-items: center;
 			gap: ms(-1);
-			color: $booking-success;
+			color: $c-success;
 			font-weight: bold;
 
 			i {
@@ -804,19 +677,19 @@ $booking-danger: map.get($setup, 'danger-color');
 			button {
 				background: none;
 				border: none;
-				color: $booking-text-muted;
+				color: $c-text-muted;
 				cursor: pointer;
 				padding: ms(-2);
 				margin-left: ms(-1);
 
 				&:hover {
-					color: $booking-danger;
+					color: $c-danger;
 				}
 			}
 		}
 
 		.promo-discount {
-			color: $booking-success;
+			color: $c-success;
 			font-weight: bold;
 		}
 	}
@@ -824,7 +697,7 @@ $booking-danger: map.get($setup, 'danger-color');
 
 // Promo discount line in price summary
 .price-line.promo-discount-line {
-	color: $booking-success;
+	color: $c-success;
 }
 
 // Responsive adjustments

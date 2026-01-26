@@ -3,63 +3,24 @@
 
 // About Page Styles
 // ==================
+// Uses shared components from _components.scss:
+// - .page-header (shared page header)
+// - $c-* color variables (shared colors)
+// - Card mixins and section mixins from _mixins.scss
 
-// Local color variables for about page
-$about-bg-light: map.get($setup, 'bg-light');
-$about-text: map.get($setup, 'text-color');
-$about-text-muted: map.get($setup, 'text-muted');
-$about-border: map.get($setup, 'border-color');
-$about-primary: map.get($setup, 'primary-color');
-$about-accent: map.get($setup, 'accent-color');
-$about-heading: map.get($setup, 'heading-color');
-
-// Page Header
-.about-page {
-	.page-header {
-		background-color: $about-primary;
-		color: white;
-		text-align: center;
-		padding: 4rem 2rem;
-
-		h2 {
-			font-size: ms(4);
-			margin-bottom: 0.5rem;
-		}
-
-		p {
-			font-size: ms(1);
-			opacity: 0.9;
-		}
-	}
-}
-
-// About Sections - shared styles
+// About Sections - extends shared section styles
 .about-section {
-	padding: 4rem 1rem;
-
-	h2 {
-		font-size: ms(3);
-		text-align: center;
-		margin-bottom: 0.5rem;
-		color: $about-text;
-	}
-
-	.section-intro {
-		text-align: center;
-		color: $about-text-muted;
-		margin-bottom: 2.5rem;
-		font-size: ms(0);
-	}
+	@include section-padding();
+	@include section-header();
 }
 
 .about-content-wrap {
-	max-width: 1000px;
-	margin: 0 auto;
+	@include content-wrap(1000px);
 }
 
-// Alternating section backgrounds
+// Alternating section backgrounds - using shared color variables
 .about-story {
-	background-color: $about-bg-light;
+	background-color: $c-bg-light;
 }
 
 .about-mission {
@@ -67,7 +28,7 @@ $about-heading: map.get($setup, 'heading-color');
 }
 
 .about-team {
-	background-color: $about-bg-light;
+	background-color: $c-bg-light;
 }
 
 .about-safety {
@@ -75,7 +36,7 @@ $about-heading: map.get($setup, 'heading-color');
 }
 
 .about-stats {
-	background-color: $about-primary;
+	background-color: $c-primary;
 	color: white;
 
 	h2 {
@@ -84,19 +45,16 @@ $about-heading: map.get($setup, 'heading-color');
 }
 
 .about-partners {
-	background-color: $about-bg-light;
+	background-color: $c-bg-light;
 }
 
 // Our Story Section - Timeline
 // ============================
 
 .about-story {
+	// Uses shared .intro-text class from _components.scss
 	.intro-text {
-		text-align: center;
-		font-size: ms(1);
-		color: $about-text-muted;
 		margin-bottom: 3rem;
-		font-style: italic;
 	}
 }
 
@@ -104,7 +62,7 @@ $about-heading: map.get($setup, 'heading-color');
 	position: relative;
 	padding-left: 2rem;
 
-	@media (min-width: 768px) {
+	@include bp(m) {
 		padding-left: 0;
 	}
 
@@ -116,9 +74,9 @@ $about-heading: map.get($setup, 'heading-color');
 		top: 0;
 		bottom: 0;
 		width: 3px;
-		background: $about-primary;
+		background: $c-primary;
 
-		@media (min-width: 768px) {
+		@include bp(m) {
 			left: 50%;
 			transform: translateX(-50%);
 		}
@@ -132,7 +90,7 @@ $about-heading: map.get($setup, 'heading-color');
 	flex-direction: column;
 	gap: 0.5rem;
 
-	@media (min-width: 768px) {
+	@include bp(m) {
 		flex-direction: row;
 		align-items: flex-start;
 		gap: 2rem;
@@ -158,13 +116,13 @@ $about-heading: map.get($setup, 'heading-color');
 		top: 0.5rem;
 		width: 12px;
 		height: 12px;
-		background: $about-primary;
+		background: $c-primary;
 		border-radius: 50%;
 		border: 3px solid white;
-		box-shadow: 0 0 0 3px $about-primary;
+		box-shadow: 0 0 0 3px $c-primary;
 		transform: translateX(-50%);
 
-		@media (min-width: 768px) {
+		@include bp(m) {
 			left: 50%;
 		}
 	}
@@ -174,34 +132,32 @@ $about-heading: map.get($setup, 'heading-color');
 	font-family: $font-heading;
 	font-size: ms(2);
 	font-weight: 700;
-	color: $about-primary;
+	color: $c-primary;
 	flex-shrink: 0;
 
-	@media (min-width: 768px) {
+	@include bp(m) {
 		width: calc(50% - 2rem);
 		text-align: right;
 	}
 }
 
 .timeline-content {
-	background: white;
+	@include card-base();
 	padding: 1.5rem;
-	border-radius: 8px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
-	@media (min-width: 768px) {
+	@include bp(m) {
 		width: calc(50% - 2rem);
 	}
 
 	h3 {
 		font-size: ms(1);
 		margin-bottom: 0.5rem;
-		color: $about-text;
+		color: $c-text;
 	}
 
 	p {
 		margin: 0;
-		color: $about-text-muted;
+		color: $c-text-muted;
 		line-height: 1.7;
 	}
 }
@@ -218,15 +174,15 @@ $about-heading: map.get($setup, 'heading-color');
 .mission-statement {
 	text-align: center;
 	padding: 2rem;
-	background: $about-bg-light;
+	background: $c-bg-light;
 	border-radius: 8px;
-	border-left: 4px solid $about-primary;
+	border-left: 4px solid $c-primary;
 }
 
 .mission-quote {
 	font-size: ms(2);
 	font-style: italic;
-	color: $about-text;
+	color: $c-text;
 	line-height: 1.6;
 	margin: 0;
 }
@@ -236,51 +192,36 @@ $about-heading: map.get($setup, 'heading-color');
 		text-align: center;
 		font-size: ms(2);
 		margin-bottom: 2rem;
-		color: $about-text;
+		color: $c-text;
 	}
 }
 
 .values-grid {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 1.5rem;
-
-	@media (min-width: 576px) {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
-	@media (min-width: 960px) {
-		grid-template-columns: repeat(4, 1fr);
-	}
+	@include responsive-grid(1, 2, 4);
 }
 
 .value-item {
 	text-align: center;
 	padding: 2rem 1.5rem;
-	background: $about-bg-light;
+	background: $c-bg-light;
 	border-radius: 8px;
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-	&:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-	}
+	@include card-hover();
 
 	i {
-		color: $about-primary;
+		color: $c-primary;
 		margin-bottom: 1rem;
 	}
 
 	h4 {
 		font-size: ms(1);
 		margin-bottom: 0.5rem;
-		color: $about-text;
+		color: $c-text;
 	}
 
 	p {
 		margin: 0;
 		font-size: 0.9375rem;
-		color: $about-text-muted;
+		color: $c-text-muted;
 		line-height: 1.6;
 	}
 }
@@ -289,36 +230,18 @@ $about-heading: map.get($setup, 'heading-color');
 // ============
 
 .team-grid {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 2rem;
-
-	@media (min-width: 576px) {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
-	@media (min-width: 960px) {
-		grid-template-columns: repeat(4, 1fr);
-	}
+	@include responsive-grid(1, 2, 4, $gap: 2rem);
 }
 
 .team-member {
-	background: white;
-	border-radius: 8px;
-	overflow: hidden;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	@include card-base();
+	@include card-hover();
 	text-align: center;
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-	&:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-	}
 
 	h3 {
 		font-size: ms(1);
 		margin: 0 0 0.25rem;
-		color: $about-text;
+		color: $c-text;
 	}
 }
 
@@ -339,7 +262,7 @@ $about-heading: map.get($setup, 'heading-color');
 }
 
 .team-title {
-	color: $about-primary;
+	color: $c-primary;
 	font-weight: 600;
 	font-size: 0.9375rem;
 	margin-bottom: 0.75rem;
@@ -348,7 +271,7 @@ $about-heading: map.get($setup, 'heading-color');
 .team-bio {
 	padding: 0 1.25rem 1.5rem;
 	font-size: 0.875rem;
-	color: $about-text-muted;
+	color: $c-text-muted;
 	line-height: 1.6;
 }
 
@@ -369,20 +292,20 @@ $about-heading: map.get($setup, 'heading-color');
 	grid-template-columns: 1fr;
 	gap: 2rem;
 
-	@media (min-width: 768px) {
+	@include bp(m) {
 		grid-template-columns: 2fr 1fr;
 	}
 }
 
 .safety-protocols {
-	background: $about-bg-light;
+	background: $c-bg-light;
 	padding: 2rem;
 	border-radius: 8px;
 
 	h3 {
 		font-size: ms(1);
 		margin-bottom: 1.5rem;
-		color: $about-text;
+		color: $c-text;
 	}
 }
 
@@ -400,24 +323,24 @@ $about-heading: map.get($setup, 'heading-color');
 		gap: 1rem;
 
 		i {
-			color: map.get($setup, 'success-color');
+			color: $c-success;
 			flex-shrink: 0;
 			margin-top: 0.25rem;
 		}
 
 		span {
 			line-height: 1.6;
-			color: $about-text-muted;
+			color: $c-text-muted;
 
 			strong {
-				color: $about-text;
+				color: $c-text;
 			}
 		}
 	}
 }
 
 .safety-certifications {
-	background: $about-primary;
+	background: $c-primary;
 	color: white;
 	padding: 2rem;
 	border-radius: 8px;
@@ -456,17 +379,7 @@ $about-heading: map.get($setup, 'heading-color');
 // ==================
 
 .stats-grid {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 2rem;
-
-	@media (min-width: 576px) {
-		grid-template-columns: repeat(3, 1fr);
-	}
-
-	@media (min-width: 960px) {
-		grid-template-columns: repeat(6, 1fr);
-	}
+	@include responsive-grid(2, 3, 6, $gap: 2rem);
 }
 
 .stat-item {
@@ -479,7 +392,7 @@ $about-heading: map.get($setup, 'heading-color');
 	font-weight: 700;
 	margin-bottom: 0.5rem;
 
-	@media (min-width: 768px) {
+	@include bp(m) {
 		font-size: ms(4);
 	}
 }
@@ -495,36 +408,19 @@ $about-heading: map.get($setup, 'heading-color');
 // ================
 
 .partners-grid {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 1.5rem;
-
-	@media (min-width: 576px) {
-		grid-template-columns: repeat(3, 1fr);
-	}
-
-	@media (min-width: 960px) {
-		grid-template-columns: repeat(6, 1fr);
-	}
+	@include responsive-grid(2, 3, 6);
 }
 
 .partner-item {
-	background: white;
+	@include card-base($shadow: 0 2px 8px rgba(0, 0, 0, 0.06));
+	@include card-hover($shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.1));
 	padding: 1.5rem 1rem;
-	border-radius: 8px;
 	text-align: center;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-	&:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-	}
 
 	span {
 		display: block;
 		font-size: 0.8125rem;
-		color: $about-text;
+		color: $c-text;
 		font-weight: 600;
 		line-height: 1.4;
 	}
@@ -534,7 +430,7 @@ $about-heading: map.get($setup, 'heading-color');
 	margin-bottom: 0.75rem;
 
 	i {
-		color: $about-primary;
+		color: $c-primary;
 	}
 }
 

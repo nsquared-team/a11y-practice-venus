@@ -3,81 +3,39 @@
 
 // Packages Page Styles
 // ====================
+// Uses shared components from _components.scss:
+// - .page-header (shared page header)
+// - $c-* color variables (shared colors)
+// - Card mixins and section mixins from _mixins.scss
+// - FAQ component styles from _components.scss
 
-// Local color variables for packages page
-$packages-bg-light: map.get($setup, 'bg-light');
-$packages-text: map.get($setup, 'text-color');
-$packages-text-muted: map.get($setup, 'text-muted');
-$packages-border: map.get($setup, 'border-color');
-$packages-primary: map.get($setup, 'primary-color');
-$packages-accent: map.get($setup, 'accent-color');
-$packages-heading: map.get($setup, 'heading-color');
-
-// Page Header
-.packages-page {
-	.page-header {
-		background-color: $packages-primary;
-		color: white;
-		text-align: center;
-		padding: 4rem 2rem;
-
-		h2 {
-			font-size: ms(4);
-			margin-bottom: 0.5rem;
-		}
-
-		p {
-			font-size: ms(1);
-			opacity: 0.9;
-			margin-bottom: 0;
-		}
-	}
-}
-
-// Packages Sections - shared styles
+// Packages Sections - using shared section styles
 .packages-intro,
 .packages-comparison,
 .packages-details,
 .packages-addons,
 .packages-faq,
 .packages-cta {
-	padding: 4rem 1rem;
-
-	h2 {
-		font-size: ms(3);
-		text-align: center;
-		margin-bottom: 0.5rem;
-		color: $packages-text;
-	}
-
-	.section-intro {
-		text-align: center;
-		color: $packages-text-muted;
-		margin-bottom: 2.5rem;
-		font-size: ms(0);
-	}
+	@include section-padding();
+	@include section-header();
 }
 
-// Content wrappers
+// Content wrappers - using shared content-wrap mixin
 .packages-intro-wrap,
 .packages-comparison-wrap,
 .packages-details-wrap,
 .packages-addons-wrap,
 .packages-faq-wrap,
 .packages-cta-wrap {
-	max-width: map.get($setup, 'max-width');
-	margin: 0 auto;
+	@include content-wrap();
 }
 
-// Alternating section backgrounds
+// Alternating section backgrounds - using shared color variables
 .packages-intro {
-	background-color: $packages-bg-light;
+	background-color: $c-bg-light;
 
+	// Uses shared .intro-text from _components.scss
 	.intro-text {
-		font-size: ms(1);
-		text-align: center;
-		color: $packages-text-muted;
-		font-style: italic;
 		margin-bottom: 1.5rem;
 	}
 
@@ -94,7 +52,7 @@ $packages-heading: map.get($setup, 'heading-color');
 }
 
 .packages-details {
-	background-color: $packages-bg-light;
+	background-color: $c-bg-light;
 }
 
 .packages-addons {
@@ -102,11 +60,11 @@ $packages-heading: map.get($setup, 'heading-color');
 }
 
 .packages-faq {
-	background-color: $packages-bg-light;
+	background-color: $c-bg-light;
 }
 
 .packages-cta {
-	background-color: $packages-primary;
+	background-color: $c-primary;
 	color: white;
 	text-align: center;
 
@@ -119,12 +77,7 @@ $packages-heading: map.get($setup, 'heading-color');
 		margin-bottom: 2rem;
 	}
 
-	.cta-buttons {
-		display: flex;
-		gap: 1rem;
-		justify-content: center;
-		flex-wrap: wrap;
-	}
+	// Uses shared .cta-buttons from _components.scss
 }
 
 // Comparison Table
@@ -146,10 +99,10 @@ $packages-heading: map.get($setup, 'heading-color');
 
 	thead {
 		th {
-			background: $packages-bg-light;
+			background: $c-bg-light;
 			padding: 1.5rem 1rem;
 			text-align: center;
-			border-bottom: 2px solid $packages-border;
+			border-bottom: 2px solid $c-border;
 			vertical-align: bottom;
 
 			&:first-child {
@@ -163,44 +116,44 @@ $packages-heading: map.get($setup, 'heading-color');
 			text-align: left;
 			padding: 1rem;
 			font-weight: 600;
-			color: $packages-text;
-			background: $packages-bg-light;
-			border-right: 1px solid $packages-border;
+			color: $c-text;
+			background: $c-bg-light;
+			border-right: 1px solid $c-border;
 		}
 
 		td {
 			padding: 1rem;
 			text-align: center;
-			border-bottom: 1px solid $packages-border;
-			color: $packages-text-muted;
+			border-bottom: 1px solid $c-border;
+			color: $c-text-muted;
 
 			strong {
-				color: $packages-text;
+				color: $c-text;
 				font-size: ms(0);
 			}
 
 			i.fa-check {
-				color: map.get($setup, 'success-color');
+				color: $c-success;
 			}
 
 			i.fa-times {
-				color: map.get($setup, 'danger-color');
+				color: $c-danger;
 			}
 		}
 
 		tr:hover td {
-			background-color: color.adjust($packages-bg-light, $lightness: 2%);
+			background-color: color.adjust($c-bg-light, $lightness: 2%);
 		}
 
 		tr.cta-row {
 			td {
 				padding: 1.5rem 1rem;
 				border-bottom: none;
-				background: $packages-bg-light;
+				background: $c-bg-light;
 			}
 
 			&:hover td {
-				background: $packages-bg-light;
+				background: $c-bg-light;
 			}
 		}
 	}
@@ -214,18 +167,18 @@ $packages-heading: map.get($setup, 'heading-color');
 	position: relative;
 
 	i {
-		color: $packages-primary;
+		color: $c-primary;
 	}
 
 	.package-name {
 		font-size: ms(1);
 		font-weight: 700;
-		color: $packages-text;
+		color: $c-text;
 	}
 
 	.package-tier {
 		font-size: ms(-1);
-		color: $packages-text-muted;
+		color: $c-text-muted;
 		font-weight: 400;
 	}
 
@@ -256,34 +209,24 @@ $packages-heading: map.get($setup, 'heading-color');
 // =============
 
 .package-cards {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 2rem;
+	@include responsive-grid(1, 1, 3, $gap: 2rem);
 
-	@media (min-width: 768px) {
+	@include bp(m) {
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
 
 .package-card {
-	background: white;
-	border-radius: 8px;
-	overflow: hidden;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	@include card-base();
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-	&:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-	}
+	@include card-hover();
 
 	&.featured {
-		border: 2px solid $packages-primary;
+		border: 2px solid $c-primary;
 
-		@media (min-width: 768px) {
+		@include bp(m) {
 			transform: scale(1.05);
 			z-index: 1;
 
@@ -298,7 +241,7 @@ $packages-heading: map.get($setup, 'heading-color');
 	position: absolute;
 	top: 0;
 	right: 0;
-	background: $packages-primary;
+	background: $c-primary;
 	color: white;
 	font-size: 0.75rem;
 	padding: 0.5rem 1rem;
@@ -355,17 +298,17 @@ $packages-heading: map.get($setup, 'heading-color');
 	flex-grow: 1;
 
 	.package-description {
-		color: $packages-text-muted;
+		color: $c-text-muted;
 		line-height: 1.7;
 		margin-bottom: 1.5rem;
 	}
 
 	h4 {
 		font-size: ms(0);
-		color: $packages-text;
+		color: $c-text;
 		margin-bottom: 0.75rem;
 		padding-bottom: 0.5rem;
-		border-bottom: 1px solid $packages-border;
+		border-bottom: 1px solid $c-border;
 	}
 }
 
@@ -377,12 +320,12 @@ $packages-heading: map.get($setup, 'heading-color');
 
 	li {
 		padding: 0.375rem 0;
-		color: $packages-text-muted;
+		color: $c-text-muted;
 		font-size: 0.9375rem;
 		line-height: 1.5;
 
 		i {
-			color: map.get($setup, 'success-color');
+			color: $c-success;
 			margin-right: 0.5rem;
 		}
 	}
@@ -399,12 +342,12 @@ $packages-heading: map.get($setup, 'heading-color');
 	}
 
 	.outline-button {
-		border-color: $packages-primary;
-		color: $packages-primary;
+		border-color: $c-primary;
+		color: $c-primary;
 
 		&:hover,
 		&:focus {
-			background: $packages-primary;
+			background: $c-primary;
 			color: white;
 		}
 	}
@@ -414,40 +357,28 @@ $packages-heading: map.get($setup, 'heading-color');
 // ============
 
 .addons-grid {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 1.5rem;
-
-	@media (min-width: 576px) {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
-	@media (min-width: 960px) {
-		grid-template-columns: repeat(3, 1fr);
-	}
+	@include responsive-grid(1, 2, 3);
 }
 
 .addon-card {
-	background: $packages-bg-light;
+	background: $c-bg-light;
 	border-radius: 8px;
 	padding: 2rem;
 	text-align: center;
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	@include card-hover($shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.1));
 
 	&:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 		background: white;
 	}
 
 	h3 {
 		font-size: ms(1);
 		margin-bottom: 0.75rem;
-		color: $packages-text;
+		color: $c-text;
 	}
 
 	p {
-		color: $packages-text-muted;
+		color: $c-text-muted;
 		font-size: 0.9375rem;
 		line-height: 1.6;
 		margin-bottom: 0;
@@ -458,7 +389,7 @@ $packages-heading: map.get($setup, 'heading-color');
 	margin-bottom: 1rem;
 
 	i {
-		color: $packages-primary;
+		color: $c-primary;
 	}
 }
 
@@ -466,82 +397,13 @@ $packages-heading: map.get($setup, 'heading-color');
 	font-family: $font-heading;
 	font-size: ms(1);
 	font-weight: 700;
-	color: $packages-primary;
+	color: $c-primary;
 	margin-top: 1rem !important;
 }
 
-// FAQ Section
-// ===========
-
-.faq-list {
-	max-width: 800px;
-	margin: 0 auto;
-}
-
-.faq-item {
-	background: white;
-	border-radius: 8px;
-	margin-bottom: 1rem;
-	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-	overflow: hidden;
-}
-
-.faq-question {
-	margin: 0;
-
-	button {
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 1.25rem 1.5rem;
-		background: none;
-		border: none;
-		cursor: pointer;
-		text-align: left;
-		font-family: $font-heading;
-		font-size: ms(0);
-		font-weight: 600;
-		color: $packages-text;
-		transition: background-color 0.2s ease;
-
-		&:hover {
-			background-color: $packages-bg-light;
-		}
-
-		&:focus {
-			outline: 2px solid $packages-primary;
-			outline-offset: -2px;
-		}
-
-		&[aria-expanded="true"] {
-			i {
-				transform: rotate(180deg);
-			}
-		}
-
-		span {
-			flex: 1;
-			padding-right: 1rem;
-		}
-
-		i {
-			color: $packages-primary;
-			transition: transform 0.3s ease;
-			flex-shrink: 0;
-		}
-	}
-}
-
-.faq-answer {
-	padding: 0 1.5rem 1.5rem;
-	color: $packages-text-muted;
-	line-height: 1.7;
-
-	p {
-		margin: 0;
-	}
-}
+// FAQ Section - uses shared FAQ styles from _components.scss
+// The .faq-list, .faq-item, .faq-question, .faq-answer classes
+// are now defined in _components.scss for reuse across pages
 
 // ====================================
 // Legacy Homepage Packages Section
