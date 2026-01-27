@@ -77,7 +77,82 @@
 		});
 	}
 
+	/**
+	 * Scroll Animations
+	 * Uses IntersectionObserver to trigger animations when elements enter viewport
+	 */
+	var initScrollAnimations = function () {
+		// Check for IntersectionObserver support
+		if (!('IntersectionObserver' in window)) {
+			// Fallback: just show all elements
+			var elements = document.querySelectorAll('.scroll-animate, .scroll-animate--left, .scroll-animate--right, .scroll-animate--scale, .scroll-animate-stagger');
+			elements.forEach(function (el) {
+				el.classList.add('is-visible');
+			});
+			return;
+		}
+
+		// Configuration for the observer
+		var observerOptions = {
+			root: null, // viewport
+			rootMargin: '0px 0px -50px 0px', // trigger slightly before element is fully visible
+			threshold: 0.1 // trigger when 10% of element is visible
+		};
+
+		// Callback function when elements intersect
+		var observerCallback = function (entries, observer) {
+			entries.forEach(function (entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('is-visible');
+					// Once animated, stop observing (animation only plays once)
+					observer.unobserve(entry.target);
+				}
+			});
+		};
+
+		// Create the observer
+		var observer = new IntersectionObserver(observerCallback, observerOptions);
+
+		// Select all elements with scroll animation classes
+		var animatedElements = document.querySelectorAll(
+			'.scroll-animate, .scroll-animate--left, .scroll-animate--right, .scroll-animate--scale, .scroll-animate-stagger'
+		);
+
+		// Observe each element
+		animatedElements.forEach(function (el) {
+			observer.observe(el);
+		});
+	};
+
+	/**
+	 * Page Load Animations
+	 * Adds animation classes to key page elements on load
+	 */
+	var initPageLoadAnimations = function () {
+		// Animate hero content on page load
+		var heroContent = document.querySelector('.hero-text');
+		if (heroContent) {
+			heroContent.classList.add('animate-fade-in-up');
+		}
+
+		// Animate page headers
+		var pageHeader = document.querySelector('.page-header');
+		if (pageHeader) {
+			pageHeader.classList.add('animate-fade-in');
+		}
+	};
+
+	//
+	// Inits & Event Listeners
+	//
+
 	// Initialize accordion
 	initAccordion();
+
+	// Initialize scroll animations
+	initScrollAnimations();
+
+	// Initialize page load animations
+	initPageLoadAnimations();
 
 })();

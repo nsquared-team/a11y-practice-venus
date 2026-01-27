@@ -227,6 +227,7 @@ textarea,
 // Filter Controls
 // ===========================================
 // Styles for filter/sort dropdowns (used on destinations, etc.)
+// Styled to match the reservation form on index.html
 
 .filter-controls {
 	display: flex;
@@ -242,13 +243,27 @@ textarea,
 
 	label {
 		font-family: $font-heading;
-		font-size: 0.875rem;
-		font-weight: 600;
+		font-size: ms(-1);
+		font-style: italic;
 		color: map.get($setup, 'text-color');
+		padding: 0 0 ms(-1) 0;
 	}
 
 	select {
-		padding: 0.75rem 2rem 0.75rem 0.75rem;
+		background: map.get($setup, 'res-color-input-bg');
+		border: 1px solid transparent;
+		box-sizing: border-box;
+		font-family: inherit;
+		font-size: ms(-1);
+		padding: ms(-1) 2em ms(-1) ms(-1);
+		transition: all 500ms;
+		width: 100%;
+
+		&:focus {
+			background: map.get($setup, 'res-color-input-focus-bg');
+			border-color: map.get($setup, 'res-color-text');
+			outline: 0 none;
+		}
 	}
 }
 
@@ -259,15 +274,27 @@ textarea,
 
 	label {
 		font-family: $font-heading;
-		font-size: 0.875rem;
-		font-weight: 600;
+		font-size: ms(-1);
+		font-style: italic;
 		color: map.get($setup, 'text-color');
 		white-space: nowrap;
-		padding-bottom: 0.75rem;
+		padding: 0 0 ms(-1) 0;
 	}
 
 	select {
-		padding: 0.75rem 2rem 0.75rem 0.75rem;
+		background: map.get($setup, 'res-color-input-bg');
+		border: 1px solid transparent;
+		box-sizing: border-box;
+		font-family: inherit;
+		font-size: ms(-1);
+		padding: ms(-1) 2em ms(-1) ms(-1);
+		transition: all 500ms;
+
+		&:focus {
+			background: map.get($setup, 'res-color-input-focus-bg');
+			border-color: map.get($setup, 'res-color-text');
+			outline: 0 none;
+		}
 	}
 }
 
