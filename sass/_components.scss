@@ -29,19 +29,20 @@ $c-link: map.get($setup, 'link-color');
 // Shared page header styles for internal pages
 
 .page-header {
-	background-color: $c-primary;
-	color: white;
-	text-align: center;
+	background-color: white;
+	text-align: left;
 	padding: 4rem 2rem;
+	@include content-wrap();
 
 	h2 {
 		font-size: ms(4);
 		margin-bottom: 0.5rem;
+		color: $c-heading;
 	}
 
 	p {
 		font-size: ms(1);
-		opacity: 0.9;
+		color: $c-text-muted;
 		margin-bottom: 0;
 	}
 }
