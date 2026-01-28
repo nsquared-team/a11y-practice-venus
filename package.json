@@ -13,9 +13,6 @@
     "type": "git",
     "url": "https://github.com/nsquared-team/a11y-practice-venus.git"
   },
-  "dependencies": {
-    "modularscale-sass": "^3.0.10"
-  },
   "devDependencies": {
     "sass": "^1.69.0"
   }

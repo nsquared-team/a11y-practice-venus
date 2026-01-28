@@ -1,0 +1,153 @@
+// Custom Modular Scale Function
+// Replaces the deprecated modularscale-sass library with modern Sass syntax
+// Implements dual-base interleaved scale matching original configuration
+
+@use 'sass:math';
+@use 'sass:list';
+
+// Configuration - matches the original $modularscale settings
+// base: 1rem 0.875rem, ratio: 1.5
+$-ms-base-1: 1rem;
+$-ms-base-2: 0.875rem;
+$-ms-ratio: 1.5;
+
+// Number of steps to generate in each direction for the merged scale
+$-ms-range: 16;
+
+/// Generate a list of scale values for a single base
+/// @param {Number} $base - The base value
+/// @param {Number} $ratio - The ratio
+/// @param {Number} $range - How many steps in each direction
+/// @return {List} List of scale values
+@function -ms-generate-scale($base, $ratio, $range) {
+  $scale: ();
+
+  // Generate negative steps
+  @for $i from $range through 1 {
+    $value: math.div($base, math.pow($ratio, $i));
+    $scale: list.append($scale, $value);
+  }
+
+  // Add the base value (step 0)
+  $scale: list.append($scale, $base);
+
+  // Generate positive steps
+  @for $i from 1 through $range {
+    $value: $base * math.pow($ratio, $i);
+    $scale: list.append($scale, $value);
+  }
+
+  @return $scale;
+}
+
+/// Sort a list of numbers (simple insertion sort)
+/// @param {List} $list - List of numbers to sort
+/// @return {List} Sorted list
+@function -ms-sort($list) {
+  $sorted: ();
+
+  @each $item in $list {
+    @if list.length($sorted) == 0 {
+      $sorted: list.append($sorted, $item);
+    } @else {
+      $inserted: false;
+      $new-sorted: ();
+
+      @each $sorted-item in $sorted {
+        @if not $inserted and $item < $sorted-item {
+          $new-sorted: list.append($new-sorted, $item);
+          $inserted: true;
+        }
+        $new-sorted: list.append($new-sorted, $sorted-item);
+      }
+
+      @if not $inserted {
+        $new-sorted: list.append($new-sorted, $item);
+      }
+
+      $sorted: $new-sorted;
+    }
+  }
+
+  @return $sorted;
+}
+
+/// Remove duplicate values from a sorted list (within a small tolerance)
+/// @param {List} $list - Sorted list
+/// @return {List} List with duplicates removed
+@function -ms-unique($list) {
+  $result: ();
+  $prev: null;
+
+  @each $item in $list {
+    @if $prev == null or math.abs($item - $prev) > 0.001 {
+      $result: list.append($result, $item);
+      $prev: $item;
+    }
+  }
+
+  @return $result;
+}
+
+/// Find the index of the primary base in the merged scale
+/// @param {List} $scale - The merged, sorted scale
+/// @param {Number} $base - The primary base to find
+/// @return {Number} The index (1-based)
+@function -ms-find-base-index($scale, $base) {
+  $index: 1;
+
+  @each $item in $scale {
+    @if math.abs($item - $base) < 0.001 {
+      @return $index;
+    }
+    $index: $index + 1;
+  }
+
+  @return 1; // Fallback
+}
+
+/// Build the complete merged scale from both bases
+/// This is cached/computed once
+/// @return {List} The merged, sorted, unique scale
+@function -ms-build-scale() {
+  $scale-1: -ms-generate-scale($-ms-base-1, $-ms-ratio, $-ms-range);
+  $scale-2: -ms-generate-scale($-ms-base-2, $-ms-ratio, $-ms-range);
+
+  // Merge the two scales
+  $merged: list.join($scale-1, $scale-2);
+
+  // Sort the merged scale
+  $sorted: -ms-sort($merged);
+
+  // Remove duplicates
+  $unique: -ms-unique($sorted);
+
+  @return $unique;
+}
+
+// Pre-compute the scale and base index
+$-ms-scale: -ms-build-scale();
+$-ms-base-index: -ms-find-base-index($-ms-scale, $-ms-base-1);
+
+/// Calculate a value on the modular scale
+/// @param {Number} $n - The step on the scale (can be negative)
+/// @return {Number} The calculated value in rem
+@function ms($n) {
+  $index: $-ms-base-index + $n;
+
+  // Clamp to valid range
+  @if $index < 1 {
+    $index: 1;
+  }
+  @if $index > list.length($-ms-scale) {
+    $index: list.length($-ms-scale);
+  }
+
+  $value: list.nth($-ms-scale, $index);
+
+  // Return with rem unit
+  @if math.is-unitless($value) {
+    @return $value * 1rem;
+  }
+  @return $value;
+}

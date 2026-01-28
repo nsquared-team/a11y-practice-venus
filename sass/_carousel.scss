@@ -1,3 +1,5 @@
+@use 'shared' as *;
+
 // Carousel Component Styles
 @use 'sass:map';
 
@@ -313,5 +315,5 @@
 
 // Live region for carousel announcements
 .carousel-live-region {
-	@extend .screen-reader-text;
+	@include visually-hidden();
 }

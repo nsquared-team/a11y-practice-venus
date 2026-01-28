@@ -2,7 +2,7 @@
 ## Development Plan & Progress Tracker
 
 **Started:** January 2026
-**Status:** Phase 5 Not Started
+**Status:** Phase 5 In Progress
 
 ---
 
@@ -13,6 +13,7 @@ This document tracks the development progress of the Discover Venus accessibilit
 **Related Documents:**
 - [PROJECT-REQUIREMENTS.md](./PROJECT-REQUIREMENTS.md) - Full project specifications
 - [IMAGE-CHECKLIST.md](./IMAGE-CHECKLIST.md) - Image requirements and tracking
+- [ACCESSIBILITY-TESTING-GUIDE.md](./ACCESSIBILITY-TESTING-GUIDE.md) - Testing guide with issue locations
 
 ---
 
@@ -267,12 +268,40 @@ This phase addresses the deprecation warnings in the SASS codebase to ensure com
 
 ---
 
-### Phase 5: Accessibility Issues Implementation 🔲 Not Started
+### Phase 5: Accessibility Issues Implementation � In Progress
 
-- [ ] Introduce documented intentional accessibility issues
-- [ ] Create testing guide with issue locations
-- [ ] Build admin toggle for enabling/disabling issues
+- [x] Build admin toggle for enabling/disabling issues
+- [x] Introduce documented intentional accessibility issues
+- [x] Create testing guide with issue locations
 - [ ] Validate issues are detectable with common testing tools
+
+#### Admin Toggle System (Jan 2026)
+**Files Created/Updated:**
+- `js/a11y-toggle.js` - Admin toggle system with localStorage persistence
+- `sass/_a11y-issues.scss` - Accessibility issue styles
+- `sass/style.scss` - Added import for _a11y-issues.scss
+- All HTML pages - Added skip link and a11y-toggle.js script
+
+**Features:**
+- Admin panel accessed via URL param `?a11y-admin=true` or keyboard shortcut `Ctrl+Shift+A`
+- Toggle button to enable/disable accessibility issues site-wide
+- localStorage persistence for toggle state
+- Custom event `a11y:toggle` dispatched for other scripts to respond
+- Visual notification when issues are toggled
+- Exposed as `window.A11yToggle` API
+
+**Skip Link Implementation:**
+- All pages have a skip link with `class="skip-link a11y-broken"`
+- When issues are enabled, skip link points to `#non-existent-main` (broken)
+- When issues are disabled, skip link works correctly
+
+**CSS-Based Issues (when enabled via body[data-a11y-issues-enabled="true"]):**
+- Low contrast text
+- No focus visible (removes focus outlines)
+- Broken skip link positioning
+- Small touch targets
+- Custom checkbox without proper styling
+- Color-only error indicators
 
 ---
 

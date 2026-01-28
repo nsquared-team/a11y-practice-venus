@@ -1,29 +1,47 @@
-@import '../node_modules/modularscale-sass/stylesheets/modularscale';
+// Modern Sass Module System
+// Using @use instead of deprecated @import
 
-@import 'vars';
-@import 'mixins';
-@import 'animations';
+// Load built-in modules first
+@use 'sass:color';
+@use 'sass:map';
+@use 'sass:math';
 
-@import 'reset';
+// Load our custom modular scale (replaces modularscale-sass)
+@use 'modularscale' as *;
 
-@import 'a11y';
+// Load variables and mixins with namespace flattening for convenience
+@use 'vars' as *;
+@use 'mixins' as *;
+@use 'animations' as *;
 
-@import 'elements';
-@import 'components';
-@import 'forms';
-@import 'classes';
-@import 'header';
-@import 'hero';
-@import 'reservations';
-@import 'about';
-@import 'destinations';
-@import 'packages';
-@import 'special-offer';
-@import 'newsletter';
-@import 'credits';
-@import 'destination-detail';
-@import 'booking';
-@import 'contact';
-@import 'modal';
-@import 'carousel';
-@import 'footer';
+// Reset and base styles
+@use 'reset';
+
+// Accessibility utilities
+@use 'a11y';
+
+// Core styles
+@use 'elements';
+@use 'components';
+@use 'forms';
+@use 'classes';
+
+// Layout components
+@use 'header';
+@use 'hero';
+@use 'reservations';
+@use 'about';
+@use 'destinations';
+@use 'packages';
+@use 'special-offer';
+@use 'newsletter';
+@use 'credits';
+@use 'destination-detail';
+@use 'booking';
+@use 'contact';
+@use 'modal';
+@use 'carousel';
+@use 'footer';
+
+// Accessibility issues (for testing purposes)
+@use 'a11y-issues';

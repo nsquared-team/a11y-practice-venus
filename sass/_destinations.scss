@@ -1,4 +1,6 @@
+@use 'shared' as *;
 @use 'sass:map';
+@use 'sass:color';
 
 // =============================================
 // Homepage Destinations Section (existing)
@@ -137,7 +139,7 @@
 .destinations-controls {
 	background-color: $c-bg-light;
 	padding: ms(4) 1rem;
-	border-bottom: 1px solid darken($c-bg-light, 5%);
+	border-bottom: 1px solid color.adjust($c-bg-light, $lightness: -5%);
 }
 
 .destinations-controls-wrap {
@@ -227,7 +229,7 @@
 	padding: 0;
 
 	@include haf() {
-		color: darken($c-primary, 10%);
+		color: color.adjust($c-primary, $lightness: -10%);
 	}
 }
 
@@ -339,16 +341,29 @@
 	border-top: 1px solid $c-bg-light;
 }
 
-// Difficulty badges - extends .badge from _components.scss
+// Difficulty badges - inline styles (avoiding cross-module @extend issues)
 .difficulty {
-	@extend .badge;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	font-family: $font-heading;
+	font-size: 0.75rem;
+	font-weight: 600;
+	padding: 0.25rem 0.5rem;
+	border-radius: 4px;
+
+	i {
+		font-size: 0.75rem;
+	}
 
 	&.easy {
-		@extend .badge--success;
+		background-color: rgba($c-success, 0.1);
+		color: $c-success;
 	}
 
 	&.moderate {
-		@extend .badge--warning;
+		background-color: rgba(#ffc107, 0.15);
+		color: #856404;
 	}
 
 	&.challenging {
@@ -357,13 +372,20 @@
 	}
 
 	&.extreme {
-		@extend .badge--danger;
+		background-color: rgba($c-danger, 0.1);
+		color: $c-danger;
 	}
 }
 
-// Price - uses shared .price from _components.scss
+// Price - inline styles (avoiding cross-module @extend issues)
 .destination-card .price {
-	@extend .price;
+	font-size: 0.875rem;
+	color: $c-text-muted;
+
+	strong {
+		color: $c-primary;
+		font-size: 1rem;
+	}
 }
 
 // Card button

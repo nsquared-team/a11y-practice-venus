@@ -1,5 +1,8 @@
 @use 'sass:math';
 @use 'sass:map';
+@use 'sass:list';
+@use 'modularscale' as *;
+@use 'vars' as *;
 
 /**
  * Breakpoints
@@ -65,17 +68,17 @@ $gutter: 1.875rem;
 
 	@each $state in $states {
 		@if 'f' == $state {
-			$selectors: append( $selectors, '&:focus', comma );
+			$selectors: list.append( $selectors, '&:focus', comma );
 		} @else if 'a' == $state {
-			$selectors: append( $selectors, '&:active', comma );
+			$selectors: list.append( $selectors, '&:active', comma );
 		} @else if 'l' == $state {
-			$selectors: append( $selectors, '&:link', comma );
+			$selectors: list.append( $selectors, '&:link', comma );
 		} @else if 'v' == $state {
-			$selectors: append( $selectors, '&:visited', comma );
+			$selectors: list.append( $selectors, '&:visited', comma );
 		} @else if '&' == $state {
-			$selectors: append( $selectors, '&', comma );
+			$selectors: list.append( $selectors, '&', comma );
 		} @else {
-			$selectors: append( $selectors, '&:hover', comma );
+			$selectors: list.append( $selectors, '&:hover', comma );
 		}
 	}
 

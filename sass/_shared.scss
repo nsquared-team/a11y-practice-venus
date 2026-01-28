@@ -1,0 +1,6 @@
+// Shared module - forwards all common dependencies
+// Each partial should @use this file to get access to vars, mixins, and functions
+
+@forward 'modularscale';
+@forward 'vars';
+@forward 'mixins';

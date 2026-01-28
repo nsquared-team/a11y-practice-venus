@@ -1,14 +1,11 @@
 @use 'sass:color';
-
-$modularscale: (
-  base: 1rem 0.875rem,
-  ratio: 1.5
-);
+@use 'sass:map';
+@use 'modularscale' as *;
 
 $font-heading: 'Lato', 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 $font-body: 'Merriweather', Georgia, Times, 'Times New Roman', serif;
 
-$font-size: ms(0); // 16px;
+$font-size: ms(0); // 16px
 $h6: ms(0);
 $h5: ms(1);
 $h4: ms(2);
@@ -141,3 +138,19 @@ $setup: (
 	'footer-color-link-fail': color.mix(white, #3f3e3e, 25%),
 	'footer-color-link-hover': white,
 );
+
+// ===========================================
+// Shared Color Convenience Variables
+// ===========================================
+// These are shortcuts for commonly used colors from $setup
+
+$c-bg-light: map.get($setup, 'bg-light');
+$c-text: map.get($setup, 'text-color');
+$c-text-muted: map.get($setup, 'text-muted');
+$c-border: map.get($setup, 'border-color');
+$c-primary: map.get($setup, 'primary-color');
+$c-accent: map.get($setup, 'accent-color');
+$c-heading: map.get($setup, 'heading-color');
+$c-success: map.get($setup, 'success-color');
+$c-danger: map.get($setup, 'danger-color');
+$c-link: map.get($setup, 'link-color');
