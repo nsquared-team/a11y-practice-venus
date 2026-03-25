@@ -137,19 +137,50 @@
 			border-radius: 0 4px 4px 0;
 		}
 
+		.wcag3-disclosure {
+			margin-top: 1rem;
+		}
+
+		.wcag3-disclosure summary {
+			background: #e8f4fd;
+			border-left: 4px solid #2B8AC7;
+			padding: 0.85rem 1.25rem;
+			border-radius: 0 4px 4px 0;
+			font-size: 0.95rem;
+			font-weight: 600;
+			color: #1a1a2e;
+			cursor: pointer;
+			list-style: none;
+		}
+
+		.wcag3-disclosure summary::-webkit-details-marker {
+			display: none;
+		}
+
+		.wcag3-disclosure summary::before {
+			content: "\25B6\00a0\00a0";
+			font-size: 0.7rem;
+			vertical-align: middle;
+		}
+
+		.wcag3-disclosure[open] summary::before {
+			content: "\25BC\00a0\00a0";
+		}
+
+		.wcag3-disclosure[open] summary {
+			border-radius: 0 4px 0 0;
+		}
+
 		.wcag3-compare {
 			background: #e8f4fd;
 			border-left: 4px solid #2B8AC7;
 			padding: 1.25rem;
-			margin-top: 1rem;
 			font-size: 0.9rem;
-			border-radius: 0 4px 4px 0;
+			border-radius: 0 0 4px 0;
 		}
 
 		.wcag3-compare h3 {
-			font-size: 0.95rem;
-			margin-bottom: 0.5rem;
-			color: #1a1a2e;
+			display: none;
 		}
 
 		.wcag3-compare p {
@@ -215,7 +246,7 @@
 			This is our brand color. Most designers and clients prefer white text on medium blues like this, but WCAG AA requires 4.5:1 for normal text. You either need to darken the blue or switch to black text.
 		</div>
 
-		<div class="wcag3-compare">
+		<details class="wcag3-disclosure"><summary>How WCAG 3 (APCA) Sees This Differently</summary><div class="wcag3-compare">
 			<h3>How WCAG 3 (APCA) Sees This Differently</h3>
 			<table class="compare-table">
 				<tr>
@@ -242,6 +273,7 @@
 			</table>
 			<p>This is one of APCA's most dramatic differences. WCAG 2 treats contrast as symmetric &mdash; it doesn't care whether the light color is the text or the background. APCA accounts for <strong>polarity</strong>: light text on a dark background is actually easier to read than dark text on a light background at the same luminance difference. So white-on-blue scores <em>higher</em> than black-on-blue in APCA, completely flipping the WCAG 2 result.</p>
 		</div>
+		</details>
 	</div>
 </div>
 
@@ -277,7 +309,7 @@
 			Orange sits in a luminance range where it's too light for white text but feels visually &ldquo;wrong&rdquo; with black text. This is one of the most common complaints about WCAG contrast rules. To use white text, you'd need to go so dark it barely reads as orange anymore.
 		</div>
 
-		<div class="wcag3-compare">
+		<details class="wcag3-disclosure"><summary>How WCAG 3 (APCA) Sees This Differently</summary><div class="wcag3-compare">
 			<h3>How WCAG 3 (APCA) Sees This Differently</h3>
 			<table class="compare-table">
 				<tr>
@@ -304,6 +336,7 @@
 			</table>
 			<p>Orange is where APCA offers the most relief. WCAG 2's symmetric formula heavily penalizes orange with white because orange has high relative luminance. APCA recognizes that white text on a medium-tone background is more readable than the simple ratio suggests. While white-on-orange still doesn't pass for small body text in APCA, it clears the bar for larger or bolder text &mdash; something WCAG 2 doesn't allow until 18pt/24px.</p>
 		</div>
+		</details>
 	</div>
 </div>
 
@@ -339,7 +372,7 @@
 			#767676 is the accessibility community's most famous hex code. It represents the exact tipping point where gray meets the AA threshold against white. It's a useful benchmark when choosing gray tones for placeholder text, icons, or secondary content.
 		</div>
 
-		<div class="wcag3-compare">
+		<details class="wcag3-disclosure"><summary>How WCAG 3 (APCA) Sees This Differently</summary><div class="wcag3-compare">
 			<h3>How WCAG 3 (APCA) Sees This Differently</h3>
 			<table class="compare-table">
 				<tr>
@@ -366,6 +399,7 @@
 			</table>
 			<p>In WCAG 2, these two combinations have the <em>exact same ratio</em> because the formula is symmetric. APCA breaks that symmetry. Dark text on a light background needs a <em>higher</em> Lc value to pass than light text on a dark background at the same font size, because our eyes process the two polarities differently. So the famous #767676 actually <strong>fails</strong> APCA for regular body text on white &mdash; you'd need closer to <code>#5e5e5e</code> (Lc 75) for comfortable 16px reading. The &ldquo;magic gray&rdquo; loses its magic under the new algorithm.</p>
 		</div>
+		</details>
 	</div>
 </div>
 
@@ -435,7 +469,7 @@
 			Green has very high luminance, which means white text almost never works on it at any saturation. To pass with white text, you'd need something like <code>#1B7A3D</code> &mdash; which most people wouldn't call &ldquo;green&rdquo; anymore. This is arguably the single most frustrating color in WCAG compliance.
 		</div>
 
-		<div class="wcag3-compare">
+		<details class="wcag3-disclosure"><summary>How WCAG 3 (APCA) Sees This Differently</summary><div class="wcag3-compare">
 			<h3>How WCAG 3 (APCA) Sees This Differently</h3>
 			<table class="compare-table">
 				<tr>
@@ -469,6 +503,7 @@
 			</table>
 			<p>Green is the one color where APCA largely <strong>agrees</strong> with WCAG 2. Green's high luminance genuinely does make white text hard to read. APCA actually makes it <em>slightly harder</em> to pass because it accounts for the fact that our eyes are most sensitive to green light, so a green background produces more visual &ldquo;noise&rdquo; against white text than you'd expect from luminance alone. Green remains the toughest color for accessible white text in both standards.</p>
 		</div>
+		</details>
 	</div>
 </div>
 
