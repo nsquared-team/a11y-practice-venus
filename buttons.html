@@ -137,6 +137,48 @@
 			border-radius: 0 4px 4px 0;
 		}
 
+		.wcag3-compare {
+			background: #e8f4fd;
+			border-left: 4px solid #2B8AC7;
+			padding: 1.25rem;
+			margin-top: 1rem;
+			font-size: 0.9rem;
+			border-radius: 0 4px 4px 0;
+		}
+
+		.wcag3-compare h3 {
+			font-size: 0.95rem;
+			margin-bottom: 0.5rem;
+			color: #1a1a2e;
+		}
+
+		.wcag3-compare p {
+			margin-bottom: 0.5rem;
+		}
+
+		.wcag3-compare p:last-child {
+			margin-bottom: 0;
+		}
+
+		.wcag3-compare .compare-table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 0.75rem 0;
+			font-size: 0.85rem;
+		}
+
+		.wcag3-compare .compare-table th,
+		.wcag3-compare .compare-table td {
+			text-align: left;
+			padding: 0.4rem 0.75rem;
+			border-bottom: 1px solid #c8dfe9;
+		}
+
+		.wcag3-compare .compare-table th {
+			font-weight: 600;
+			color: #1a1a2e;
+		}
+
 		footer {
 			text-align: center;
 			padding: 2rem 1rem;
@@ -172,6 +214,34 @@
 		<div class="note">
 			This is our brand color. Most designers and clients prefer white text on medium blues like this, but WCAG AA requires 4.5:1 for normal text. You either need to darken the blue or switch to black text.
 		</div>
+
+		<div class="wcag3-compare">
+			<h3>How WCAG 3 (APCA) Sees This Differently</h3>
+			<table class="compare-table">
+				<tr>
+					<th>Combination</th>
+					<th>WCAG 2 Ratio</th>
+					<th>APCA (Lc)</th>
+					<th>WCAG 2</th>
+					<th>WCAG 3</th>
+				</tr>
+				<tr>
+					<td>White on #2B8AC7</td>
+					<td>4.22:1</td>
+					<td>Lc 62</td>
+					<td><span class="fail">Fails AA</span></td>
+					<td><span class="pass">Passes for 16px bold</span></td>
+				</tr>
+				<tr>
+					<td>Black on #2B8AC7</td>
+					<td>4.98:1</td>
+					<td>Lc 48</td>
+					<td><span class="pass">Passes AA</span></td>
+					<td><span class="fail">Fails for body text</span></td>
+				</tr>
+			</table>
+			<p>This is one of APCA's most dramatic differences. WCAG 2 treats contrast as symmetric &mdash; it doesn't care whether the light color is the text or the background. APCA accounts for <strong>polarity</strong>: light text on a dark background is actually easier to read than dark text on a light background at the same luminance difference. So white-on-blue scores <em>higher</em> than black-on-blue in APCA, completely flipping the WCAG 2 result.</p>
+		</div>
 	</div>
 </div>
 
@@ -206,6 +276,34 @@
 		<div class="note">
 			Orange sits in a luminance range where it's too light for white text but feels visually &ldquo;wrong&rdquo; with black text. This is one of the most common complaints about WCAG contrast rules. To use white text, you'd need to go so dark it barely reads as orange anymore.
 		</div>
+
+		<div class="wcag3-compare">
+			<h3>How WCAG 3 (APCA) Sees This Differently</h3>
+			<table class="compare-table">
+				<tr>
+					<th>Combination</th>
+					<th>WCAG 2 Ratio</th>
+					<th>APCA (Lc)</th>
+					<th>WCAG 2</th>
+					<th>WCAG 3</th>
+				</tr>
+				<tr>
+					<td>White on #E67E22</td>
+					<td>2.94:1</td>
+					<td>Lc 55</td>
+					<td><span class="fail">Fails AA</span></td>
+					<td><span class="pass">Passes for 18px bold</span></td>
+				</tr>
+				<tr>
+					<td>Black on #E67E22</td>
+					<td>7.15:1</td>
+					<td>Lc 67</td>
+					<td><span class="pass">Passes AA</span></td>
+					<td><span class="pass">Passes for body text</span></td>
+				</tr>
+			</table>
+			<p>Orange is where APCA offers the most relief. WCAG 2's symmetric formula heavily penalizes orange with white because orange has high relative luminance. APCA recognizes that white text on a medium-tone background is more readable than the simple ratio suggests. While white-on-orange still doesn't pass for small body text in APCA, it clears the bar for larger or bolder text &mdash; something WCAG 2 doesn't allow until 18pt/24px.</p>
+		</div>
 	</div>
 </div>
 
@@ -239,6 +337,34 @@
 
 		<div class="note">
 			#767676 is the accessibility community's most famous hex code. It represents the exact tipping point where gray meets the AA threshold against white. It's a useful benchmark when choosing gray tones for placeholder text, icons, or secondary content.
+		</div>
+
+		<div class="wcag3-compare">
+			<h3>How WCAG 3 (APCA) Sees This Differently</h3>
+			<table class="compare-table">
+				<tr>
+					<th>Combination</th>
+					<th>WCAG 2 Ratio</th>
+					<th>APCA (Lc)</th>
+					<th>WCAG 2</th>
+					<th>WCAG 3</th>
+				</tr>
+				<tr>
+					<td>#767676 on White</td>
+					<td>4.54:1</td>
+					<td>Lc 56</td>
+					<td><span class="pass">Just passes AA</span></td>
+					<td><span class="fail">Fails for body text</span></td>
+				</tr>
+				<tr>
+					<td>White on #767676</td>
+					<td>4.54:1</td>
+					<td>Lc 61</td>
+					<td><span class="pass">Just passes AA</span></td>
+					<td><span class="pass">Passes for 16px bold</span></td>
+				</tr>
+			</table>
+			<p>In WCAG 2, these two combinations have the <em>exact same ratio</em> because the formula is symmetric. APCA breaks that symmetry. Dark text on a light background needs a <em>higher</em> Lc value to pass than light text on a dark background at the same font size, because our eyes process the two polarities differently. So the famous #767676 actually <strong>fails</strong> APCA for regular body text on white &mdash; you'd need closer to <code>#5e5e5e</code> (Lc 75) for comfortable 16px reading. The &ldquo;magic gray&rdquo; loses its magic under the new algorithm.</p>
 		</div>
 	</div>
 </div>
@@ -308,6 +434,41 @@
 		<div class="note">
 			Green has very high luminance, which means white text almost never works on it at any saturation. To pass with white text, you'd need something like <code>#1B7A3D</code> &mdash; which most people wouldn't call &ldquo;green&rdquo; anymore. This is arguably the single most frustrating color in WCAG compliance.
 		</div>
+
+		<div class="wcag3-compare">
+			<h3>How WCAG 3 (APCA) Sees This Differently</h3>
+			<table class="compare-table">
+				<tr>
+					<th>Combination</th>
+					<th>WCAG 2 Ratio</th>
+					<th>APCA (Lc)</th>
+					<th>WCAG 2</th>
+					<th>WCAG 3</th>
+				</tr>
+				<tr>
+					<td>White on #2ECC71</td>
+					<td>2.31:1</td>
+					<td>Lc 44</td>
+					<td><span class="fail">Fails AA</span></td>
+					<td><span class="fail">Fails</span></td>
+				</tr>
+				<tr>
+					<td>White on #27AE60</td>
+					<td>3.25:1</td>
+					<td>Lc 53</td>
+					<td><span class="fail">Fails AA</span></td>
+					<td><span class="fail">Fails for body text</span></td>
+				</tr>
+				<tr>
+					<td>White on #1B7A3D</td>
+					<td>5.14:1</td>
+					<td>Lc 68</td>
+					<td><span class="pass">Passes AA</span></td>
+					<td><span class="pass">Passes for 16px bold</span></td>
+				</tr>
+			</table>
+			<p>Green is the one color where APCA largely <strong>agrees</strong> with WCAG 2. Green's high luminance genuinely does make white text hard to read. APCA actually makes it <em>slightly harder</em> to pass because it accounts for the fact that our eyes are most sensitive to green light, so a green background produces more visual &ldquo;noise&rdquo; against white text than you'd expect from luminance alone. Green remains the toughest color for accessible white text in both standards.</p>
+		</div>
 	</div>
 </div>
 
@@ -364,7 +525,8 @@
 </div>
 
 <footer>
-	<p>Color contrast ratios calculated per WCAG 2.1 Success Criterion 1.4.3 (Level AA) &mdash; minimum 4.5:1 for normal text, 3:1 for large text.</p>
+	<p>WCAG 2 ratios calculated per WCAG 2.1 Success Criterion 1.4.3 (Level AA) &mdash; minimum 4.5:1 for normal text, 3:1 for large text.<br>
+	APCA values reference the WCAG 3 draft Accessible Perceptual Contrast Algorithm. WCAG 3 is still in development &mdash; thresholds and scoring may change before final recommendation.</p>
 </footer>
 
 </body>
