@@ -48,21 +48,6 @@
       <li>How would you fix each one?</li>
     </ol>
 
-    <button type="button" class="reveal-btn" onclick="document.getElementById('answers').style.display='block'; this.style.display='none';">Reveal Answers</button>
-
-    <div class="answers" id="answers">
-      <h4>Issues Found (there are 8):</h4>
-      <ul>
-        <li><strong>No real labels:</strong> All fields use <code>&lt;span&gt;</code> instead of <code>&lt;label&gt;</code> — no programmatic association (WCAG 1.3.1, 3.3.2)</li>
-        <li><strong>Placeholder-only hints:</strong> Placeholders are the only indication of expected input format, and they disappear on focus (WCAG 3.3.2)</li>
-        <li><strong>Required fields not marked programmatically:</strong> Red asterisks are visual-only — no <code>required</code> attribute (WCAG 1.3.1)</li>
-        <li><strong>Wrong input type for phone:</strong> <code>type="number"</code> adds a spinner and doesn't suit phone numbers — should be <code>type="tel"</code> or <code>type="text"</code> with <code>inputmode="tel"</code> (WCAG 4.1.2)</li>
-        <li><strong>Email field uses type="text":</strong> Should be <code>type="email"</code> for proper keyboard on mobile and better validation hints (WCAG 1.3.5)</li>
-        <li><strong>Radio group has no fieldset/legend:</strong> "Preferred contact method" is a <code>&lt;p&gt;</code> tag, not a <code>&lt;legend&gt;</code> — screen readers skip it in forms mode (WCAG 1.3.1)</li>
-        <li><strong>Disabled submit button with no explanation:</strong> Users can't submit and don't know why. Better to allow submission and show validation errors (usability / WCAG 3.3.1)</li>
-        <li><strong>No error handling at all:</strong> There's no validation feedback, no error messages, no error summary — if something is wrong, users have no way to know (WCAG 3.3.1, 3.3.3)</li>
-      </ul>
-    </div>
   </div>
 
   <nav class="page-nav" aria-label="Page navigation">
