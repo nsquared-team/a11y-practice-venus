@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo 8: Custom Controls — Accessible Forms</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Custom dropdown styling (broken version) */
+    .custom-dropdown {
+      position: relative;
+      width: 100%;
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+
+    .custom-dropdown .dropdown-trigger {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #999;
+      border-radius: 4px;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .custom-dropdown .dropdown-trigger:hover {
+      border-color: #555;
+    }
+
+    .custom-dropdown .dropdown-trigger .arrow {
+      font-size: 0.7rem;
+      color: #555;
+    }
+
+    .custom-dropdown .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid #999;
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      z-index: 10;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .custom-dropdown.open .dropdown-menu {
+      display: block;
+    }
+
+    .custom-dropdown .dropdown-menu li {
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+
+    .custom-dropdown .dropdown-menu li:hover {
+      background: #eef2ff;
+    }
+
+    .custom-dropdown .dropdown-menu li.selected {
+      background: #dbeafe;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Demo 8: Custom Controls <span class="tag tag-a">WCAG 4.1.2 — Level A</span></h1>
+  <p>Custom-built dropdowns look polished, but without the right semantics they're invisible to assistive technology and unreachable by keyboard. Try tabbing to each dropdown and using arrow keys.</p>
+
+  <div class="demo-pair">
+    <div class="demo-box broken">
+      <h3>Broken</h3>
+      <form>
+        <label for="d8b-name">Full name</label>
+        <input type="text" id="d8b-name">
+
+        <span class="fake-label">Your role</span>
+        <div class="custom-dropdown" id="d8b-dropdown">
+          <div class="dropdown-trigger" onclick="toggleDropdown('d8b-dropdown')">
+            <span class="dropdown-value">Select a role...</span>
+            <span class="arrow">&#9660;</span>
+          </div>
+          <ul class="dropdown-menu">
+            <li onclick="selectOption('d8b-dropdown', this)">Developer</li>
+            <li onclick="selectOption('d8b-dropdown', this)">Designer</li>
+            <li onclick="selectOption('d8b-dropdown', this)">Project Manager</li>
+            <li onclick="selectOption('d8b-dropdown', this)">Content Writer</li>
+            <li onclick="selectOption('d8b-dropdown', this)">QA / Tester</li>
+          </ul>
+        </div>
+
+        <label for="d8b-email">Email</label>
+        <input type="email" id="d8b-email">
+        <button type="button" class="btn-primary">Register</button>
+      </form>
+      <p class="explanation">This dropdown works with a mouse — click it and pick an option. But try tabbing to it: you can't. A screen reader sees a generic <code>&lt;div&gt;</code> with no role, no label, and no indication it's interactive. It's completely invisible to non-mouse users.</p>
+    </div>
+
+    <div class="demo-box fixed">
+      <h3>Fixed</h3>
+      <form>
+        <label for="d8f-name">Full name</label>
+        <input type="text" id="d8f-name">
+
+        <label for="d8f-role">Your role</label>
+        <select id="d8f-role">
+          <option value="">Select a role...</option>
+          <option value="developer">Developer</option>
+          <option value="designer">Designer</option>
+          <option value="pm">Project Manager</option>
+          <option value="writer">Content Writer</option>
+          <option value="qa">QA / Tester</option>
+        </select>
+
+        <label for="d8f-email">Email</label>
+        <input type="email" id="d8f-email">
+        <button type="button" class="btn-primary">Register</button>
+      </form>
+      <p class="explanation">A native <code>&lt;select&gt;</code> element is keyboard accessible out of the box — Tab to it, use arrow keys to browse options, Enter to select. Screen readers announce "Your role, combo box" with the current selection. No ARIA needed because the semantics are built in.</p>
+    </div>
+  </div>
+
+  <nav class="page-nav" aria-label="Page navigation">
+    <a href="demo-7-focus.html">&larr; Prev: Focus Indicators</a>
+    <a href="index.html">All Demos</a>
+    <a href="exercise.html">Next: Exercise &rarr;</a>
+  </nav>
+
+  <script>
+    function toggleDropdown(id) {
+      var dropdown = document.getElementById(id);
+      dropdown.classList.toggle('open');
+    }
+
+    function selectOption(dropdownId, item) {
+      var dropdown = document.getElementById(dropdownId);
+      var valueSpan = dropdown.querySelector('.dropdown-value');
+      valueSpan.textContent = item.textContent;
+
+      // Update selected styling
+      var items = dropdown.querySelectorAll('.dropdown-menu li');
+      for (var i = 0; i < items.length; i++) {
+        items[i].classList.remove('selected');
+      }
+      item.classList.add('selected');
+
+      dropdown.classList.remove('open');
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      var dropdowns = document.querySelectorAll('.custom-dropdown');
+      for (var i = 0; i < dropdowns.length; i++) {
+        if (!dropdowns[i].contains(e.target)) {
+          dropdowns[i].classList.remove('open');
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
