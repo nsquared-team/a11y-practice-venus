@@ -1,0 +1,311 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  background: #f8f8f8;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.demo-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.demo-box {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 2px solid #ddd;
+}
+
+.demo-box.broken {
+  border-color: #c0392b;
+}
+
+.demo-box.broken h3 {
+  color: #c0392b;
+}
+
+.demo-box.fixed {
+  border-color: #27ae60;
+}
+
+.demo-box.fixed h3 {
+  color: #27ae60;
+}
+
+.demo-box p.explanation {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #eee;
+}
+
+/* Form element styling */
+label, .fake-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #999;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus, button:focus {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+}
+
+button, input[type="submit"] {
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-disabled {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+legend {
+  font-weight: 600;
+  padding: 0 0.5rem;
+}
+
+.error-text {
+  color: #c0392b;
+  font-size: 0.85rem;
+  margin-top: -0.75rem;
+  margin-bottom: 1rem;
+}
+
+.error-input {
+  border-color: #c0392b;
+  border-width: 2px;
+}
+
+.error-summary {
+  background: #fdf0f0;
+  border: 2px solid #c0392b;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.error-summary h4 {
+  color: #c0392b;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.error-summary ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.error-summary a {
+  color: #c0392b;
+}
+
+.required-star {
+  color: #c0392b;
+}
+
+.hint-text {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: -0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Broken demo: no focus outline */
+.no-focus-demo input:focus,
+.no-focus-demo select:focus,
+.no-focus-demo button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Exercise section */
+.exercise {
+  background: #eef2ff;
+  border: 2px solid #6366f1;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.exercise h3 {
+  color: #4338ca;
+  margin-top: 0;
+}
+
+.exercise ol {
+  padding-left: 1.25rem;
+}
+
+.reveal-btn {
+  background: #6366f1;
+  color: #fff;
+  margin-top: 1rem;
+}
+
+.reveal-btn:hover {
+  background: #4338ca;
+}
+
+.answers {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #c7d2fe;
+}
+
+.answers h4 {
+  margin-top: 0;
+  color: #4338ca;
+}
+
+.answers ul {
+  padding-left: 1.25rem;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-weight: 600;
+  vertical-align: middle;
+  margin-left: 0.25rem;
+}
+
+.tag-a { background: #dbeafe; color: #1e40af; }
+.tag-aa { background: #fef3c7; color: #92400e; }
+
+/* Navigation */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #ddd;
+}
+
+.page-nav a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.page-nav a:hover {
+  text-decoration: underline;
+}
+
+.page-nav .spacer {
+  flex: 1;
+}
+
+.toc {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 2rem;
+}
+
+.toc h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.toc ol {
+  padding-left: 1.25rem;
+  margin: 0;
+}
+
+.toc li {
+  margin-bottom: 0.5rem;
+}
+
+.toc a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.toc a:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #ddd;
+  color: #777;
+  font-size: 0.85rem;
+}

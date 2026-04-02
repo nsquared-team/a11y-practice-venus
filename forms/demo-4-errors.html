@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo 4: Error Messages — Accessible Forms</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Demo 4: Error Messages <span class="tag tag-a">WCAG 3.3.1 — Level A</span></h1>
+  <p>When something goes wrong, the error must be specific, in text, and connected to the right field.</p>
+
+  <div class="demo-pair">
+    <div class="demo-box broken">
+      <h3>Broken</h3>
+      <form>
+        <label for="d4b-email">Email address</label>
+        <input type="text" id="d4b-email" class="error-input" value="natalie@">
+        <label for="d4b-phone">Phone number</label>
+        <input type="tel" id="d4b-phone" class="error-input">
+        <p style="color: #c0392b; font-size: 0.9rem;">Please fix the errors above.</p>
+        <button type="button" class="btn-primary">Submit</button>
+      </form>
+      <p class="explanation">The red borders are invisible to screen readers. "Please fix the errors above" doesn't say which fields or what's wrong. The error text isn't connected to either field.</p>
+    </div>
+
+    <div class="demo-box fixed">
+      <h3>Fixed</h3>
+      <form>
+        <label for="d4f-email">Email address</label>
+        <input type="text" id="d4f-email" class="error-input" value="natalie@" aria-invalid="true" aria-describedby="d4f-email-err">
+        <p class="error-text" id="d4f-email-err">Enter a complete email address, like name@example.com</p>
+        <label for="d4f-phone">Phone number</label>
+        <input type="tel" id="d4f-phone" class="error-input" aria-invalid="true" aria-describedby="d4f-phone-err">
+        <p class="error-text" id="d4f-phone-err">Phone number is required</p>
+        <button type="button" class="btn-primary">Submit</button>
+      </form>
+      <p class="explanation">Each error is specific, in text, and linked to its field with <code>aria-describedby</code>. The <code>aria-invalid</code> attribute tells screen readers the field has an error.</p>
+    </div>
+  </div>
+
+  <nav class="page-nav" aria-label="Page navigation">
+    <a href="demo-3-required.html">&larr; Prev: Required Fields</a>
+    <a href="index.html">All Demos</a>
+    <a href="demo-5-error-summary.html">Next: Error Summary &rarr;</a>
+  </nav>
+
+</body>
+</html>

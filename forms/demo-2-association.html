@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo 2: Label Association — Accessible Forms</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Demo 2: Label Association <span class="tag tag-a">WCAG 1.3.1 — Level A</span></h1>
+  <p>A label can look right visually but not be connected to its field programmatically. Try the click test: click on the label text. Does the input get focus?</p>
+
+  <div class="demo-pair">
+    <div class="demo-box broken">
+      <h3>Broken</h3>
+      <form>
+        <span class="fake-label">Email address</span>
+        <input type="email">
+        <span class="fake-label">Phone number</span>
+        <input type="tel">
+        <button type="button" class="btn-primary">Submit</button>
+      </form>
+      <p class="explanation">These look like labels but are just <code>&lt;span&gt;</code> elements. Clicking "Email address" does nothing. A screen reader announces "edit text" with no context.</p>
+    </div>
+
+    <div class="demo-box fixed">
+      <h3>Fixed</h3>
+      <form>
+        <label for="d2-email">Email address</label>
+        <input type="email" id="d2-email">
+        <label for="d2-phone">Phone number</label>
+        <input type="tel" id="d2-phone">
+        <button type="button" class="btn-primary">Submit</button>
+      </form>
+      <p class="explanation">Click the label — the input gets focus. The <code>for</code> attribute connects each label to its field. A screen reader announces "Email address, edit text."</p>
+    </div>
+  </div>
+
+  <nav class="page-nav" aria-label="Page navigation">
+    <a href="demo-1-labels.html">&larr; Prev: Labels</a>
+    <a href="index.html">All Demos</a>
+    <a href="demo-3-required.html">Next: Required Fields &rarr;</a>
+  </nav>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo 7: Focus Indicators — Accessible Forms</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Demo 7: Focus Indicators <span class="tag tag-aa">WCAG 2.4.7 — Level AA</span></h1>
+  <p>Keyboard users need to see where they are on the page. Try tabbing through each version below.</p>
+
+  <div class="demo-pair">
+    <div class="demo-box broken no-focus-demo">
+      <h3>Broken</h3>
+      <form>
+        <label for="d7b-name">Name</label>
+        <input type="text" id="d7b-name">
+        <label for="d7b-email">Email</label>
+        <input type="email" id="d7b-email">
+        <button type="button" class="btn-primary" style="outline: none;">Subscribe</button>
+      </form>
+      <p class="explanation">Tab through these fields — there's no visible indicator showing which field has focus. CSS <code>outline: none</code> removed it.</p>
+    </div>
+
+    <div class="demo-box fixed">
+      <h3>Fixed</h3>
+      <form>
+        <label for="d7f-name">Name</label>
+        <input type="text" id="d7f-name">
+        <label for="d7f-email">Email</label>
+        <input type="email" id="d7f-email">
+        <button type="button" class="btn-primary">Subscribe</button>
+      </form>
+      <p class="explanation">Tab through these — each field shows a clear blue outline on focus. Keyboard users always know where they are.</p>
+    </div>
+  </div>
+
+  <nav class="page-nav" aria-label="Page navigation">
+    <a href="demo-6-grouping.html">&larr; Prev: Field Grouping</a>
+    <a href="index.html">All Demos</a>
+    <a href="exercise.html">Next: Exercise &rarr;</a>
+  </nav>
+
+</body>
+</html>
