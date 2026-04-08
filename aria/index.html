@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ARIA Mistakes Demo — AAArdvark Livestream</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; color: #222; }
+    h1 { border-bottom: 2px solid #333; padding-bottom: 0.5rem; }
+    section { margin: 2.5rem 0; padding: 1.25rem; border: 1px solid #ccc; border-radius: 6px; background: #fafafa; }
+    h2 { margin-top: 0; font-size: 1.1rem; color: #555; }
+    .fake-button { display: inline-block; padding: 0.5rem 1rem; background: #2a6df4; color: white; border-radius: 4px; cursor: pointer; }
+    .icon-btn { background: none; border: 1px solid #888; padding: 0.4rem 0.6rem; font-size: 1.2rem; border-radius: 4px; cursor: pointer; }
+    .accordion-header { background: #eee; padding: 0.75rem; cursor: pointer; border: 1px solid #bbb; }
+    .accordion-panel { padding: 0.75rem; border: 1px solid #bbb; border-top: none; }
+    .menu { list-style: none; padding: 0; display: flex; gap: 1rem; background: #333; }
+    .menu li { padding: 0.75rem 1rem; }
+    .menu a { color: white; text-decoration: none; }
+    .ghost-link { color: #2a6df4; text-decoration: underline; cursor: pointer; }
+    .modal { border: 2px solid #333; padding: 1rem; background: white; }
+    label { display: block; margin-top: 0.5rem; }
+    input[type="text"], input[type="email"] { padding: 0.4rem; width: 100%; max-width: 300px; }
+  </style>
+</head>
+<body>
+
+  <h1>ARIA Mistakes Demo Page</h1>
+  <p><strong>For demonstration only.</strong> Every example below contains an intentional ARIA mistake. Inspect with the accessibility tree and a screen reader.</p>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>Mistake #1: <code>&lt;div role="button"&gt;</code> with no keyboard support</h2>
+    <p>Looks like a button. Acts like a button for mouse users. Completely invisible to keyboard users.</p>
+    <div class="fake-button" role="button" onclick="alert('Clicked!')">Submit Order</div>
+    <p><em>What's wrong:</em> No <code>tabindex</code>, no Enter/Space key handler. Keyboard users can't reach it or activate it. Should just be a <code>&lt;button&gt;</code>.</p>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>Mistake #2: Redundant ARIA roles</h2>
+    <nav role="navigation" aria-label="Main">
+      <a href="#" role="link">Home</a> |
+      <a href="#" role="link">About</a> |
+      <button role="button">Contact</button>
+    </nav>
+    <p><em>What's wrong:</em> <code>&lt;nav&gt;</code> already has the navigation role. <code>&lt;a&gt;</code> already has the link role. <code>&lt;button&gt;</code> already has the button role. This adds noise to the accessibility tree and can cause double-announcements in some screen readers.</p>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>Mistake #3: Icon-only button with no accessible name</h2>
+    <button class="icon-btn">&#128465;</button>
+    <button class="icon-btn">&#9881;</button>
+    <button class="icon-btn">&#128269;</button>
+    <p><em>What's wrong:</em> Screen readers announce these as "button" with no context. Sighted users see a trash can, gear, and magnifying glass. Add <code>aria-label="Delete"</code>, etc.</p>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>Mistake #4: Static <code>aria-expanded</code> that never updates</h2>
+    <button class="accordion-header" aria-expanded="false" onclick="document.getElementById('panel-1').hidden = !document.getElementById('panel-1').hidden">
+      What is ARIA?
+    </button>
+    <div class="accordion-panel" id="panel-1">
+      <p>ARIA stands for Accessible Rich Internet Applications...</p>
+    </div>
+    <p><em>What's wrong:</em> The button toggles the panel visually, but <code>aria-expanded</code> is hardcoded to <code>"false"</code> and never changes. Screen reader users always hear "collapsed" — even when it's open.</p>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>Mistake #5: <code>aria-label</code> that contradicts visible text</h2>
+    <button aria-label="Click here to learn more about our enterprise pricing tier">Learn More</button>
+    <p><em>What's wrong:</em> Sighted users see "Learn More." Screen reader users hear something completely different. Voice control users who say "click Learn More" can't activate it because the accessible name doesn't match. Visible text should be the accessible name.</p>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>Mistake #6: <code>role="menu"</code> used for site navigation</h2>
+    <ul class="menu" role="menu">
+      <li role="menuitem"><a href="#">Home</a></li>
+      <li role="menuitem"><a href="#">Products</a></li>
+      <li role="menuitem"><a href="#">Pricing</a></li>
+      <li role="menuitem"><a href="#">About</a></li>
+    </ul>
+    <p><em>What's wrong:</em> ARIA <code>menu</code> is for application menus (like a right-click menu) and requires arrow-key navigation, not Tab. Screen reader users hear "menu" and expect that behavior. Site navigation should just be <code>&lt;nav&gt;</code> with links.</p>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>Mistake #7: <code>aria-hidden="true"</code> on a focusable element</h2>
+    <p>Read our <span class="ghost-link" tabindex="0" aria-hidden="true" onclick="alert('Privacy policy')">privacy policy</span> before continuing.</p>
+    <p><em>What's wrong:</em> Keyboard users can Tab to it, but screen reader users hear nothing when they land on it. Creates a "ghost" focusable element. Either remove <code>aria-hidden</code> or remove focusability — and really, just use an <code>&lt;a&gt;</code>.</p>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>Mistake #8: Form inputs labeled with <code>aria-label</code> when visible labels exist</h2>
+    <form>
+      <label for="name-field">Full Name</label>
+      <input type="text" id="name-field" aria-label="Enter your name here">
+
+      <label for="email-field">Email Address</label>
+      <input type="email" id="email-field" aria-label="Email">
+    </form>
+    <p><em>What's wrong:</em> The visible <code>&lt;label&gt;</code> is already correctly associated, but <code>aria-label</code> overrides it. Screen reader users hear "Enter your name here" instead of "Full Name." Drop the <code>aria-label</code>.</p>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>Mistake #9: Custom dialog with no dialog semantics</h2>
+    <div class="modal">
+      <p><strong>Are you sure you want to delete this item?</strong></p>
+      <button>Cancel</button>
+      <button>Delete</button>
+    </div>
+    <p><em>What's wrong:</em> Looks like a dialog. Has no <code>role="dialog"</code>, no <code>aria-labelledby</code>, no focus management, no Escape handler. Screen reader users have no idea this is a modal. Use the native <code>&lt;dialog&gt;</code> element instead.</p>
+  </section>
+
+  <!-- ============================================ -->
+  <section>
+    <h2>Mistake #10: Heading role applied to a non-heading</h2>
+    <button role="heading" aria-level="2">Latest News</button>
+    <p><em>What's wrong:</em> Changing native semantics. The element is now both a button and a heading, which is confusing for assistive tech and inconsistent across screen readers. If it's a heading, use <code>&lt;h2&gt;</code>. If it's a button, use <code>&lt;button&gt;</code>.</p>
+  </section>
+
+</body>
+</html>
