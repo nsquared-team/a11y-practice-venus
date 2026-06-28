@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- UserWay accessibility overlay widget -->
+	<script src="https://cdn.userway.org/widget.js" data-account="H4h9mwMPQk"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo 7: Focus Indicators — Accessible Forms</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Demo 7: Focus Indicators <span class="tag tag-aa">WCAG 2.4.7 — Level AA</span></h1>
+  <p>Keyboard users need to see where they are on the page. Try tabbing through each version below. Pay special attention to the checkboxes and radio buttons — text inputs at least show a blinking cursor, but without a focus indicator on checkboxes and radios, you have no idea where you are.</p>
+
+  <div class="demo-pair">
+    <div class="demo-box broken no-focus-demo">
+      <h3>Broken</h3>
+      <form>
+        <label for="d7b-name">Name</label>
+        <input type="text" id="d7b-name">
+        <label for="d7b-email">Email</label>
+        <input type="email" id="d7b-email">
+        <fieldset>
+          <legend>Notify me about</legend>
+          <label><input type="checkbox" name="d7b-notify" value="updates"> Product updates</label><br>
+          <label><input type="checkbox" name="d7b-notify" value="events"> Upcoming events</label><br>
+          <label><input type="checkbox" name="d7b-notify" value="blog"> New blog posts</label>
+        </fieldset>
+        <fieldset>
+          <legend>Email frequency</legend>
+          <label><input type="radio" name="d7b-freq" value="daily"> Daily</label><br>
+          <label><input type="radio" name="d7b-freq" value="weekly"> Weekly</label><br>
+          <label><input type="radio" name="d7b-freq" value="monthly"> Monthly</label>
+        </fieldset>
+        <button type="button" class="btn-primary" style="outline: none;">Subscribe</button>
+      </form>
+      <p class="explanation">Tab through these fields — text inputs still show a blinking cursor, but when you reach the checkboxes and radio buttons, there's no visible indicator at all. Which option are you on? CSS <code>outline: none</code> removed every clue.</p>
+    </div>
+
+    <div class="demo-box fixed">
+      <h3>Fixed</h3>
+      <form>
+        <label for="d7f-name">Name</label>
+        <input type="text" id="d7f-name">
+        <label for="d7f-email">Email</label>
+        <input type="email" id="d7f-email">
+        <fieldset>
+          <legend>Notify me about</legend>
+          <label><input type="checkbox" name="d7f-notify" value="updates"> Product updates</label><br>
+          <label><input type="checkbox" name="d7f-notify" value="events"> Upcoming events</label><br>
+          <label><input type="checkbox" name="d7f-notify" value="blog"> New blog posts</label>
+        </fieldset>
+        <fieldset>
+          <legend>Email frequency</legend>
+          <label><input type="radio" name="d7f-freq" value="daily"> Daily</label><br>
+          <label><input type="radio" name="d7f-freq" value="weekly"> Weekly</label><br>
+          <label><input type="radio" name="d7f-freq" value="monthly"> Monthly</label>
+        </fieldset>
+        <button type="button" class="btn-primary">Subscribe</button>
+      </form>
+      <p class="explanation">Tab through these — every control shows a clear blue outline on focus, including the checkboxes and radio buttons. Keyboard users always know exactly where they are.</p>
+    </div>
+  </div>
+
+  <nav class="page-nav" aria-label="Page navigation">
+    <a href="demo-6-grouping.html">&larr; Prev: Field Grouping</a>
+    <a href="index.html">All Demos</a>
+    <a href="demo-8-custom-controls.html">Next: Custom Controls &rarr;</a>
+  </nav>
+
+</body>
+</html>

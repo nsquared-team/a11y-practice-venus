@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- UserWay accessibility overlay widget -->
+	<script src="https://cdn.userway.org/widget.js" data-account="H4h9mwMPQk"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Book Your Trip - Discover Venus</title>
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:400,400i,700,700i&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/all.css">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="booking-page">
+
+<!-- Skip link for keyboard navigation -->
+<a href="#main-content" class="skip-link a11y-broken">Skip to main content</a>
+
+
+<div class="page">
+	<!-- Header area -->
+	<header role="banner" class="site-header">
+			<div class="site-branding">
+				<h1 class="site-logo">
+					<a href="index.html">
+						<img src="images/logo-p.png" alt="Discover Venus">
+					</a>
+				</h1>
+			</div>
+			<nav class="site-navigation" role="navigation">
+				<button class="nav-toggle">
+					<i class="fas fa-bars fa-2x"></i>
+					<span class="screen-reader-text">Menu</span>
+				</button>
+				<div class="nav-container">
+					<button class="nav-toggle">
+						<i class="fas fa-times fa-2x"></i>
+						<span class="screen-reader-text">Close menu</span>
+					</button>
+					<ul class="nav">
+						<li><a href="about.html">About</a></li>
+						<li><a href="destinations.html">Destinations</a></li>
+						<li><a href="packages.html">Packages</a></li>
+						<li><a href="contact.html">Contact</a></li>
+						<li class="nav-button">
+							<a href="booking.html" class="button">
+								Book Now
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+	</header>
+	<main role="main">
+		<!-- Page Header -->
+		<div class="page-header">
+			<h2>Book Your Venus Adventure</h2>
+			<p>Complete your reservation in a few easy steps</p>
+		</div>
+
+		<!-- Progress Indicator -->
+		<div class="booking-progress">
+			<div class="booking-progress-wrap">
+				<ol class="progress-steps">
+					<li class="progress-step active" data-step="1">
+						<span class="progress-step-number">1</span>
+						<span class="progress-step-label">Select Tour</span>
+					</li>
+					<li class="progress-step" data-step="2">
+						<span class="progress-step-number">2</span>
+						<span class="progress-step-label">Travelers</span>
+					</li>
+					<li class="progress-step" data-step="3">
+						<span class="progress-step-number">3</span>
+						<span class="progress-step-label">Add-Ons</span>
+					</li>
+					<li class="progress-step" data-step="4">
+						<span class="progress-step-number">4</span>
+						<span class="progress-step-label">Review</span>
+					</li>
+					<li class="progress-step" data-step="5">
+						<span class="progress-step-number">5</span>
+						<span class="progress-step-label">Confirmation</span>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+		<!-- Booking Form Container -->
+		<div class="booking-form-container">
+			<form id="booking-form" novalidate>
+
+				<!-- Step 1: Select Your Tour -->
+				<div class="booking-step active" data-step="1" id="step-1">
+					<div class="step-header">
+						<h2>Step 1: Select Your Tour</h2>
+						<p>Choose your destination, package, and travel dates</p>
+					</div>
+
+					<!-- Package Selection -->
+					<div class="form-section">
+						<h3>Choose Your Package</h3>
+						<div class="package-options">
+							<label class="package-option" data-package="mountains">
+								<input type="radio" name="package" value="mountains" required>
+								<div class="package-icon"><i class="fas fa-mountain" aria-hidden="true"></i></div>
+								<div class="package-name">Mountains</div>
+								<div class="package-tier">Standard</div>
+								<div class="package-price">From $15,000</div>
+								<div class="package-duration">10-14 days</div>
+							</label>
+							<label class="package-option" data-package="volcanoes">
+								<input type="radio" name="package" value="volcanoes">
+								<div class="package-icon"><i class="fas fa-fire" aria-hidden="true"></i></div>
+								<div class="package-name">Volcanoes</div>
+								<div class="package-tier">Premium</div>
+								<div class="package-price">From $30,000</div>
+								<div class="package-duration">14-21 days</div>
+							</label>
+							<label class="package-option" data-package="plains">
+								<input type="radio" name="package" value="plains">
+								<div class="package-icon"><i class="fas fa-wind" aria-hidden="true"></i></div>
+								<div class="package-name">Plains</div>
+								<div class="package-tier">Luxury</div>
+								<div class="package-price">From $50,000</div>
+								<div class="package-duration">21-30 days</div>
+							</label>
+						</div>
+						<!-- Intentional a11y issue: error not associated with field group -->
+						<div class="error-message" id="package-error">Please select a package</div>
+					</div>
+
+					<!-- Destination Selection -->
+					<div class="form-section">
+						<h3>Primary Destination</h3>
+						<div class="form-group">
+							<!-- Intentional a11y issue: label not properly associated -->
+							<label>Select your main destination</label>
+							<select class="form-select" name="destination" id="destination" required>
+								<option value="">-- Select a destination --</option>
+								<optgroup label="Mountains">
+									<option value="maxwell-montes">Maxwell Montes</option>
+									<option value="akna-montes">Akna Montes</option>
+									<option value="freyja-montes">Freyja Montes</option>
+									<option value="danu-montes">Danu Montes</option>
+								</optgroup>
+								<optgroup label="Volcanoes">
+									<option value="maat-mons">Maat Mons</option>
+									<option value="sapas-mons">Sapas Mons</option>
+									<option value="ozza-mons">Ozza Mons</option>
+									<option value="theia-mons">Theia Mons</option>
+									<option value="gula-mons">Gula Mons</option>
+								</optgroup>
+								<optgroup label="Plains & Regions">
+									<option value="ishtar-terra">Ishtar Terra</option>
+									<option value="aphrodite-terra">Aphrodite Terra</option>
+									<option value="lakshmi-planum">Lakshmi Planum</option>
+									<option value="lavinia-planitia">Lavinia Planitia</option>
+									<option value="guinevere-planitia">Guinevere Planitia</option>
+								</optgroup>
+								<optgroup label="Special Features">
+									<option value="artemis-corona">Artemis Corona</option>
+									<option value="fortuna-tessera">Fortuna Tessera</option>
+									<option value="alpha-regio">Alpha Regio</option>
+									<option value="beta-regio">Beta Regio</option>
+								</optgroup>
+							</select>
+							<div class="error-message" id="destination-error">Please select a destination</div>
+						</div>
+					</div>
+
+					<!-- Travel Dates -->
+					<div class="form-section">
+						<h3>Travel Dates</h3>
+						<div class="form-row">
+							<div class="form-group">
+								<label for="departure-date">Departure Date</label>
+								<input type="date" class="form-input" name="departure-date" id="departure-date" required>
+								<div class="error-message" id="departure-error">Please select a valid departure date</div>
+							</div>
+							<div class="form-group">
+								<label for="duration">Trip Duration</label>
+								<select class="form-select" name="duration" id="duration" required>
+									<option value="">-- Select duration --</option>
+									<option value="10">10 days</option>
+									<option value="14">14 days</option>
+									<option value="21">21 days</option>
+									<option value="30">30 days</option>
+								</select>
+								<div class="error-message" id="duration-error">Please select a duration</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Price Summary for Step 1 -->
+					<div class="price-summary">
+						<h3>Price Estimate</h3>
+						<div class="price-line">
+							<span>Base Package</span>
+							<span id="summary-package-price">$0</span>
+						</div>
+						<div class="price-line total">
+							<span>Estimated Total</span>
+							<span id="summary-step1-total">$0</span>
+						</div>
+					</div>
+
+					<!-- Navigation -->
+					<div class="step-navigation">
+						<button type="button" class="btn-prev" disabled>
+							<i class="fas fa-arrow-left" aria-hidden="true"></i> Previous
+						</button>
+						<button type="button" class="btn-next" data-next="2">
+							Next: Travelers <i class="fas fa-arrow-right" aria-hidden="true"></i>
+						</button>
+					</div>
+				</div>
+
+				<!-- Step 2: Traveler Information -->
+				<div class="booking-step" data-step="2" id="step-2">
+					<div class="step-header">
+						<h2>Step 2: Traveler Information</h2>
+						<p>Enter details for all travelers in your party</p>
+					</div>
+
+					<div class="form-section">
+						<h3>Number of Travelers</h3>
+						<div class="form-group">
+							<label for="num-travelers">How many travelers?</label>
+							<select class="form-select" name="num-travelers" id="num-travelers">
+								<option value="1">1 Traveler</option>
+								<option value="2">2 Travelers</option>
+								<option value="3">3 Travelers</option>
+								<option value="4">4 Travelers</option>
+								<option value="5">5 Travelers</option>
+								<option value="6">6 Travelers</option>
+							</select>
+							<p class="field-hint">Maximum travelers depends on your selected package</p>
+						</div>
+					</div>
+
+					<!-- Traveler Forms Container -->
+					<div class="travelers-container" id="travelers-container">
+						<!-- Traveler 1 (Primary) -->
+						<div class="traveler-card" data-traveler="1">
+							<div class="traveler-header">
+								<h4>Traveler 1 (Primary Contact)</h4>
+							</div>
+							<div class="form-row">
+								<div class="form-group">
+									<label for="traveler-1-name">Full Name</label>
+									<input type="text" class="form-input" name="traveler-1-name" id="traveler-1-name" required>
+									<div class="error-message">Name is required</div>
+								</div>
+								<div class="form-group">
+									<label for="traveler-1-email">Email Address</label>
+									<input type="email" class="form-input" name="traveler-1-email" id="traveler-1-email" required>
+									<div class="error-message">Valid email is required</div>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group">
+									<label for="traveler-1-dob">Date of Birth</label>
+									<input type="date" class="form-input" name="traveler-1-dob" id="traveler-1-dob" required>
+									<div class="error-message">Date of birth is required</div>
+								</div>
+								<div class="form-group">
+									<label for="traveler-1-phone">Phone Number</label>
+									<input type="tel" class="form-input" name="traveler-1-phone" id="traveler-1-phone">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="traveler-1-emergency-name">Emergency Contact Name</label>
+								<input type="text" class="form-input" name="traveler-1-emergency-name" id="traveler-1-emergency-name" required>
+								<div class="error-message">Emergency contact is required</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group">
+									<label for="traveler-1-emergency-phone">Emergency Contact Phone</label>
+									<input type="tel" class="form-input" name="traveler-1-emergency-phone" id="traveler-1-emergency-phone" required>
+									<div class="error-message">Emergency phone is required</div>
+								</div>
+								<div class="form-group">
+									<label for="traveler-1-emergency-relation">Relationship</label>
+									<input type="text" class="form-input" name="traveler-1-emergency-relation" id="traveler-1-emergency-relation" placeholder="e.g., Spouse, Parent, Friend">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="traveler-1-medical">Medical Requirements or Conditions</label>
+								<textarea class="form-textarea" name="traveler-1-medical" id="traveler-1-medical" placeholder="List any medical conditions, allergies, or special requirements..."></textarea>
+							</div>
+							<div class="form-group">
+								<!-- Intentional a11y issue: checkbox group without proper fieldset/legend -->
+								<label>Dietary Requirements</label>
+								<div class="checkbox-group">
+									<label><input type="checkbox" name="traveler-1-dietary" value="vegetarian"> Vegetarian</label>
+									<label><input type="checkbox" name="traveler-1-dietary" value="vegan"> Vegan</label>
+									<label><input type="checkbox" name="traveler-1-dietary" value="gluten-free"> Gluten-Free</label>
+									<label><input type="checkbox" name="traveler-1-dietary" value="halal"> Halal</label>
+									<label><input type="checkbox" name="traveler-1-dietary" value="kosher"> Kosher</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Add Traveler Button -->
+					<button type="button" class="add-traveler-btn" id="add-traveler-btn">
+						<i class="fas fa-plus-circle" aria-hidden="true"></i>
+						Add Another Traveler
+					</button>
+
+					<!-- Price Summary for Step 2 -->
+					<div class="price-summary">
+						<h3>Price Summary</h3>
+						<div class="price-line">
+							<span>Base Package</span>
+							<span id="summary2-package">$0</span>
+						</div>
+						<div class="price-line">
+							<span>Travelers (<span id="summary2-traveler-count">1</span>)</span>
+							<span id="summary2-travelers">$0</span>
+						</div>
+						<div class="price-line total">
+							<span>Subtotal</span>
+							<span id="summary2-total">$0</span>
+						</div>
+					</div>
+
+					<!-- Navigation -->
+					<div class="step-navigation">
+						<button type="button" class="btn-prev" data-prev="1">
+							<i class="fas fa-arrow-left" aria-hidden="true"></i> Previous
+						</button>
+						<button type="button" class="btn-next" data-next="3">
+							Next: Add-Ons <i class="fas fa-arrow-right" aria-hidden="true"></i>
+						</button>
+					</div>
+				</div>
+
+				<!-- Step 3: Add-Ons -->
+				<div class="booking-step" data-step="3" id="step-3">
+					<div class="step-header">
+						<h2>Step 3: Enhance Your Experience</h2>
+						<p>Customize your trip with optional add-ons</p>
+					</div>
+
+					<div class="form-section">
+						<h3>Available Add-Ons</h3>
+						<div class="addons-grid">
+							<label class="addon-option">
+								<input type="checkbox" name="addons" value="photography" data-price="2500">
+								<div class="addon-content">
+									<div class="addon-icon"><i class="fas fa-camera" aria-hidden="true"></i></div>
+									<div class="addon-name">Professional Photography</div>
+									<div class="addon-description">A dedicated photographer captures your journey. Includes 200+ edited images.</div>
+									<div class="addon-price">+$2,500</div>
+								</div>
+							</label>
+
+							<label class="addon-option">
+								<input type="checkbox" name="addons" value="documentary" data-price="5000">
+								<div class="addon-content">
+									<div class="addon-icon"><i class="fas fa-video" aria-hidden="true"></i></div>
+									<div class="addon-name">Documentary Video</div>
+									<div class="addon-description">Professional videographer creates a 30-minute documentary of your expedition.</div>
+									<div class="addon-price">+$5,000</div>
+								</div>
+							</label>
+
+							<label class="addon-option">
+								<input type="checkbox" name="addons" value="extended-stay" data-price="1500" data-per-day="true">
+								<div class="addon-content">
+									<div class="addon-icon"><i class="fas fa-calendar-plus" aria-hidden="true"></i></div>
+									<div class="addon-name">Extended Stay</div>
+									<div class="addon-description">Add extra days to your surface exploration. Price per additional day.</div>
+									<div class="addon-price">+$1,500/day</div>
+								</div>
+							</label>
+
+							<label class="addon-option">
+								<input type="checkbox" name="addons" value="private-guide" data-price="4000">
+								<div class="addon-content">
+									<div class="addon-icon"><i class="fas fa-user-astronaut" aria-hidden="true"></i></div>
+									<div class="addon-name">Private Guide Upgrade</div>
+									<div class="addon-description">Upgrade to a 1:2 guide ratio for more personalized attention.</div>
+									<div class="addon-price">+$4,000</div>
+								</div>
+							</label>
+
+							<label class="addon-option">
+								<input type="checkbox" name="addons" value="rock-sample" data-price="3000">
+								<div class="addon-content">
+									<div class="addon-icon"><i class="fas fa-gem" aria-hidden="true"></i></div>
+									<div class="addon-name">Venus Rock Sample</div>
+									<div class="addon-description">Take home an authenticated Venusian rock sample in a display case.</div>
+									<div class="addon-price">+$3,000</div>
+								</div>
+							</label>
+
+							<label class="addon-option">
+								<input type="checkbox" name="addons" value="wellness" data-price="2000">
+								<div class="addon-content">
+									<div class="addon-icon"><i class="fas fa-spa" aria-hidden="true"></i></div>
+									<div class="addon-name">Wellness Package</div>
+									<div class="addon-description">Daily massage, meditation sessions, and spa treatments in transit.</div>
+									<div class="addon-price">+$2,000</div>
+								</div>
+							</label>
+						</div>
+					</div>
+
+					<!-- Extended Stay Days (conditional) -->
+					<div class="form-section" id="extended-stay-options" style="display: none;">
+						<h3>Extended Stay Details</h3>
+						<div class="form-group">
+							<label for="extra-days">Number of Extra Days</label>
+							<select class="form-select" name="extra-days" id="extra-days">
+								<option value="1">1 extra day (+$1,500)</option>
+								<option value="2">2 extra days (+$3,000)</option>
+								<option value="3">3 extra days (+$4,500)</option>
+								<option value="5">5 extra days (+$7,500)</option>
+								<option value="7">7 extra days (+$10,500)</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- Price Summary for Step 3 -->
+					<div class="price-summary">
+						<h3>Price Summary</h3>
+						<div class="price-line">
+							<span>Base Package</span>
+							<span id="summary3-package">$0</span>
+						</div>
+						<div class="price-line">
+							<span>Travelers</span>
+							<span id="summary3-travelers">$0</span>
+						</div>
+						<div class="price-line">
+							<span>Add-Ons</span>
+							<span id="summary3-addons">$0</span>
+						</div>
+						<div class="price-line total">
+							<span>Total</span>
+							<span id="summary3-total">$0</span>
+						</div>
+					</div>
+
+					<!-- Navigation -->
+					<div class="step-navigation">
+						<button type="button" class="btn-prev" data-prev="2">
+							<i class="fas fa-arrow-left" aria-hidden="true"></i> Previous
+						</button>
+						<button type="button" class="btn-next" data-next="4">
+							Next: Review <i class="fas fa-arrow-right" aria-hidden="true"></i>
+						</button>
+					</div>
+				</div>
+
+				<!-- Step 4: Review -->
+				<div class="booking-step" data-step="4" id="step-4">
+					<div class="step-header">
+						<h2>Step 4: Review Your Booking</h2>
+						<p>Please review your selections before confirming</p>
+					</div>
+
+					<!-- Tour Details Review -->
+					<div class="review-section">
+						<div class="review-header">
+							<h3>Tour Details</h3>
+							<!-- Intentional a11y issue: vague link text "Edit" -->
+							<a href="#" class="edit-link" data-goto="1">Edit</a>
+						</div>
+						<div class="review-content">
+							<div class="review-row">
+								<span class="review-label">Package</span>
+								<span class="review-value" id="review-package">-</span>
+							</div>
+							<div class="review-row">
+								<span class="review-label">Destination</span>
+								<span class="review-value" id="review-destination">-</span>
+							</div>
+							<div class="review-row">
+								<span class="review-label">Departure Date</span>
+								<span class="review-value" id="review-date">-</span>
+							</div>
+							<div class="review-row">
+								<span class="review-label">Duration</span>
+								<span class="review-value" id="review-duration">-</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Travelers Review -->
+					<div class="review-section">
+						<div class="review-header">
+							<h3>Travelers</h3>
+							<a href="#" class="edit-link" data-goto="2">Edit</a>
+						</div>
+						<div class="review-content" id="review-travelers">
+							<!-- Populated by JavaScript -->
+						</div>
+					</div>
+
+					<!-- Add-Ons Review -->
+					<div class="review-section">
+						<div class="review-header">
+							<h3>Add-Ons</h3>
+							<a href="#" class="edit-link" data-goto="3">Edit</a>
+						</div>
+						<div class="review-content" id="review-addons">
+							<!-- Populated by JavaScript -->
+						</div>
+					</div>
+
+				<!-- Promo Code Section -->
+				<div class="promo-code-section">
+					<div class="promo-code-header">
+						<h3>Have a Promo Code?</h3>
+					</div>
+					<div class="promo-code-content">
+						<div class="promo-code-input-group">
+							<input type="text" id="promo-code-input" class="form-input" placeholder="Enter promo code">
+							<button type="button" id="apply-promo-btn" class="button">Apply</button>
+						</div>
+						<div class="promo-code-message" id="promo-code-message"></div>
+						<div class="promo-code-applied" id="promo-code-applied" style="display: none;">
+							<span class="promo-tag">
+								<i class="fas fa-tag" aria-hidden="true"></i>
+								<span id="applied-code-text">VENUS25</span>
+								<button type="button" id="remove-promo-btn" aria-label="Remove promo code">
+									<i class="fas fa-times" aria-hidden="true"></i>
+								</button>
+							</span>
+							<span class="promo-discount">-25% off</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Final Price Summary -->
+				<div class="price-summary">
+					<h3>Final Price</h3>
+					<div class="price-line">
+						<span>Base Package</span>
+						<span id="final-package">$0</span>
+					</div>
+					<div class="price-line">
+						<span>Travelers (<span id="final-traveler-count">1</span>)</span>
+						<span id="final-travelers">$0</span>
+					</div>
+					<div class="price-line">
+						<span>Add-Ons</span>
+						<span id="final-addons">$0</span>
+					</div>
+					<div class="price-line promo-discount-line" id="promo-discount-line" style="display: none;">
+						<span>Promo Discount (25%)</span>
+						<span id="final-promo-discount">-$0</span>
+					</div>
+					<div class="price-line total">
+						<span>Grand Total</span>
+						<span id="final-total">$0</span>
+					</div>
+				</div>
+
+					<!-- Terms & Conditions -->
+					<div class="terms-checkbox">
+						<input type="checkbox" name="terms" id="terms" required>
+						<label for="terms">
+							I agree to the <a href="#" target="_blank">Terms and Conditions</a> and <a href="#" target="_blank">Privacy Policy</a>. I understand that this booking is subject to availability and the cancellation policy.
+						</label>
+					</div>
+					<div class="error-message" id="terms-error">You must agree to the terms and conditions</div>
+
+					<!-- Navigation -->
+					<div class="step-navigation">
+						<button type="button" class="btn-prev" data-prev="3">
+							<i class="fas fa-arrow-left" aria-hidden="true"></i> Previous
+						</button>
+						<button type="submit" class="btn-submit">
+							<i class="fas fa-check" aria-hidden="true"></i> Book Now
+						</button>
+					</div>
+				</div>
+
+				<!-- Step 5: Confirmation -->
+				<div class="booking-step" data-step="5" id="step-5">
+					<div class="confirmation-container">
+						<div class="confirmation-icon">
+							<i class="fas fa-check-circle" aria-hidden="true"></i>
+						</div>
+						<h2>Booking Confirmed!</h2>
+						<p>Thank you for booking your Venus adventure with us.</p>
+
+						<div class="booking-reference">
+							<span class="reference-label">Booking Reference</span>
+							<span class="reference-number" id="booking-reference">VNS-000000</span>
+						</div>
+
+						<div class="confirmation-details">
+							<div class="review-section">
+								<div class="review-header">
+									<h3>Booking Summary</h3>
+								</div>
+								<div class="review-content">
+									<div class="review-row">
+										<span class="review-label">Package</span>
+										<span class="review-value" id="confirm-package">-</span>
+									</div>
+									<div class="review-row">
+										<span class="review-label">Destination</span>
+										<span class="review-value" id="confirm-destination">-</span>
+									</div>
+									<div class="review-row">
+										<span class="review-label">Departure</span>
+										<span class="review-value" id="confirm-date">-</span>
+									</div>
+									<div class="review-row">
+										<span class="review-label">Travelers</span>
+										<span class="review-value" id="confirm-travelers">-</span>
+									</div>
+									<div class="review-row">
+										<span class="review-label">Total Paid</span>
+										<span class="review-value" id="confirm-total">-</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="next-steps">
+								<h3>What's Next?</h3>
+								<ol>
+									<li><strong>Confirmation Email:</strong> You will receive a detailed confirmation email within 24 hours.</li>
+									<li><strong>Medical Clearance:</strong> Complete your medical assessment within 30 days.</li>
+									<li><strong>Training Schedule:</strong> Your pre-departure training will be scheduled 3 months before departure.</li>
+									<li><strong>Final Documents:</strong> Travel documents will be sent 2 weeks before departure.</li>
+								</ol>
+							</div>
+						</div>
+
+						<div class="confirmation-actions">
+							<button type="button" class="button" onclick="window.print()">
+								<i class="fas fa-print" aria-hidden="true"></i> Print Confirmation
+							</button>
+							<a href="index.html" class="button outline-button">Return to Home</a>
+						</div>
+					</div>
+				</div>
+
+			</form>
+		</div>
+
+	</main>
+
+	<footer>
+		<div class="footer-wrap">
+			<!-- Copyright -->
+			<div class="copyright">
+				<p class="copyright-image"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></p>
+				<p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+				<p>Created by <a href="https://a20y.com">AAArdvark</a></p>
+			</div>
+
+			<!-- Social media -->
+			<div class="social-media">
+				<ul>
+					<li><a href="https://twitter.com/hiredigitally">
+						<span class="fa-stack fa-2x">
+							<i class="fas fa-circle fa-stack-2x"></i>
+							<i class="fab fa-twitter fa-stack-1x"></i>
+						</span>
+						<span class="screen-reader-text">Follow us on Twitter</span>
+					</a></li>
+					<li><a href="https://www.facebook.com/hiredigitally">
+						<span class="fa-stack fa-2x">
+							<i class="fas fa-circle fa-stack-2x"></i>
+							<i class="fab fa-facebook-f fa-stack-1x"></i>
+						</span>
+						<span class="screen-reader-text">Like us on Facebook</span>
+					</a></li>
+					<li><a href="https://www.instagram.com/hiredigitally/">
+						<span class="fa-stack fa-2x">
+							<i class="fas fa-circle fa-stack-2x"></i>
+							<i class="fab fa-instagram fa-stack-1x"></i>
+						</span>
+						<span class="screen-reader-text">Follow us on Instagram</span>
+					</a></li>
+				</ul>
+			</div>
+
+		<div class="footer-menu">
+			<nav aria-label="Footer navigation">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="destinations.html">Destinations</a></li>
+					<li><a href="packages.html">Packages</a></li>
+					<li><a href="contact.html">Contact</a></li>
+					<li><a href="credits.html">Credits</a></li>
+				</ul>
+			</nav>
+		</div>
+		</div>
+	</footer>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/a11y-toggle.js"></script>
+<script src="js/booking.js"></script>
+
+</body>
+</html>

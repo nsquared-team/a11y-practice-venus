@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- UserWay accessibility overlay widget -->
+	<script src="https://cdn.userway.org/widget.js" data-account="H4h9mwMPQk"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise: Spot the Problems — Accessible Forms</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Exercise: Spot the Problems</h1>
+  <p>Here's a contact form with multiple accessibility issues baked in. How many can you find? Use your browser's developer tools, a screen reader, or the techniques we discussed today.</p>
+
+  <div class="exercise">
+    <h3>The Form</h3>
+    <form id="exercise-form">
+      <span class="fake-label">Your name <span class="required-star">*</span></span>
+      <input type="text" placeholder="Enter your name">
+
+      <span class="fake-label">Email <span class="required-star">*</span></span>
+      <input type="text" placeholder="Enter your email">
+
+      <span class="fake-label">Phone</span>
+      <input type="number" placeholder="(555) 123-4567">
+
+      <p style="font-weight: 600;">Preferred contact method</p>
+      <label><input type="radio" name="ex-contact" value="email"> Email</label><br>
+      <label><input type="radio" name="ex-contact" value="phone"> Phone</label><br>
+      <label><input type="radio" name="ex-contact" value="either"> No preference</label>
+
+      <div style="margin-top: 1rem;"></div>
+
+      <span class="fake-label">How can we help? <span class="required-star">*</span></span>
+      <textarea rows="4" placeholder="Describe your project"></textarea>
+
+      <div style="margin-top: 0.5rem;">
+        <label><input type="checkbox" name="ex-terms"> I agree to the <a href="#">terms</a></label>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        <button type="button" class="btn-disabled" disabled>Send Message</button>
+      </div>
+    </form>
+
+    <ol style="margin-top: 1.5rem;">
+      <li>How many issues can you find?</li>
+      <li>Which WCAG criteria does each issue relate to?</li>
+      <li>How would you fix each one?</li>
+    </ol>
+
+  </div>
+
+  <nav class="page-nav" aria-label="Page navigation">
+    <a href="demo-8-custom-controls.html">&larr; Prev: Custom Controls</a>
+    <a href="index.html">All Demos</a>
+    <span class="spacer"></span>
+  </nav>
+
+</body>
+</html>

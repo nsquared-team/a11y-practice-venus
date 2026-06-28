@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- UserWay accessibility overlay widget -->
+	<script src="https://cdn.userway.org/widget.js" data-account="H4h9mwMPQk"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo 5: Error Summary — Accessible Forms</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Demo 5: Error Summary <span class="tag tag-a">WCAG 3.3.1 — Level A</span></h1>
+  <p>After a failed form submission, an error summary at the top helps users find and fix all problems. This pattern is used by GOV.UK and is considered a gold standard.</p>
+
+  <div class="demo-pair">
+    <div class="demo-box broken">
+      <h3>Broken</h3>
+      <form>
+        <label for="d5b-name">Name</label>
+        <input type="text" id="d5b-name" class="error-input">
+        <label for="d5b-email">Email</label>
+        <input type="email" id="d5b-email" class="error-input" value="bad-email">
+        <label for="d5b-msg">Message</label>
+        <textarea id="d5b-msg" rows="3" class="error-input"></textarea>
+        <button type="button" class="btn-primary">Send Message</button>
+      </form>
+      <p class="explanation">After submission, fields turn red but there's no summary telling the user what happened. Screen reader users may not realize the form failed at all.</p>
+    </div>
+
+    <div class="demo-box fixed">
+      <h3>Fixed</h3>
+      <form id="d5f-form">
+        <div class="error-summary" id="d5f-error-summary" role="alert" tabindex="-1" style="display: none;">
+          <h4>There are 3 errors in this form</h4>
+          <ul>
+            <li><a href="#d5f-name">Name: this field is required</a></li>
+            <li><a href="#d5f-email">Email: enter a valid email address</a></li>
+            <li><a href="#d5f-msg">Message: this field is required</a></li>
+          </ul>
+        </div>
+        <label for="d5f-name">Name</label>
+        <input type="text" id="d5f-name" aria-describedby="d5f-name-err">
+        <p class="error-text" id="d5f-name-err" style="display: none;">This field is required</p>
+        <label for="d5f-email">Email</label>
+        <input type="email" id="d5f-email" value="bad-email" aria-describedby="d5f-email-err">
+        <p class="error-text" id="d5f-email-err" style="display: none;">Enter a valid email address</p>
+        <label for="d5f-msg">Message</label>
+        <textarea id="d5f-msg" rows="3" aria-describedby="d5f-msg-err"></textarea>
+        <p class="error-text" id="d5f-msg-err" style="display: none;">This field is required</p>
+        <button type="button" class="btn-primary" onclick="showDemo5Errors()">Send Message</button>
+      </form>
+      <p class="explanation">Click "Send Message" to see the error pattern in action. The error summary appears, receives focus, and each item links to its field. Individual errors also show inline.</p>
+    </div>
+  </div>
+
+  <nav class="page-nav" aria-label="Page navigation">
+    <a href="demo-4-errors.html">&larr; Prev: Error Messages</a>
+    <a href="index.html">All Demos</a>
+    <a href="demo-6-grouping.html">Next: Field Grouping &rarr;</a>
+  </nav>
+
+  <script>
+    function showDemo5Errors() {
+      document.getElementById('d5f-error-summary').style.display = '';
+      document.getElementById('d5f-name-err').style.display = '';
+      document.getElementById('d5f-email-err').style.display = '';
+      document.getElementById('d5f-msg-err').style.display = '';
+
+      var fields = ['d5f-name', 'd5f-email', 'd5f-msg'];
+      for (var i = 0; i < fields.length; i++) {
+        var field = document.getElementById(fields[i]);
+        field.classList.add('error-input');
+        field.setAttribute('aria-invalid', 'true');
+      }
+
+      document.getElementById('d5f-error-summary').focus();
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- UserWay accessibility overlay widget -->
+	<script src="https://cdn.userway.org/widget.js" data-account="H4h9mwMPQk"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo 1: Labels — Accessible Forms</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Demo 1: Labels <span class="tag tag-a">WCAG 3.3.2 — Level A</span></h1>
+  <p>Placeholder text disappears when you start typing, leaving no reference for what the field is for.</p>
+
+  <div class="demo-pair">
+    <div class="demo-box broken">
+      <h3>Broken</h3>
+      <form>
+        <input type="text" placeholder="First name">
+        <input type="text" placeholder="Last name">
+        <input type="email" placeholder="Email address">
+        <button type="button" class="btn-primary">Sign Up</button>
+      </form>
+      <p class="explanation">Try typing in a field — the only clue about what to enter disappears. A screen reader may or may not announce placeholder text.</p>
+    </div>
+
+    <div class="demo-box fixed">
+      <h3>Fixed</h3>
+      <form>
+        <label for="d1-first">First name</label>
+        <input type="text" id="d1-first">
+        <label for="d1-last">Last name</label>
+        <input type="text" id="d1-last">
+        <label for="d1-email">Email address</label>
+        <input type="email" id="d1-email">
+        <button type="button" class="btn-primary">Sign Up</button>
+      </form>
+      <p class="explanation">Visible labels stay on screen while typing. Each label is associated with its field using <code>for</code>/<code>id</code>.</p>
+    </div>
+  </div>
+
+  <nav class="page-nav" aria-label="Page navigation">
+    <a href="index.html">All Demos</a>
+    <span class="spacer"></span>
+    <a href="demo-2-association.html">Next: Label Association &rarr;</a>
+  </nav>
+
+</body>
+</html>

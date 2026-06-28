@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- UserWay accessibility overlay widget -->
+	<script src="https://cdn.userway.org/widget.js" data-account="H4h9mwMPQk"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Color Contrast Examples</title>
+	<style>
+		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			line-height: 1.6;
+			color: #333;
+		}
+
+		header {
+			background: #1a1a2e;
+			color: white;
+			text-align: center;
+			padding: 3rem 1rem;
+		}
+
+		header h1 {
+			font-size: 2rem;
+			margin-bottom: 0.5rem;
+		}
+
+		header p {
+			font-size: 1.1rem;
+			opacity: 0.85;
+			max-width: 640px;
+			margin: 0 auto;
+		}
+
+		.section {
+			padding: 3rem 1rem;
+		}
+
+		.section:nth-child(even) {
+			background: #f5f5f5;
+		}
+
+		.section-inner {
+			max-width: 800px;
+			margin: 0 auto;
+		}
+
+		.section h2 {
+			font-size: 1.5rem;
+			margin-bottom: 0.25rem;
+		}
+
+		.section .subtitle {
+			font-size: 0.95rem;
+			color: #666;
+			margin-bottom: 2rem;
+		}
+
+		.button-row {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1.5rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.button-example {
+			flex: 1;
+			min-width: 240px;
+		}
+
+		.button-example .label {
+			font-size: 0.8rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			margin-bottom: 0.5rem;
+		}
+
+		.label .fail {
+			color: #c0392b;
+		}
+
+		.label .pass {
+			color: #27ae60;
+		}
+
+		.btn {
+			display: inline-block;
+			padding: 0.85rem 2rem;
+			font-size: 1rem;
+			font-weight: 600;
+			border: none;
+			border-radius: 6px;
+			cursor: pointer;
+			width: 100%;
+			text-align: center;
+		}
+
+		.swatch-row {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1.5rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.swatch {
+			flex: 1;
+			min-width: 240px;
+			padding: 1.5rem;
+			border-radius: 6px;
+			font-size: 1rem;
+		}
+
+		.swatch .label {
+			font-size: 0.8rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			margin-bottom: 0.25rem;
+		}
+
+		.swatch p {
+			font-size: 0.95rem;
+		}
+
+		.ratio {
+			font-family: 'SF Mono', 'Fira Code', monospace;
+			font-weight: 700;
+		}
+
+		.note {
+			background: #fff8e1;
+			border-left: 4px solid #f0c97a;
+			padding: 1rem 1.25rem;
+			margin-top: 1rem;
+			font-size: 0.9rem;
+			border-radius: 0 4px 4px 0;
+		}
+
+		.wcag3-disclosure {
+			margin-top: 1rem;
+		}
+
+		.wcag3-disclosure summary {
+			background: #e8f4fd;
+			border-left: 4px solid #2B8AC7;
+			padding: 0.85rem 1.25rem;
+			border-radius: 0 4px 4px 0;
+			font-size: 0.95rem;
+			font-weight: 600;
+			color: #1a1a2e;
+			cursor: pointer;
+			list-style: none;
+		}
+
+		.wcag3-disclosure summary::-webkit-details-marker {
+			display: none;
+		}
+
+		.wcag3-disclosure summary::before {
+			content: "\25B6\00a0\00a0";
+			font-size: 0.7rem;
+			vertical-align: middle;
+		}
+
+		.wcag3-disclosure[open] summary::before {
+			content: "\25BC\00a0\00a0";
+		}
+
+		.wcag3-disclosure[open] summary {
+			border-radius: 0 4px 0 0;
+		}
+
+		.wcag3-compare {
+			background: #e8f4fd;
+			border-left: 4px solid #2B8AC7;
+			padding: 1.25rem;
+			font-size: 0.9rem;
+			border-radius: 0 0 4px 0;
+		}
+
+		.wcag3-compare h3 {
+			display: none;
+		}
+
+		.wcag3-compare p {
+			margin-bottom: 0.5rem;
+		}
+
+		.wcag3-compare p:last-child {
+			margin-bottom: 0;
+		}
+
+		.wcag3-compare .compare-table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 0.75rem 0;
+			font-size: 0.85rem;
+		}
+
+		.wcag3-compare .compare-table th,
+		.wcag3-compare .compare-table td {
+			text-align: left;
+			padding: 0.4rem 0.75rem;
+			border-bottom: 1px solid #c8dfe9;
+		}
+
+		.wcag3-compare .compare-table th {
+			font-weight: 600;
+			color: #1a1a2e;
+		}
+
+		footer {
+			text-align: center;
+			padding: 2rem 1rem;
+			font-size: 0.85rem;
+			color: #999;
+		}
+	</style>
+</head>
+<body>
+
+<header>
+	<h1>Color Contrast Gotchas</h1>
+	<p>Common color combinations that look fine visually but fail WCAG AA contrast requirements &mdash; and the fixes that pass.</p>
+</header>
+
+<!-- Section 1: Medium Blue -->
+<div class="section">
+	<div class="section-inner">
+		<h2>The Medium Blue Problem</h2>
+		<p class="subtitle">A professional-looking blue that most people find perfectly readable with white text &mdash; but it fails AA.</p>
+
+		<div class="button-row">
+			<div class="button-example">
+				<div class="label"><span class="fail">&#x2717; Fails</span> &mdash; Ratio: <span class="ratio">4.22:1</span></div>
+				<button class="btn" style="background: #2B8AC7; color: #ffffff;">White on Blue</button>
+			</div>
+			<div class="button-example">
+				<div class="label"><span class="pass">&#x2713; Passes</span> &mdash; Ratio: <span class="ratio">4.98:1</span></div>
+				<button class="btn" style="background: #2B8AC7; color: #000000;">Black on Blue</button>
+			</div>
+		</div>
+
+		<div class="note">
+			This is our brand color. Most designers and clients prefer white text on medium blues like this, but WCAG AA requires 4.5:1 for normal text. You either need to darken the blue or switch to black text.
+		</div>
+
+		<details class="wcag3-disclosure"><summary>How WCAG 3 (APCA) Sees This Differently</summary><div class="wcag3-compare">
+			<h3>How WCAG 3 (APCA) Sees This Differently</h3>
+			<table class="compare-table">
+				<tr>
+					<th>Combination</th>
+					<th>WCAG 2 Ratio</th>
+					<th>APCA (Lc)</th>
+					<th>WCAG 2</th>
+					<th>WCAG 3</th>
+				</tr>
+				<tr>
+					<td>White on #2B8AC7</td>
+					<td>4.22:1</td>
+					<td>Lc 62</td>
+					<td><span class="fail">Fails AA</span></td>
+					<td><span class="pass">Passes for 16px bold</span></td>
+				</tr>
+				<tr>
+					<td>Black on #2B8AC7</td>
+					<td>4.98:1</td>
+					<td>Lc 48</td>
+					<td><span class="pass">Passes AA</span></td>
+					<td><span class="fail">Fails for body text</span></td>
+				</tr>
+			</table>
+			<p>This is one of APCA's most dramatic differences. WCAG 2 treats contrast as symmetric &mdash; it doesn't care whether the light color is the text or the background. APCA accounts for <strong>polarity</strong>: light text on a dark background is actually easier to read than dark text on a light background at the same luminance difference. So white-on-blue scores <em>higher</em> than black-on-blue in APCA, completely flipping the WCAG 2 result.</p>
+		</div>
+		</details>
+	</div>
+</div>
+
+<!-- Section 2: Bright Orange -->
+<div class="section">
+	<div class="section-inner">
+		<h2>The Orange Dilemma</h2>
+		<p class="subtitle">Orange is one of the hardest colors to use accessibly. White text on orange almost never passes.</p>
+
+		<div class="button-row">
+			<div class="button-example">
+				<div class="label"><span class="fail">&#x2717; Fails</span> &mdash; Ratio: <span class="ratio">2.94:1</span></div>
+				<button class="btn" style="background: #E67E22; color: #ffffff;">White on Orange</button>
+			</div>
+			<div class="button-example">
+				<div class="label"><span class="pass">&#x2713; Passes</span> &mdash; Ratio: <span class="ratio">7.15:1</span></div>
+				<button class="btn" style="background: #E67E22; color: #000000;">Black on Orange</button>
+			</div>
+		</div>
+
+		<div class="button-row">
+			<div class="button-example">
+				<div class="label"><span class="fail">&#x2717; Fails</span> &mdash; Ratio: <span class="ratio">3.00:1</span></div>
+				<button class="btn" style="background: #FF8C00; color: #ffffff;">White on Dark Orange</button>
+			</div>
+			<div class="button-example">
+				<div class="label"><span class="pass">&#x2713; Passes</span> &mdash; Ratio: <span class="ratio">7.01:1</span></div>
+				<button class="btn" style="background: #FF8C00; color: #000000;">Black on Dark Orange</button>
+			</div>
+		</div>
+
+		<div class="note">
+			Orange sits in a luminance range where it's too light for white text but feels visually &ldquo;wrong&rdquo; with black text. This is one of the most common complaints about WCAG contrast rules. To use white text, you'd need to go so dark it barely reads as orange anymore.
+		</div>
+
+		<details class="wcag3-disclosure"><summary>How WCAG 3 (APCA) Sees This Differently</summary><div class="wcag3-compare">
+			<h3>How WCAG 3 (APCA) Sees This Differently</h3>
+			<table class="compare-table">
+				<tr>
+					<th>Combination</th>
+					<th>WCAG 2 Ratio</th>
+					<th>APCA (Lc)</th>
+					<th>WCAG 2</th>
+					<th>WCAG 3</th>
+				</tr>
+				<tr>
+					<td>White on #E67E22</td>
+					<td>2.94:1</td>
+					<td>Lc 55</td>
+					<td><span class="fail">Fails AA</span></td>
+					<td><span class="pass">Passes for 18px bold</span></td>
+				</tr>
+				<tr>
+					<td>Black on #E67E22</td>
+					<td>7.15:1</td>
+					<td>Lc 67</td>
+					<td><span class="pass">Passes AA</span></td>
+					<td><span class="pass">Passes for body text</span></td>
+				</tr>
+			</table>
+			<p>Orange is where APCA offers the most relief. WCAG 2's symmetric formula heavily penalizes orange with white because orange has high relative luminance. APCA recognizes that white text on a medium-tone background is more readable than the simple ratio suggests. While white-on-orange still doesn't pass for small body text in APCA, it clears the bar for larger or bolder text &mdash; something WCAG 2 doesn't allow until 18pt/24px.</p>
+		</div>
+		</details>
+	</div>
+</div>
+
+<!-- Section 3: The Famous #767676 -->
+<div class="section">
+	<div class="section-inner">
+		<h2>The Magic Gray: #767676</h2>
+		<p class="subtitle">The lightest possible gray that passes 4.5:1 contrast on a white background. One shade lighter and it fails.</p>
+
+		<div class="swatch-row">
+			<div class="swatch" style="background: #ffffff; color: #767676; border: 1px solid #ddd;">
+				<div class="label"><span class="pass" style="color: #27ae60;">&#x2713; Passes</span> &mdash; Ratio: <span class="ratio">4.54:1</span></div>
+				<p><strong>#767676 on White</strong><br>The absolute threshold. This is the lightest gray you can use for body text on a white background.</p>
+			</div>
+			<div class="swatch" style="background: #ffffff; color: #777777; border: 1px solid #ddd;">
+				<div class="label"><span class="fail" style="color: #c0392b;">&#x2717; Fails</span> &mdash; Ratio: <span class="ratio">4.48:1</span></div>
+				<p><strong>#777777 on White</strong><br>Just one step lighter and it fails. This is why #767676 is famous in accessibility circles.</p>
+			</div>
+		</div>
+
+		<div class="swatch-row">
+			<div class="swatch" style="background: #767676; color: #ffffff;">
+				<div class="label" style="color: #ccc;"><span class="pass" style="color: #6fda97;">&#x2713; Passes</span> &mdash; Ratio: <span class="ratio">4.54:1</span></div>
+				<p><strong>White on #767676</strong><br>It works in reverse too. White text on this gray background also passes at exactly 4.54:1.</p>
+			</div>
+			<div class="swatch" style="background: #767676; color: #000000;">
+				<div class="label" style="color: #333;"><span class="pass" style="color: #27ae60;">&#x2713; Passes</span> &mdash; Ratio: <span class="ratio">4.62:1</span></div>
+				<p><strong>Black on #767676</strong><br>Black text on this gray also passes, making #767676 one of the few colors that works with both black and white text.</p>
+			</div>
+		</div>
+
+		<div class="note">
+			#767676 is the accessibility community's most famous hex code. It represents the exact tipping point where gray meets the AA threshold against white. It's a useful benchmark when choosing gray tones for placeholder text, icons, or secondary content.
+		</div>
+
+		<details class="wcag3-disclosure"><summary>How WCAG 3 (APCA) Sees This Differently</summary><div class="wcag3-compare">
+			<h3>How WCAG 3 (APCA) Sees This Differently</h3>
+			<table class="compare-table">
+				<tr>
+					<th>Combination</th>
+					<th>WCAG 2 Ratio</th>
+					<th>APCA (Lc)</th>
+					<th>WCAG 2</th>
+					<th>WCAG 3</th>
+				</tr>
+				<tr>
+					<td>#767676 on White</td>
+					<td>4.54:1</td>
+					<td>Lc 56</td>
+					<td><span class="pass">Just passes AA</span></td>
+					<td><span class="fail">Fails for body text</span></td>
+				</tr>
+				<tr>
+					<td>White on #767676</td>
+					<td>4.54:1</td>
+					<td>Lc 61</td>
+					<td><span class="pass">Just passes AA</span></td>
+					<td><span class="pass">Passes for 16px bold</span></td>
+				</tr>
+			</table>
+			<p>In WCAG 2, these two combinations have the <em>exact same ratio</em> because the formula is symmetric. APCA breaks that symmetry. Dark text on a light background needs a <em>higher</em> Lc value to pass than light text on a dark background at the same font size, because our eyes process the two polarities differently. So the famous #767676 actually <strong>fails</strong> APCA for regular body text on white &mdash; you'd need closer to <code>#5e5e5e</code> (Lc 75) for comfortable 16px reading. The &ldquo;magic gray&rdquo; loses its magic under the new algorithm.</p>
+		</div>
+		</details>
+	</div>
+</div>
+
+<!-- Section 4: Red Buttons -->
+<div class="section">
+	<div class="section-inner">
+		<h2>Red Alert Buttons</h2>
+		<p class="subtitle">Bright reds used for error states and destructive actions often fail with white text.</p>
+
+		<div class="button-row">
+			<div class="button-example">
+				<div class="label"><span class="fail">&#x2717; Fails</span> &mdash; Ratio: <span class="ratio">3.99:1</span></div>
+				<button class="btn" style="background: #E74C3C; color: #ffffff;">White on Red</button>
+			</div>
+			<div class="button-example">
+				<div class="label"><span class="pass">&#x2713; Passes</span> &mdash; Ratio: <span class="ratio">5.27:1</span></div>
+				<button class="btn" style="background: #E74C3C; color: #000000;">Black on Red</button>
+			</div>
+		</div>
+
+		<div class="button-row">
+			<div class="button-example">
+				<div class="label"><span class="pass">&#x2713; Passes</span> &mdash; Ratio: <span class="ratio">5.73:1</span></div>
+				<button class="btn" style="background: #C0392B; color: #ffffff;">White on Dark Red</button>
+			</div>
+			<div class="button-example">
+				<div class="label"><span class="pass">&#x2713; Passes</span> &mdash; Ratio: <span class="ratio">3.66:1</span></div>
+				<button class="btn" style="background: #C0392B; color: #000000;">Black on Dark Red</button>
+			</div>
+		</div>
+
+		<div class="note">
+			Bright reds like Bootstrap's classic <code>#E74C3C</code> fail with white text. You need to darken to at least around <code>#C0392B</code> for white text to pass. But notice: as the red gets dark enough for white, black text starts to lose contrast.
+		</div>
+	</div>
+</div>
+
+<!-- Section 5: Green Buttons -->
+<div class="section">
+	<div class="section-inner">
+		<h2>The Green Paradox</h2>
+		<p class="subtitle">Green is deceptively tricky. &ldquo;Success green&rdquo; buttons almost always fail with white text.</p>
+
+		<div class="button-row">
+			<div class="button-example">
+				<div class="label"><span class="fail">&#x2717; Fails</span> &mdash; Ratio: <span class="ratio">2.31:1</span></div>
+				<button class="btn" style="background: #2ECC71; color: #ffffff;">White on Green</button>
+			</div>
+			<div class="button-example">
+				<div class="label"><span class="pass">&#x2713; Passes</span> &mdash; Ratio: <span class="ratio">9.10:1</span></div>
+				<button class="btn" style="background: #2ECC71; color: #000000;">Black on Green</button>
+			</div>
+		</div>
+
+		<div class="button-row">
+			<div class="button-example">
+				<div class="label"><span class="fail">&#x2717; Fails</span> &mdash; Ratio: <span class="ratio">3.25:1</span></div>
+				<button class="btn" style="background: #27AE60; color: #ffffff;">White on Darker Green</button>
+			</div>
+			<div class="button-example">
+				<div class="label"><span class="pass">&#x2713; Passes</span> &mdash; Ratio: <span class="ratio">6.47:1</span></div>
+				<button class="btn" style="background: #27AE60; color: #000000;">Black on Darker Green</button>
+			</div>
+		</div>
+
+		<div class="note">
+			Green has very high luminance, which means white text almost never works on it at any saturation. To pass with white text, you'd need something like <code>#1B7A3D</code> &mdash; which most people wouldn't call &ldquo;green&rdquo; anymore. This is arguably the single most frustrating color in WCAG compliance.
+		</div>
+
+		<details class="wcag3-disclosure"><summary>How WCAG 3 (APCA) Sees This Differently</summary><div class="wcag3-compare">
+			<h3>How WCAG 3 (APCA) Sees This Differently</h3>
+			<table class="compare-table">
+				<tr>
+					<th>Combination</th>
+					<th>WCAG 2 Ratio</th>
+					<th>APCA (Lc)</th>
+					<th>WCAG 2</th>
+					<th>WCAG 3</th>
+				</tr>
+				<tr>
+					<td>White on #2ECC71</td>
+					<td>2.31:1</td>
+					<td>Lc 44</td>
+					<td><span class="fail">Fails AA</span></td>
+					<td><span class="fail">Fails</span></td>
+				</tr>
+				<tr>
+					<td>White on #27AE60</td>
+					<td>3.25:1</td>
+					<td>Lc 53</td>
+					<td><span class="fail">Fails AA</span></td>
+					<td><span class="fail">Fails for body text</span></td>
+				</tr>
+				<tr>
+					<td>White on #1B7A3D</td>
+					<td>5.14:1</td>
+					<td>Lc 68</td>
+					<td><span class="pass">Passes AA</span></td>
+					<td><span class="pass">Passes for 16px bold</span></td>
+				</tr>
+			</table>
+			<p>Green is the one color where APCA largely <strong>agrees</strong> with WCAG 2. Green's high luminance genuinely does make white text hard to read. APCA actually makes it <em>slightly harder</em> to pass because it accounts for the fact that our eyes are most sensitive to green light, so a green background produces more visual &ldquo;noise&rdquo; against white text than you'd expect from luminance alone. Green remains the toughest color for accessible white text in both standards.</p>
+		</div>
+		</details>
+	</div>
+</div>
+
+<!-- Section 6: Placeholder Text -->
+<div class="section">
+	<div class="section-inner">
+		<h2>Placeholder Text Trap</h2>
+		<p class="subtitle">The default placeholder gray in most browsers fails contrast. And many designs make it even worse.</p>
+
+		<div class="swatch-row">
+			<div class="swatch" style="background: #ffffff; border: 1px solid #ccc; padding: 0;">
+				<input type="text" placeholder="Enter your email" style="width: 100%; padding: 1rem; border: none; font-size: 1rem; color: #757575; background: transparent;" disabled>
+				<div style="padding: 0.5rem 1rem 1rem;">
+					<div class="label"><span class="pass" style="color: #27ae60;">&#x2713; Passes</span> &mdash; Ratio: <span class="ratio">4.60:1</span></div>
+					<p style="font-size: 0.85rem; color: #666;">Placeholder color: <strong>#757575</strong></p>
+				</div>
+			</div>
+			<div class="swatch" style="background: #ffffff; border: 1px solid #ccc; padding: 0;">
+				<input type="text" placeholder="Enter your email" style="width: 100%; padding: 1rem; border: none; font-size: 1rem; color: #a9a9a9; background: transparent;" disabled>
+				<div style="padding: 0.5rem 1rem 1rem;">
+					<div class="label"><span class="fail" style="color: #c0392b;">&#x2717; Fails</span> &mdash; Ratio: <span class="ratio">2.79:1</span></div>
+					<p style="font-size: 0.85rem; color: #666;">Placeholder color: <strong>#A9A9A9</strong> (common browser default)</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="note">
+			Many designers intentionally make placeholder text light to visually distinguish it from entered text. But WCAG still requires 4.5:1 contrast for placeholder text since it conveys information. This creates a design tension between convention and compliance.
+		</div>
+	</div>
+</div>
+
+<!-- Section 7: The Link Color Problem -->
+<div class="section">
+	<div class="section-inner">
+		<h2>Link Color on Colored Backgrounds</h2>
+		<p class="subtitle">A link color that passes on white may fail on a light gray background.</p>
+
+		<div class="swatch-row">
+			<div class="swatch" style="background: #ffffff; border: 1px solid #ddd;">
+				<div class="label"><span class="pass" style="color: #27ae60;">&#x2713; Passes</span> &mdash; Ratio: <span class="ratio">4.62:1</span></div>
+				<p>Read our <a href="#" style="color: #2874A6; text-decoration: underline;" onclick="return false;">terms and conditions</a> before continuing.</p>
+			</div>
+			<div class="swatch" style="background: #ECECEC;">
+				<div class="label"><span class="fail" style="color: #c0392b;">&#x2717; Fails</span> &mdash; Ratio: <span class="ratio">3.81:1</span></div>
+				<p>Read our <a href="#" style="color: #2874A6; text-decoration: underline;" onclick="return false;">terms and conditions</a> before continuing.</p>
+			</div>
+		</div>
+
+		<div class="note">
+			The same link color can pass on a white background but fail on a light gray panel or card. Always check contrast against the <em>actual</em> background the text sits on, not just white.
+		</div>
+	</div>
+</div>
+
+<footer>
+	<p>WCAG 2 ratios calculated per WCAG 2.1 Success Criterion 1.4.3 (Level AA) &mdash; minimum 4.5:1 for normal text, 3:1 for large text.<br>
+	APCA values reference the WCAG 3 draft Accessible Perceptual Contrast Algorithm. WCAG 3 is still in development &mdash; thresholds and scoring may change before final recommendation.</p>
+</footer>
+
+</body>
+</html>

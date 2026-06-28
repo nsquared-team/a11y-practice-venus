@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- UserWay accessibility overlay widget -->
+	<script src="https://cdn.userway.org/widget.js" data-account="H4h9mwMPQk"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Discover Venus - A romantic getaway</title>
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:400,400i,700,700i&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/all.css">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="landing">
+
+<!-- Intentional A11y Issue: Skip link is present but non-functional (href points to non-existent id) -->
+<!-- When issues are enabled, the skip link uses wrong target; when disabled, it works properly -->
+<a href="#non-existent-main" class="skip-link a11y-broken">Skip to main content</a>
+
+<div class="page">
+	<!-- Header area -->
+	<header role="banner" class="site-header">
+			<div class="site-branding">
+				<h1 class="site-logo">
+					<a href="index.html">
+						<img src="images/logo-p.png" alt="Discover Venus">
+					</a>
+				</h1>
+			</div>
+			<nav class="site-navigation" role="navigation">
+				<button class="nav-toggle">
+					<i class="fas fa-bars fa-2x"></i>
+					<span class="screen-reader-text">Menu</span>
+				</button>
+				<div class="nav-container">
+					<button class="nav-toggle">
+						<i class="fas fa-times fa-2x"></i>
+						<span class="screen-reader-text">Close menu</span>
+					</button>
+					<ul class="nav">
+						<li><a href="about.html">About</a></li>
+						<li><a href="destinations.html">Destinations</a></li>
+						<li><a href="packages.html">Packages</a></li>
+						<li><a href="contact.html">Contact</a></li>
+						<li class="nav-button">
+							<a href="booking.html" class="button">
+								Book Now
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+	</header>
+	<main role="main">
+		<!-- Hero -->
+		<div class="hero">
+			<div class="hero-content">
+				<div class="hero-content-wrap">
+					<h2>
+						<span class="offer">Best Offer</span>
+						<span class="discount">25% off</span>
+						<span class="location">Fortuna Tessera Tour</span>
+					</h2>
+					<p>The jewel of eastern Ishtar Terra, Fortuna Tessera is extremely rugged. Explore the ridges and troughs of this stunning area along with the peaks of the Maxwell Montes to the West.</p>
+				<p>
+					<a href="#" class="button outline-button" data-modal-open="learn-more-modal">See More</a>
+				</p>
+				</div>
+			</div>
+
+			<a href="#reservation-form" class="scroll">
+				<span>Scroll down</span>
+				<i class="fas fa-angle-down fa-2x"></i>
+			</a>
+		</div>
+
+		<!-- Make a reservation -->
+		<!-- Intentional A11y Issue: Labels removed and replaced with placeholders only -->
+		<div class="reservation" id="reservation-form">
+			<form action="#">
+				<h2>Make a reservation</h2>
+				<div class="form-fields">
+					<div class="field destination">
+						<input type="text" name="destination" id="destination" placeholder="Destination">
+						<i class="fas fa-map-marker-alt"></i>
+					</div>
+				<div class="field date-from">
+					<input type="date" name="date-from" id="date-from" placeholder="From Date">
+				</div>
+				<div class="field date-to">
+					<input type="date" name="date-to" id="date-to" placeholder="To Date">
+				</div>
+					<div class="field">
+						<input type="number" name="guests" id="guests" placeholder="Number of Guests" min="1">
+						<i class="fas fa-users"></i>
+					</div>
+					<div class="field submit">
+						<button class="button" type="submit">Check availability</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<!-- About us -->
+		<div class="about-us" id="about">
+			<div class="about-media">
+				<img src="images/marco-mons-6C5KT0fbsdM-unsplash-cropped.png" alt="">
+			</div>
+			<div class="about-content">
+				<h2>About Us</h2>
+				<p>We are the solar system's first Venus-exclusive travel agency. We have the expertise and experience to make your trip to Venus a safe and fun adventure. There's no one else with our knowledge, our passion, and our love of Venus.</p>
+				<p>Interplanetary travel is no longer reserved only for astronauts! If you want to be one of the first to explore and discover Venus, we're the only agency who can help you book a rocket, make arrangements for accommodations, and stay safe while you have a once-in-a-lifetime experience on another planet.</p>
+			<p class="about-button">
+				<a href="about.html" class="button">Learn more <span class="screen-reader-text">about us</span></a>
+			</p>
+			</div>
+		</div>
+
+		<!-- Divider -->
+		<div class="divider">
+			<div class="divider-wrap">
+				<img src="images/divider.png" alt="">
+			</div>
+		</div>
+
+		<!-- Featured Destinations Carousel -->
+		<!-- Intentional A11y Issues: auto-play without pause button, hidden slides still focusable -->
+		<div class="destinations-carousel"
+			data-carousel
+			data-carousel-autoplay
+			data-carousel-delay="6000"
+			data-a11y-issue="no-pause focusable-hidden no-live-region"
+			aria-label="Featured destinations"
+			tabindex="0">
+
+			<div class="destinations-intro">
+				<h2>Featured Destinations</h2>
+				<p>Explore our hand-picked Venus adventures</p>
+			</div>
+
+			<div class="carousel-wrapper">
+				<div class="carousel-slides">
+				<!-- Slide 1: Maxwell Montes -->
+				<div class="carousel-slide" data-carousel-slide aria-hidden="true">
+					<div class="slide-image">
+						<img src="images/grant-mciver-pmUEwPKL5IE-unsplash-cropped.jpg" alt="Maxwell Montes mountain peaks">
+					</div>
+					<div class="slide-content has-background">
+						<h3 class="slide-heading-large">Maxwell Montes</h3>
+							<p>Stand atop the highest peak on Venus, rising 11 kilometers above the mean planetary radius. Experience the stunning metallic "snow" that covers the summit.</p>
+							<p><a href="destination-detail.html" class="button">Explore Maxwell Montes</a></p>
+						</div>
+					</div>
+
+				<!-- Slide 2: Beta Regio -->
+				<div class="carousel-slide" data-carousel-slide aria-hidden="true">
+					<div class="slide-image">
+						<img src="images/alexis-antonio--2xSlOAySLY-unsplash-cropped.jpg" alt="Beta Regio volcanic landscape">
+					</div>
+					<div class="slide-content has-background">
+						<h3 class="slide-heading-large">Beta Regio</h3>
+							<p>Discover the dramatic volcanic highlands of Beta Regio, home to the massive shield volcano Theia Mons. A must-see for adventure seekers.</p>
+							<p><a href="destination-detail.html?dest=beta-regio" class="button">Explore Beta Regio</a></p>
+						</div>
+					</div>
+
+				<!-- Slide 3: Lakshmi Planum -->
+				<div class="carousel-slide" data-carousel-slide aria-hidden="true">
+					<div class="slide-image">
+						<img src="images/vaibhaw-kumar-3guBQuEqvYM-unsplash-cropped.jpg" alt="Lakshmi Planum plateau">
+					</div>
+					<div class="slide-content has-background">
+						<h3 class="slide-heading-large">Lakshmi Planum</h3>
+							<p>Explore the vast highland plateau of western Ishtar Terra, bordered by the highest mountains on Venus. Perfect for extended expeditions.</p>
+							<p><a href="destination-detail.html?dest=lakshmi-planum" class="button">Explore Lakshmi Planum</a></p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Carousel Navigation -->
+				<!-- Intentional A11y Issue: Vague button labels -->
+				<button class="carousel-nav carousel-prev" data-carousel-prev aria-label="Previous">
+					<i class="fas fa-chevron-left" aria-hidden="true"></i>
+				</button>
+				<button class="carousel-nav carousel-next" data-carousel-next aria-label="Next">
+					<i class="fas fa-chevron-right" aria-hidden="true"></i>
+				</button>
+			</div>
+
+			<!-- Carousel Dots -->
+			<div class="carousel-dots" data-carousel-dots></div>
+		</div>
+
+		<!-- Destinations Grid -->
+		<div class="destinations" id="destinations">
+			<div class="destinations-intro">
+				<h2>Top Destinations</h2>
+				<p>The very best spots to visit on Venus, the planet of love.</p>
+			</div>
+			<div class="destinations-list">
+
+				<!-- Beta Regio -->
+				<div class="destinations-destination">
+					<div class="destination-media">
+						<a href="#">
+							<img src="images/alexis-antonio--2xSlOAySLY-unsplash-cropped.jpg" alt="">
+						</a>
+					</div>
+					<div class="destination-text">
+						<h3><a href="#">Beta Regio</a></h3>
+					</div>
+				</div>
+
+				<!-- Maxwell Montes -->
+				<div class="destinations-destination">
+					<div class="destination-media">
+						<a href="#">
+							<img src="images/grant-mciver-pmUEwPKL5IE-unsplash-cropped.jpg" alt="">
+						</a>
+					</div>
+					<div class="destination-text">
+						<h3><a href="#">Maxwell Montes</a></h3>
+					</div>
+				</div>
+
+				<!-- Lakshmi Planum -->
+				<div class="destinations-destination">
+					<div class="destination-media">
+						<a href="#">
+							<img src="images/vaibhaw-kumar-3guBQuEqvYM-unsplash-cropped.jpg" alt="">
+						</a>
+					</div>
+					<div class="destination-text">
+						<h3><a href="#">Lakshmi Planum</a></h3>
+					</div>
+				</div>
+
+				<!-- Lavinia Planitia -->
+				<div class="destinations-destination">
+					<div class="destination-media">
+						<a href="#">
+							<img src="images/mathias-elle-D7cGCdYIRvo-unsplash-cropped.jpg" alt="">
+						</a>
+					</div>
+					<div class="destination-text">
+						<h3><a href="#">Lavinia Planitia</a></h3>
+					</div>
+				</div>
+
+				<!-- Atne Corona -->
+				<div class="destinations-destination">
+					<div class="destination-media">
+						<a href="#">
+							<img src="images/osman-rana-RA766zkqmKk-unsplash-cropped.jpg" alt="">
+						</a>
+					</div>
+					<div class="destination-text">
+						<h3><a href="#">Atne Corona</a></h3>
+					</div>
+				</div>
+
+				<!-- Vesta Rupes -->
+				<div class="destinations-destination">
+					<div class="destination-media">
+						<a href="#">
+							<img src="images/xavier-coiffic-EYVQ5dM4dKg-unsplash-cropped.jpg" alt="">
+						</a>
+					</div>
+					<div class="destination-text">
+						<h3><a href="#">Vesta Rupes</a></h3>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<div class="all-dest">
+			<a href="destinations.html" class="button">See all destinations</a>
+		</div>
+
+		<!-- Packages -->
+		<div class="packages">
+			<div class="package-heading">
+				<h2>Packages</h2>
+				<p>Our best available deals on travel to the best destinations on the planet Venus.</p>
+			</div>
+			<div class="package-content">
+				<div class="package">
+					<div class="package-info">
+						<i class="fas fa-mountain fa-3x"></i>
+						<h3>Mountains</h3>
+						<p>Explore the rugged beauty of the mountains of Venus</p>
+					</div>
+					<div class="package-destinations">
+						<div class="package-destination">
+							<h4>Akna Montes</h4>
+							<p>Mayan goddess of birth</p>
+							<div class="package-destination-details">
+								<div class="time"><i class="far fa-clock"></i> 120 mins</div>
+								<div class="place"><i class="fas fa-map-marker-alt"></i> Ishtar Terra</div>
+							</div>
+						</div>
+						<div class="package-destination">
+							<h4>Maat Mons</h4>
+							<p>Egyptian goddess of truth and justice</p>
+							<div class="package-destination-details">
+								<div class="time"><i class="far fa-clock"></i> 180 mins</div>
+								<div class="place"><i class="fas fa-map-marker-alt"></i> Atla Regio</div>
+							</div>
+						</div>
+						<div class="package-destination">
+							<h4>Renpet Mons</h4>
+							<p>Egyptian goddess of springtime and youth</p>
+							<div class="package-destination-details">
+								<div class="time"><i class="far fa-clock"></i> 105 mins</div>
+								<div class="place"><i class="fas fa-map-marker-alt"></i> Metis Regio</div>
+							</div>
+						</div>
+					</div>
+					<div class="package-price">
+						<div><a href="#" class="button">Book it now</a></div>
+						<div class="or">or</div>
+						<div class="link"><a href="#">Customize it</a></div>
+					</div>
+				</div>
+				<div class="package">
+					<div class="package-info">
+						<i class="fas fa-fire fa-3x"></i>
+						<h3>Volcanoes</h3>
+						<p>Experience exciting lava eruptions and flows</p>
+					</div>
+					<div class="package-destinations">
+						<div class="package-destination">
+							<h4>Anala Mons</h4>
+							<p>Hindu fertility goddess</p>
+							<div class="package-destination-details">
+								<div class="time"><i class="far fa-clock"></i> 180 mins</div>
+								<div class="place"><i class="fas fa-map-marker-alt"></i> Eistla Regio</div>
+							</div>
+						</div>
+						<div class="package-destination">
+							<h4>Gula Mons</h4>
+							<p>Babylonian earth mother</p>
+							<div class="package-destination-details">
+								<div class="time"><i class="far fa-clock"></i> 150 mins</div>
+								<div class="place"><i class="fas fa-map-marker-alt"></i> Eistla Regio</div>
+							</div>
+						</div>
+						<div class="package-destination">
+							<h4>Irnini Mons</h4>
+							<p>Babylonian goddess of mountains</p>
+							<div class="package-destination-details">
+								<div class="time"><i class="far fa-clock"></i> 90 mins</div>
+								<div class="place"><i class="fas fa-map-marker-alt"></i> Eistla Regio</div>
+							</div>
+						</div>
+					</div>
+					<div class="package-price">
+						<div><a href="#" class="button">Book it now</a></div>
+						<div class="or">or</div>
+						<div class="link"><a href="#">Customize it</a></div>
+					</div>
+				</div>
+				<div class="package">
+					<div class="package-info">
+						<i class="fas fa-wind fa-3x"></i>
+						<h3>Plains</h3>
+						<p>Experience vast open spaces and the winds on the prairies</p>
+					</div>
+					<div class="package-destinations">
+						<div class="package-destination">
+							<h4>Sedna Planitia</h4>
+							<p>Inuit goddess of the sea</p>
+							<div class="package-destination-details">
+								<div class="time"><i class="far fa-clock"></i> 90 mins</div>
+								<div class="place"><i class="fas fa-map-marker-alt"></i> Ishtar Terra</div>
+							</div>
+						</div>
+						<div class="package-destination">
+							<h4>Rusalka Planitia</h4>
+							<p>Russian mermaid</p>
+							<div class="package-destination-details">
+								<div class="time"><i class="far fa-clock"></i> 60 mins</div>
+								<div class="place"><i class="fas fa-map-marker-alt"></i> Eistla Regio</div>
+							</div>
+						</div>
+						<div class="package-destination">
+							<h4>Bereghinya Planitia</h4>
+							<p>Slavic water spirit</p>
+							<div class="package-destination-details">
+								<div class="time"><i class="far fa-clock"></i> 90 mins</div>
+								<div class="place"><i class="fas fa-map-marker-alt"></i> Thetis Regio</div>
+							</div>
+						</div>
+					</div>
+					<div class="package-price">
+						<div><a href="#" class="button">Book it now</a></div>
+						<div class="or">or</div>
+						<div class="link"><a href="#">Customize it</a></div>
+					</div>
+				</div>
+			</div>
+			<div class="all-packages">
+				<a href="packages.html" class="button">See All Packages</a>
+			</div>
+		</div>
+
+		<!-- Special offer -->
+		<div class="special-offer">
+			<div class="special-offer-wrap">
+				<div class="special-offer-content">
+					<h2>Exclusive tour to Phoebe Regio</h2>
+					<p>Phoebe is a Titaness who was the daughter of Uranus and Gaia. She controlled the Oracle at Delphi. Explore this astonishingly beautiful area named in her honor with our exclusive offer.</p>
+				<p class="disclaimer">* Some restrictions apply</p>
+				<p>
+					<a href="booking.html" class="button">Book Now</a>
+				</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Newsletter -->
+		<div class="newsletter">
+			<h2>Not ready yet? Then join our newsletter</h2>
+			<p>Sign up for our newsletter and receive latest news on destinations, reviews, offers and more.</p>
+			<form action="#">
+				<div class="input-label">
+					<label for="email">Email address</label>
+					<input type="email" id="email">
+				</div>
+				<input type="submit" value="Subscribe">
+			</form>
+		</div>
+
+	</main>
+
+	<footer>
+		<div class="footer-wrap">
+			<!-- Copyright -->
+			<div class="copyright">
+				<p class="copyright-image"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></p>
+				<p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+				<p>Created by <a href="https://a20y.com">AAArdvark</a></p>
+			</div>
+
+			<!-- Social media -->
+			<div class="social-media">
+				<ul>
+					<li><a href="https://twitter.com/hiredigitally">
+						<span class="fa-stack fa-2x">
+							<i class="fas fa-circle fa-stack-2x"></i>
+							<i class="fab fa-twitter fa-stack-1x"></i>
+						</span>
+						<span class="screen-reader-text">Follow us on Twitter</span>
+					</a></li>
+					<li><a href="https://www.facebook.com/hiredigitally">
+						<span class="fa-stack fa-2x">
+							<i class="fas fa-circle fa-stack-2x"></i>
+							<i class="fab fa-facebook-f fa-stack-1x"></i>
+						</span>
+						<span class="screen-reader-text">Like us on Facebook</span>
+					</a></li>
+					<li><a href="https://www.instagram.com/hiredigitally/">
+						<span class="fa-stack fa-2x">
+							<i class="fas fa-circle fa-stack-2x"></i>
+							<i class="fab fa-instagram fa-stack-1x"></i>
+						</span>
+						<span class="screen-reader-text">Follow us on Instagram</span>
+					</a></li>
+				</ul>
+			</div>
+
+		<div class="footer-menu">
+			<nav aria-label="Footer navigation">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="destinations.html">Destinations</a></li>
+					<li><a href="packages.html">Packages</a></li>
+					<li><a href="contact.html">Contact</a></li>
+					<li><a href="credits.html">Credits</a></li>
+				</ul>
+			</nav>
+		</div>
+		</div>
+	</footer>
+</div>
+
+
+
+<!-- Modal Demos -->
+<!-- Accessible Modal -->
+<div class="modal" id="learn-more-modal" role="dialog" aria-modal="true" aria-labelledby="learn-more-modal-title" hidden>
+	<div class="modal-overlay" data-modal-close></div>
+	<div class="modal-dialog">
+		<header class="modal-header">
+			<h2 id="learn-more-modal-title">Welcome to Discover Venus</h2>
+			<button class="modal-close" data-modal-close aria-label="Close modal">
+				<i class="fas fa-times"></i>
+			</button>
+		</header>
+		<div class="modal-body">
+			<p>Thank you for your interest in visiting Venus! As the solar system's premier Venus travel agency, we offer unparalleled experiences on Earth's sister planet.</p>
+			<p>Our expert guides will take you to the most breathtaking locations, from the towering Maxwell Montes to the vast Lakshmi Planum. Every trip includes:</p>
+			<ul>
+				<li>Round-trip spacecraft transportation</li>
+				<li>Atmospheric suits with 48-hour life support</li>
+				<li>Guided tours with certified Venus explorers</li>
+				<li>Gourmet space meals prepared by our chefs</li>
+			</ul>
+		</div>
+		<footer class="modal-footer">
+			<a href="packages.html" class="button">View Packages</a>
+			<button class="button outline-button" data-modal-close>Maybe Later</button>
+		</footer>
+	</div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/components.js"></script>
+<script src="js/a11y-toggle.js"></script>
+
+</body>
+</html>

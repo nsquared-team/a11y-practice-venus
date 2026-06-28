@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- UserWay accessibility overlay widget -->
+	<script src="https://cdn.userway.org/widget.js" data-account="H4h9mwMPQk"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo 6: Field Grouping — Accessible Forms</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Demo 6: Field Grouping <span class="tag tag-a">WCAG 1.3.1 — Level A</span></h1>
+  <p>Related fields — especially radio buttons and checkboxes — need context. Without grouping, users hear the answer but not the question.</p>
+
+  <div class="demo-pair">
+    <div class="demo-box broken">
+      <h3>Broken</h3>
+      <form>
+        <p style="font-weight: 600; margin-bottom: 0.5rem;">What is your experience level with web accessibility?</p>
+        <label><input type="radio" name="d6b-level" value="beginner"> Beginner</label><br>
+        <label><input type="radio" name="d6b-level" value="intermediate"> Intermediate</label><br>
+        <label><input type="radio" name="d6b-level" value="advanced"> Advanced</label>
+        <div style="margin-top: 1rem;"></div>
+        <p style="font-weight: 600; margin-bottom: 0.5rem;">Would you like to receive our newsletter?</p>
+        <label><input type="radio" name="d6b-news" value="yes"> Yes</label><br>
+        <label><input type="radio" name="d6b-news" value="no"> No</label>
+      </form>
+      <p class="explanation">A screen reader in forms mode announces "Beginner, radio button" — skipping the question entirely because the <code>&lt;p&gt;</code> tag isn't associated with the radio group.</p>
+    </div>
+
+    <div class="demo-box fixed">
+      <h3>Fixed</h3>
+      <form>
+        <fieldset>
+          <legend>What is your experience level with web accessibility?</legend>
+          <label><input type="radio" name="d6f-level" value="beginner"> Beginner</label><br>
+          <label><input type="radio" name="d6f-level" value="intermediate"> Intermediate</label><br>
+          <label><input type="radio" name="d6f-level" value="advanced"> Advanced</label>
+        </fieldset>
+        <fieldset>
+          <legend>Would you like to receive our newsletter?</legend>
+          <label><input type="radio" name="d6f-news" value="yes"> Yes</label><br>
+          <label><input type="radio" name="d6f-news" value="no"> No</label>
+        </fieldset>
+      </form>
+      <p class="explanation">With <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code>, a screen reader announces "What is your experience level with web accessibility? Beginner, radio button" — the full context.</p>
+    </div>
+  </div>
+
+  <nav class="page-nav" aria-label="Page navigation">
+    <a href="demo-5-error-summary.html">&larr; Prev: Error Summary</a>
+    <a href="index.html">All Demos</a>
+    <a href="demo-7-focus.html">Next: Focus Indicators &rarr;</a>
+  </nav>
+
+</body>
+</html>

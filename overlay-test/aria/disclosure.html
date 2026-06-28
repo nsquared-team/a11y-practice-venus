@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- UserWay accessibility overlay widget -->
+	<script src="https://cdn.userway.org/widget.js" data-account="H4h9mwMPQk"></script>
+  <meta charset="UTF-8">
+  <title>Disclosure Comparison: &lt;details&gt; vs ARIA — AAArdvark Livestream</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 820px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; color: #222; }
+    h1 { border-bottom: 2px solid #333; padding-bottom: 0.5rem; }
+    .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+    .card { border: 1px solid #ccc; border-radius: 6px; padding: 1.25rem; background: #fafafa; }
+    .card h2 { margin-top: 0; font-size: 1.1rem; color: #555; }
+    .lines { font-size: 0.85rem; color: #777; font-style: italic; margin-bottom: 1rem; }
+
+    /* Native details styling — minimal */
+    details summary { cursor: pointer; padding: 0.6rem 0.9rem; background: #e8f0fe; border: 1px solid #2a6df4; border-radius: 4px; font-weight: 600; }
+    details[open] summary { border-radius: 4px 4px 0 0; }
+    details .panel { padding: 0.75rem 0.9rem; border: 1px solid #2a6df4; border-top: none; border-radius: 0 0 4px 4px; }
+
+    /* ARIA disclosure styling — match visually */
+    .aria-disclosure button { cursor: pointer; padding: 0.6rem 0.9rem; background: #e8f0fe; border: 1px solid #2a6df4; border-radius: 4px; font-weight: 600; width: 100%; text-align: left; font-size: 1rem; font-family: inherit; }
+    .aria-disclosure button[aria-expanded="true"] { border-radius: 4px 4px 0 0; }
+    .aria-disclosure .panel { padding: 0.75rem 0.9rem; border: 1px solid #2a6df4; border-top: none; border-radius: 0 0 4px 4px; }
+    .aria-disclosure .panel[hidden] { display: none; }
+
+    pre { background: #1e1e1e; color: #f8f8f2; padding: 0.9rem; border-radius: 4px; overflow-x: auto; font-size: 0.8rem; line-height: 1.4; }
+    .takeaway { background: #fff8dc; border-left: 4px solid #e8a838; padding: 1rem 1.25rem; margin: 2rem 0; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <h1>Disclosure Pattern: Native HTML vs ARIA</h1>
+  <p>Two ways to build the same accordion/disclosure widget. Both work. Both are accessible. One requires a lot less code.</p>
+
+  <div class="comparison">
+
+    <!-- LEFT: Native HTML -->
+    <div class="card">
+      <h2>Option A: Native <code>&lt;details&gt;</code> / <code>&lt;summary&gt;</code></h2>
+      <p class="lines">Lines of code: 4. JavaScript required: none.</p>
+
+      <details>
+        <summary>What is ARIA?</summary>
+        <div class="panel">
+          <p>ARIA (Accessible Rich Internet Applications) is a W3C specification that adds meaning to the accessibility tree without changing how things look or behave visually.</p>
+        </div>
+      </details>
+
+      <pre><code>&lt;details&gt;
+  &lt;summary&gt;What is ARIA?&lt;/summary&gt;
+  &lt;div class="panel"&gt;
+    &lt;p&gt;ARIA stands for...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/details&gt;</code></pre>
+
+      <p><strong>What you get for free:</strong></p>
+      <ul>
+        <li>Keyboard support (Enter and Space toggle)</li>
+        <li>Focus management</li>
+        <li>Correct accessibility tree (button + expanded state)</li>
+        <li>Browser-native open/close state</li>
+        <li>Works with no JavaScript</li>
+      </ul>
+    </div>
+
+    <!-- RIGHT: ARIA disclosure -->
+    <div class="card">
+      <h2>Option B: ARIA disclosure pattern</h2>
+      <p class="lines">Lines of code: ~15 (HTML + JS). JavaScript required: yes.</p>
+
+      <div class="aria-disclosure">
+        <button aria-expanded="false" aria-controls="aria-panel-1" id="aria-trigger-1">
+          What is ARIA?
+        </button>
+        <div class="panel" id="aria-panel-1" hidden>
+          <p>ARIA (Accessible Rich Internet Applications) is a W3C specification that adds meaning to the accessibility tree without changing how things look or behave visually.</p>
+        </div>
+      </div>
+
+      <pre><code>&lt;button aria-expanded="false"
+        aria-controls="panel-1"&gt;
+  What is ARIA?
+&lt;/button&gt;
+&lt;div id="panel-1" hidden&gt;
+  &lt;p&gt;ARIA stands for...&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  btn.addEventListener('click', () =&gt; {
+    const open = btn.getAttribute(
+      'aria-expanded') === 'true';
+    btn.setAttribute(
+      'aria-expanded', !open);
+    panel.hidden = open;
+  });
+&lt;/script&gt;</code></pre>
+
+      <p><strong>What you have to handle yourself:</strong></p>
+      <ul>
+        <li>Toggle <code>aria-expanded</code> on every click</li>
+        <li>Toggle the <code>hidden</code> attribute on the panel</li>
+        <li>Wire up <code>aria-controls</code> correctly</li>
+        <li>Make sure state stays in sync (this is where bugs live)</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="takeaway">
+    <strong>The takeaway:</strong> Both versions are accessible when built correctly. But the native version is impossible to get wrong — there's no JavaScript state to drift out of sync, no ARIA attributes to forget to update. The ARIA version exists for cases where <code>&lt;details&gt;</code> isn't flexible enough (custom animations, controlling multiple panels at once, integration with a JS framework's state). For a simple show/hide? Reach for <code>&lt;details&gt;</code> first.
+  </div>
+
+  <script>
+    // Minimal JS to make the ARIA disclosure actually work
+    document.querySelectorAll('.aria-disclosure button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panel = document.getElementById(btn.getAttribute('aria-controls'));
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        panel.hidden = isOpen;
+      });
+    });
+  </script>
+
+</body>
+</html>

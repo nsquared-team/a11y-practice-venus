@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- UserWay accessibility overlay widget -->
+	<script src="https://cdn.userway.org/widget.js" data-account="H4h9mwMPQk"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Contact Us - Discover Venus</title>
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700|Merriweather:400,400i,700,700i&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/all.css">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="contact-page">
+
+<!-- Skip link for keyboard navigation -->
+<a href="#main-content" class="skip-link a11y-broken">Skip to main content</a>
+
+<div class="page">
+	<!-- Header area -->
+	<header role="banner" class="site-header">
+			<div class="site-branding">
+				<h1 class="site-logo">
+					<a href="index.html">
+						<img src="images/logo-p.png" alt="Discover Venus">
+					</a>
+				</h1>
+			</div>
+			<nav class="site-navigation" role="navigation">
+				<button class="nav-toggle">
+					<i class="fas fa-bars fa-2x"></i>
+					<span class="screen-reader-text">Menu</span>
+				</button>
+				<div class="nav-container">
+					<button class="nav-toggle">
+						<i class="fas fa-times fa-2x"></i>
+						<span class="screen-reader-text">Close menu</span>
+					</button>
+					<ul class="nav">
+						<li><a href="about.html">About</a></li>
+						<li><a href="destinations.html">Destinations</a></li>
+						<li><a href="packages.html">Packages</a></li>
+						<li class="current"><a href="contact.html">Contact</a></li>
+						<li class="nav-button">
+							<a href="booking.html" class="button">
+								Book Now
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+	</header>
+	<main role="main">
+		<!-- Page Header -->
+		<div class="page-header">
+			<h2>Contact Us</h2>
+			<p>We're here to help with your Venus travel questions</p>
+		</div>
+
+		<!-- Contact Content -->
+		<div class="contact-content">
+			<div class="contact-content-wrap">
+
+				<!-- Contact Form -->
+				<section class="contact-form-section">
+					<h2>Send Us a Message</h2>
+					<form class="contact-form" action="#" method="post" novalidate>
+						<div class="form-row">
+							<div class="form-group">
+								<label for="contact-name">Full Name <span class="required">*</span></label>
+								<input type="text" id="contact-name" name="name" required autocomplete="name">
+								<span class="error-message" aria-live="polite"></span>
+							</div>
+							<div class="form-group">
+								<label for="contact-email">Email Address <span class="required">*</span></label>
+								<input type="email" id="contact-email" name="email" required autocomplete="email">
+								<span class="error-message" aria-live="polite"></span>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group">
+								<label for="contact-phone">Phone Number</label>
+								<input type="tel" id="contact-phone" name="phone" autocomplete="tel">
+								<span class="error-message" aria-live="polite"></span>
+							</div>
+							<div class="form-group">
+								<label for="contact-subject">Subject <span class="required">*</span></label>
+								<select id="contact-subject" name="subject" required>
+									<option value="">Select a subject...</option>
+									<option value="general">General Inquiry</option>
+									<option value="booking">Booking Question</option>
+									<option value="destinations">Destination Information</option>
+									<option value="packages">Package Details</option>
+									<option value="safety">Safety & Health</option>
+									<option value="accessibility">Accessibility Needs</option>
+									<option value="feedback">Feedback</option>
+									<option value="other">Other</option>
+								</select>
+								<span class="error-message" aria-live="polite"></span>
+							</div>
+						</div>
+						<div class="form-group full-width">
+							<label for="contact-message">Message <span class="required">*</span></label>
+							<textarea id="contact-message" name="message" rows="6" required></textarea>
+							<span class="error-message" aria-live="polite"></span>
+						</div>
+						<div class="form-group full-width">
+							<label for="contact-attachment">Attachment (optional)</label>
+							<input type="file" id="contact-attachment" name="attachment" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+							<p class="field-hint">Accepted formats: PDF, DOC, DOCX, JPG, PNG (max 5MB)</p>
+						</div>
+						<div class="form-actions">
+							<button type="submit" class="button">Send Message</button>
+						</div>
+					</form>
+				</section>
+
+				<!-- Contact Information Sidebar -->
+				<aside class="contact-sidebar">
+					<!-- Contact Information -->
+					<section class="contact-info-section">
+						<h2>Contact Information</h2>
+						<div class="contact-info-list">
+							<div class="contact-info-item">
+								<i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+								<div>
+									<h3>Email</h3>
+									<p><a href="mailto:info@discovervenus.com">info@discovervenus.com</a></p>
+									<p><a href="mailto:bookings@discovervenus.com">bookings@discovervenus.com</a></p>
+								</div>
+							</div>
+							<div class="contact-info-item">
+								<i class="fas fa-phone fa-lg" aria-hidden="true"></i>
+								<div>
+									<h3>Phone</h3>
+									<p><a href="tel:+15558367871">+1 (555) VENUS-71</a></p>
+									<p class="phone-note">Emergency: <a href="tel:+15558369111">+1 (555) VENUS-911</a></p>
+								</div>
+							</div>
+							<div class="contact-info-item">
+								<i class="fas fa-map-marker-alt fa-lg" aria-hidden="true"></i>
+								<div>
+									<h3>Headquarters</h3>
+									<address>
+										Discover Venus Inc.<br>
+										123 Space Station Drive<br>
+										Venus Orbital Station Alpha<br>
+										Low Venus Orbit, 00001
+									</address>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<!-- Office Hours -->
+					<section class="office-hours-section">
+						<h2>Office Hours</h2>
+						<p class="timezone-note">All times shown in Pacific Standard Time (PST)</p>
+						<table class="hours-table">
+							<thead class="screen-reader-text">
+								<tr>
+									<th scope="col">Day</th>
+									<th scope="col">Hours</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Monday - Friday</td>
+									<td>9:00 AM - 6:00 PM</td>
+								</tr>
+								<tr>
+									<td>Saturday</td>
+									<td>10:00 AM - 4:00 PM</td>
+								</tr>
+								<tr>
+									<td>Sunday</td>
+									<td>Closed</td>
+								</tr>
+							</tbody>
+						</table>
+						<p class="emergency-note"><strong>24/7 Emergency Support</strong> available for travelers currently on expedition.</p>
+					</section>
+				</aside>
+
+			</div>
+		</div>
+
+		<!-- FAQ Section -->
+		<section class="faq-section">
+			<div class="faq-content-wrap">
+				<h2>Frequently Asked Questions</h2>
+				<p class="section-intro">Find quick answers to common questions about Venus travel.</p>
+
+				<div class="faq-list">
+					<div class="faq-item">
+						<h3 class="faq-question">
+							<button aria-expanded="false" aria-controls="faq-1">
+								<span>What are the health requirements for Venus travel?</span>
+								<i class="fas fa-chevron-down" aria-hidden="true"></i>
+							</button>
+						</h3>
+						<div id="faq-1" class="faq-answer" hidden>
+							<p>All travelers must pass a comprehensive health screening at least 30 days before departure. This includes cardiovascular fitness tests, psychological evaluation, and screening for conditions that may be affected by reduced gravity or pressure changes. Our medical team will provide personalized guidance based on your results.</p>
+						</div>
+					</div>
+
+					<div class="faq-item">
+						<h3 class="faq-question">
+							<button aria-expanded="false" aria-controls="faq-2">
+								<span>What is your cancellation policy?</span>
+								<i class="fas fa-chevron-down" aria-hidden="true"></i>
+							</button>
+						</h3>
+						<div id="faq-2" class="faq-answer" hidden>
+							<p>Cancellations made more than 90 days before departure receive a full refund minus a 5% processing fee. Cancellations 60-89 days before departure receive a 75% refund. Cancellations 30-59 days before departure receive a 50% refund. Cancellations less than 30 days before departure are non-refundable. Trip insurance is strongly recommended and available at booking.</p>
+						</div>
+					</div>
+
+					<div class="faq-item">
+						<h3 class="faq-question">
+							<button aria-expanded="false" aria-controls="faq-3">
+								<span>What should I pack for a Venus expedition?</span>
+								<i class="fas fa-chevron-down" aria-hidden="true"></i>
+							</button>
+						</h3>
+						<div id="faq-3" class="faq-answer" hidden>
+							<p>All specialized equipment including pressure suits, thermal protection, and safety gear is provided and fitted to you before departure. Personal items should be limited to 5kg and include: medications, personal hygiene items, a few changes of comfortable clothes for the vessel, and small personal items like books or tablets. A detailed packing guide will be sent after booking.</p>
+						</div>
+					</div>
+
+					<div class="faq-item">
+						<h3 class="faq-question">
+							<button aria-expanded="false" aria-controls="faq-4">
+								<span>How long does the journey to Venus take?</span>
+								<i class="fas fa-chevron-down" aria-hidden="true"></i>
+							</button>
+						</h3>
+						<div id="faq-4" class="faq-answer" hidden>
+							<p>Travel time varies based on orbital positions, but typically ranges from 3-5 months each way. During the journey, you'll enjoy comfortable accommodations, entertainment, dining, and educational programs about Venus. The transit time is designed to help you gradually adjust to the different environment.</p>
+						</div>
+					</div>
+
+					<div class="faq-item">
+						<h3 class="faq-question">
+							<button aria-expanded="false" aria-controls="faq-5">
+								<span>Is Venus travel safe for older adults?</span>
+								<i class="fas fa-chevron-down" aria-hidden="true"></i>
+							</button>
+						</h3>
+						<div id="faq-5" class="faq-answer" hidden>
+							<p>Age alone is not a determining factor. We've successfully hosted travelers from 21 to 78 years old. The key factors are overall health, fitness level, and ability to meet our medical requirements. Our most popular "Plains" package is specifically designed with accessibility and comfort in mind, making it suitable for travelers of varying physical abilities.</p>
+						</div>
+					</div>
+
+					<div class="faq-item">
+						<h3 class="faq-question">
+							<button aria-expanded="false" aria-controls="faq-6">
+								<span>Do you accommodate dietary restrictions?</span>
+								<i class="fas fa-chevron-down" aria-hidden="true"></i>
+							</button>
+						</h3>
+						<div id="faq-6" class="faq-answer" hidden>
+							<p>Yes! Our culinary team can accommodate most dietary needs including vegetarian, vegan, gluten-free, kosher, halal, and various food allergies. Please indicate your requirements at the time of booking so we can ensure appropriate provisions are made for your entire journey.</p>
+						</div>
+					</div>
+				</div>
+
+				<p class="faq-more"><a href="#" class="button outline-button">View All FAQs</a></p>
+			</div>
+		</section>
+
+		<!-- Map Section -->
+		<section class="map-section">
+			<div class="map-content-wrap">
+				<h2>Earth Headquarters</h2>
+				<p class="section-intro">Visit our Earth-based operations center for in-person consultations.</p>
+				<div class="map-placeholder" aria-label="Map showing headquarters location">
+					<div class="map-inner">
+						<i class="fas fa-map-marked-alt fa-4x" aria-hidden="true"></i>
+						<p>Interactive map coming soon</p>
+						<p class="map-address">
+							<strong>Discover Venus - Earth Operations</strong><br>
+							1000 Spaceport Boulevard<br>
+							Cape Canaveral, FL 32920<br>
+							United States
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<footer>
+		<div class="footer-wrap">
+			<!-- Copyright -->
+			<div class="copyright">
+				<p class="copyright-image"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></p>
+				<p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+				<p>Created by <a href="https://a20y.com">AAArdvark</a></p>
+			</div>
+
+			<!-- Social media -->
+			<div class="social-media">
+				<ul>
+					<li><a href="https://twitter.com/hiredigitally">
+						<span class="fa-stack fa-2x">
+							<i class="fas fa-circle fa-stack-2x"></i>
+							<i class="fab fa-twitter fa-stack-1x"></i>
+						</span>
+						<span class="screen-reader-text">Follow us on Twitter</span>
+					</a></li>
+					<li><a href="https://www.facebook.com/hiredigitally">
+						<span class="fa-stack fa-2x">
+							<i class="fas fa-circle fa-stack-2x"></i>
+							<i class="fab fa-facebook-f fa-stack-1x"></i>
+						</span>
+						<span class="screen-reader-text">Like us on Facebook</span>
+					</a></li>
+					<li><a href="https://www.instagram.com/hiredigitally/">
+						<span class="fa-stack fa-2x">
+							<i class="fas fa-circle fa-stack-2x"></i>
+							<i class="fab fa-instagram fa-stack-1x"></i>
+						</span>
+						<span class="screen-reader-text">Follow us on Instagram</span>
+					</a></li>
+				</ul>
+			</div>
+
+		<div class="footer-menu">
+			<nav aria-label="Footer navigation">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="destinations.html">Destinations</a></li>
+					<li><a href="packages.html">Packages</a></li>
+					<li><a href="contact.html">Contact</a></li>
+					<li><a href="credits.html">Credits</a></li>
+				</ul>
+			</nav>
+		</div>
+		</div>
+	</footer>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/a11y-toggle.js"></script>
+
+</body>
+</html>
