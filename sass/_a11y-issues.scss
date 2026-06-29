@@ -312,6 +312,13 @@ body[data-a11y-issues-enabled="true"] {
 		border-color: #c0392b !important;
 		// No icon, no text - color only
 	}
+
+	// Color-only error indication: hide the text message for tagged fields so
+	// only the red .error border conveys the error (a true color-only cue).
+	// Applied to specific .error-message divs in booking.html.
+	.error-message.a11y-color-only {
+		display: none !important;
+	}
 }
 
 // ==========================================================================

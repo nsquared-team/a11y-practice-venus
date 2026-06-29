@@ -164,7 +164,8 @@
 									<option value="beta-regio">Beta Regio</option>
 								</optgroup>
 							</select>
-							<div class="error-message" id="destination-error">Please select a destination</div>
+							<!-- Intentional A11y Issue (1.4.11): color-only error — message hidden when issues enabled, only the red border remains -->
+							<div class="error-message a11y-color-only" id="destination-error">Please select a destination</div>
 						</div>
 					</div>
 
@@ -254,7 +255,8 @@
 								<div class="form-group">
 									<label for="traveler-1-email">Email Address</label>
 									<input type="email" class="form-input" name="traveler-1-email" id="traveler-1-email" required>
-									<div class="error-message">Valid email is required</div>
+									<!-- Intentional A11y Issue (1.4.11): color-only error — message hidden when issues enabled, only the red border remains -->
+									<div class="error-message a11y-color-only">Valid email is required</div>
 								</div>
 							</div>
 							<div class="form-row">
