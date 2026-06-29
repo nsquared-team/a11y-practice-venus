@@ -88,11 +88,10 @@ disproven — the point of the exercise is the actual result.
 
 | # | Issue | WCAG | Where | Prediction | Result | Notes |
 |---|-------|------|-------|:---------:|--------|-------|
-| 18 | Modal missing `aria-labelledby` | 4.1.2 (A) | some modals | 🟡 | | Does AI remediation give the dialog an accessible name? |
-| 19 | Close button missing `aria-label` | 4.1.2 (A) | modal/lightbox close | 🟡 | | Icon-only button — accessible name added? |
-| 20 | Lightbox missing `aria-labelledby` | 4.1.2 (A) | destination-detail lightbox | 🟡 | | |
-| 21 | Carousel changes not announced | 4.1.3 (AA) | index.html carousel (`no-live-region`) | 🔴 | | No live region — slide changes silent to AT. |
-| 22 | Lightbox counter not in live region | 4.1.3 (AA) | destination-detail lightbox | 🔴 | | "Image X of Y" updates visually only. |
+| 18 | Lightbox dialog missing `aria-labelledby` (no accessible name) | 4.1.2 (A) | destination-detail lightbox | 🟡 | | The only modal lacking a name — the homepage "See More" modal has a valid one. Does AI remediation give the dialog an accessible name? |
+| 19 | Close button missing `aria-label` | 4.1.2 (A) | destination-detail lightbox close (×) | 🟡 | | Icon-only button — accessible name added? |
+| 20 | Carousel changes not announced | 4.1.3 (AA) | index.html carousel (`no-live-region`) | 🔴 | | No live region — slide changes silent to AT. |
+| 21 | Lightbox counter not in live region | 4.1.3 (AA) | destination-detail lightbox | 🔴 | | "Image X of Y" updates visually only. |
 
 ---
 
@@ -122,5 +121,5 @@ The overlay is itself code on the page — check it doesn't *introduce* problems
 
 **Takeaway:**
 
-_(Fill in after testing — e.g. "Of 22 intentional issues, the overlay genuinely
+_(Fill in after testing — e.g. "Of 21 intentional issues, the overlay genuinely
 fixed N, masked M without helping AT users, and left the rest unchanged.")_
