@@ -56,7 +56,8 @@ disproven — the point of the exercise is the actual result.
 
 | # | Issue | WCAG | Where | Prediction | Result | Notes |
 |---|-------|------|-------|:---------:|--------|-------|
-| 1 | Missing alt text on gallery image 3 | 1.1.1 (A) | destination-detail.html lightbox | 🟡 | | UserWay markets "AI" alt remediation — does it actually inject an `alt`/`aria-label`? Inspect the `<img>`. |
+| 1a | Empty alt (`alt=""`) on informative gallery image | 1.1.1 (A) | destination-detail.html — 3rd gallery/lightbox image | 🟡 | | `alt=""` is present (decorative declaration), so overlays/scanners usually skip it even though the image is informative. Does UserWay add alt anyway? (Likely not.) |
+| 1b | Alt attribute missing entirely (content image) | 1.1.1 (A) | about.html — Dr. Elena Vasquez team photo | 🟡 | | `alt` removed completely. Baseline: a screen reader reads the filename. Does UserWay AI inject a useful `alt` — or something generic/wrong? |
 | 2 | Low-contrast hero text | 1.4.3 (AA) | index.html hero | 🟢 | | Only after enabling the contrast profile? Check ratio with the widget closed vs. open. |
 | 3 | Low-contrast modal close button | 1.4.3 (AA) | modal dialogs | 🟢 | | Same — does contrast mode reach this control? |
 | 4 | Color-only error indicators | 1.4.11 (AA) | booking.html fields | 🔴 | | Overlay can't add a text/icon error cue. |
