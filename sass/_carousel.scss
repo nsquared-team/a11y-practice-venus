@@ -31,15 +31,16 @@
 	flex: 0 0 100%;
 	width: 100%;
 	opacity: 0;
-	visibility: hidden;
+	// Intentional A11y Issue (focusable-hidden): off-screen slides are hidden
+	// with opacity only — NOT visibility:hidden/display:none — so their links
+	// stay in the tab order and keyboard users can reach hidden content.
 	position: absolute;
 	top: 0;
 	left: 0;
-	transition: opacity 400ms ease-in-out, visibility 400ms;
+	transition: opacity 400ms ease-in-out;
 
 	&.active {
 		opacity: 1;
-		visibility: visible;
 		position: relative;
 	}
 }
