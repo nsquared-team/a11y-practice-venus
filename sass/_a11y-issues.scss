@@ -237,11 +237,25 @@ body[data-a11y-issues-enabled="true"] {
 	// WCAG 2.5.5 - Small Touch Targets (Operable)
 	// Touch targets that are too small
 	// -------------------------------------------------------------------------
+	// Forced to 20px — below the 24px WCAG 2.5.8 (AA) minimum — so it fails,
+	// not just the 44px AAA recommendation. fa-stack icon is shrunk to match.
 	.a11y-small-target {
-		min-width: 24px !important;
-		min-height: 24px !important;
-		padding: 2px !important;
-		font-size: 12px !important;
+		display: inline-flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		width: 20px !important;
+		height: 20px !important;
+		min-width: 20px !important;
+		min-height: 20px !important;
+		padding: 0 !important;
+		font-size: 10px !important;
+
+		.fa-stack {
+			width: 20px !important;
+			height: 20px !important;
+			line-height: 20px !important;
+			font-size: 10px !important;
+		}
 	}
 
 	// -------------------------------------------------------------------------
