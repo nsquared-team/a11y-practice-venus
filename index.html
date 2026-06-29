@@ -486,8 +486,8 @@
 
 
 <!-- Modal Demos -->
-<!-- Accessible Modal -->
-<div class="modal" id="learn-more-modal" role="dialog" aria-modal="true" aria-labelledby="learn-more-modal-title" hidden>
+<!-- Intentional A11y Issue: Escape key does not close this modal (no-escape) -->
+<div class="modal" id="learn-more-modal" role="dialog" aria-modal="true" aria-labelledby="learn-more-modal-title" data-a11y-issue="no-escape" hidden>
 	<div class="modal-overlay" data-modal-close></div>
 	<div class="modal-dialog">
 		<header class="modal-header">
